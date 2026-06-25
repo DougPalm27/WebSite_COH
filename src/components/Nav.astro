@@ -1,0 +1,136 @@
+---
+const links = [
+  { href: '/',                key: 'nav.home',    label: 'Inicio'          },
+  { href: '/nosotros',        key: 'nav.about',   label: 'Nosotros'        },
+  { href: '/marcas',          key: 'nav.brands',  label: 'Marcas'          },
+  { href: '/junta-directiva', key: 'nav.board',   label: 'Junta Directiva' },
+  { href: '/contacto',        key: 'nav.contact', label: 'Contacto'        },
+];
+const current = Astro.url.pathname;
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style="background: linear-gradient(to bottom, rgba(28,14,8,0.85) 0%, rgba(28,14,8,0) 100%); backdrop-filter: none;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group shrink-0">
+      <img src="/img/logos_varios/Logotipo_COHONDUCAFE_Blanco.png" alt="COHONDUCAFE" class="h-14 object-contain group-hover:opacity-80 transition-opacity duration-300" />
+    </a>
+
+    <!-- Links desktop + lang switcher -->
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map(link => {
+        const isActive = link.href === '/'
+          ? current === '/'
+          : current.startsWith(link.href);
+        return (
+          <a
+            href={link.href}
+            data-i18n={link.key}
+            class={`nav-link relative text-white/90 pb-0.5
+              after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gold
+              after:transition-transform after:duration-300 after:origin-left
+              ${isActive ? 'text-gold after:scale-x-100' : 'after:scale-x-0 hover:after:scale-x-100'}`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+      <!-- Language switcher -->
+      <div id="lang-switcher"></div>
+    </nav>
+
+    <!-- Right side mobile: lang pill + hamburger -->
+    <div class="md:hidden flex items-center gap-3">
+      <div id="lang-switcher-mobile"></div>
+      <button id="menuBtn" class="text-white p-2" aria-label="Menú" aria-expanded="false">
+        <svg id="iconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-forest-dark/97 backdrop-blur-md border-t border-white/10">
+    <nav class="flex flex-col px-6 py-6 gap-1">
+      {links.map(link => {
+        const isActive = link.href === '/'
+          ? current === '/'
+          : current.startsWith(link.href);
+        return (
+          <a
+            href={link.href}
+            data-i18n={link.key}
+            class={`nav-link py-3 border-b border-white/5 text-base
+              ${isActive ? 'text-gold' : 'text-white/80 hover:text-gold'}`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+(function () {
+  /* Clone lang-switcher into mobile slot */
+  function cloneSwitcherToMobile() {
+    var src  = document.getElementById('lang-switcher');
+    var dest = document.getElementById('lang-switcher-mobile');
+    if (!src || !dest || dest.children.length > 0) return;
+    var clone = src.cloneNode(true);
+    clone.id = 'lang-switcher-mobile-inner';
+    /* re-wire click events by removing innerHTML and re-running buildSwitcher in the clone */
+    dest.innerHTML = src.innerHTML;
+    /* sync clicks back to main switcher */
+    dest.querySelectorAll('.lang-opt-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (window.__cohonSetLang) window.__cohonSetLang(btn.dataset.lang);
+      });
+    });
+  }
+
+  /* Wait for i18n to build the switcher then clone */
+  var tries = 0;
+  var id = setInterval(function () {
+    var src = document.getElementById('lang-switcher');
+    if ((src && src.innerHTML) || ++tries > 40) {
+      clearInterval(id);
+      cloneSwitcherToMobile();
+    }
+  }, 80);
+})();
+</script>
+
+<script>
+  const navbar    = document.getElementById('navbar')!;
+  const btn       = document.getElementById('menuBtn')!;
+  const menu      = document.getElementById('mobileMenu')!;
+  const iconOpen  = document.getElementById('iconOpen')!;
+  const iconClose = document.getElementById('iconClose')!;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 60;
+    navbar.style.background = scrolled
+      ? 'rgba(28, 8, 16, 0.97)'
+      : 'linear-gradient(to bottom, rgba(28,14,8,0.85) 0%, rgba(28,14,8,0) 100%)';
+    navbar.style.backdropFilter = scrolled ? 'blur(12px)' : 'none';
+    navbar.classList.toggle('shadow-lg', scrolled);
+    navbar.classList.toggle('border-b', scrolled);
+    navbar.classList.toggle('border-gold/15', scrolled);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

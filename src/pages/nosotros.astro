@@ -1,0 +1,487 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const hitos = [
+  { year: '1954', evento: 'Se establece la 1ª finca de café en Yoro. Nace una tradición familiar 100% hondureña.' },
+  { year: '1976', evento: 'Comenzó la producción y el comercio de café a nivel nacional.' },
+  { year: '1999', evento: 'Inicio de las exportaciones de café al mercado internacional.' },
+  { year: '2010', evento: 'Se convirtió en el mayor exportador de café de Honduras y Centroamérica.' },
+  { year: '2012', evento: 'Galardonado con los premios presidenciales al Mejor Exportador y al Exportador de Comercio Justo.' },
+  { year: '2013', evento: 'Se creó la Fundación COHONDUCAFÉ para formalizar la responsabilidad social.' },
+  { year: '2017', evento: 'Récord histórico: 2.8 millones de sacos de café verde exportados.' },
+  { year: '2022', evento: 'Se exportó alrededor del 30% de la producción total de café de Honduras.' },
+  { year: '2023', evento: 'Inauguración de una nueva planta de procesamiento para cafés especiales.' },
+  { year: '2024', evento: 'Más de 20,000 productores recibieron asistencia en agricultura regenerativa y georreferenciada (EUDR).' },
+];
+
+const infraestructura = [
+  {
+    num: '30–36', label: 'Lotes / día', sub: '15,000 sacos de 46 kg c/u',
+    iconPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
+  },
+  {
+    num: '1M', label: 'Sacos almacenados', sub: 'Capacidad de café verde',
+    iconPath: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4',
+  },
+  {
+    num: '3', label: 'Plantas de producción', sub: '30% de la producción nacional',
+    iconPath: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+  {
+    num: '40,000+', label: 'Familias productoras', sub: 'Trabajo directo',
+    iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+];
+
+const impacto = [
+  {
+    titulo: '+40,000 familias',
+    desc: 'Trabajo directo con familias productoras de café en Honduras.',
+    icon: `<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  },
+  {
+    titulo: '+200,000 personas',
+    desc: 'Con bajos ingresos en regiones remotas beneficiadas por nuestros programas.',
+    icon: `<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>`,
+  },
+  {
+    titulo: 'Prácticas sostenibles',
+    desc: 'Promoción de agricultura regenerativa para aumentar productividad por hectárea.',
+    icon: `<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6 2 3 7 3 11c0 6 9 11 9 11s9-5 9-11c0-4-3-9-9-9z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 2c0 0 5 6 0 11"/></svg>`,
+  },
+  {
+    titulo: 'Comunidades rurales',
+    desc: 'Mejoramiento de condiciones de vida e ingresos en zonas cafetaleras.',
+    icon: `<svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
+  },
+];
+
+const certificaciones = [
+  { nombre: 'USDA Organic',        color: 'border border-coffee/30 text-coffee bg-coffee/5' },
+  { nombre: 'EU Organic',          color: 'border border-coffee/30 text-coffee bg-coffee/5' },
+  { nombre: '4C',                  color: 'border border-gold/40 text-coffee bg-gold/8' },
+  { nombre: 'Rainforest Alliance', color: 'border border-coffee/30 text-coffee bg-coffee/5' },
+  { nombre: 'Fairtrade',           color: 'border border-earth/35 text-earth bg-earth/8' },
+];
+
+const regiones = ['Santa Bárbara', 'El Paraíso', 'Lempira', 'Intibucá', 'Yoro', 'Ocotepeque', 'Copán', 'Olancho', 'Francisco Morazán', 'Comayagua', 'La Paz', 'Cortés'];
+
+---
+
+<style>
+  @keyframes vec-float     { 0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-20px) rotate(4deg)} }
+  @keyframes vec-float-rev { 0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(20px) rotate(-4deg)} }
+  @keyframes vec-spin      { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes vec-spin-rev  { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+  @keyframes vec-drift     { 0%,100%{transform:translate(0,0) rotate(0deg) scale(1)} 33%{transform:translate(14px,-10px) rotate(6deg) scale(1.04)} 66%{transform:translate(-10px,8px) rotate(-4deg) scale(0.97)} }
+  @keyframes vec-pulse-scale { 0%,100%{transform:scale(1);opacity:0.06} 50%{transform:scale(1.08);opacity:0.10} }
+  .vec-float     { animation: vec-float      12s ease-in-out infinite; }
+  .vec-float-rev { animation: vec-float-rev  14s ease-in-out infinite; }
+  .vec-spin      { animation: vec-spin       60s linear infinite; }
+  .vec-spin-rev  { animation: vec-spin-rev   45s linear infinite; }
+  .vec-drift     { animation: vec-drift      18s ease-in-out infinite; }
+  .vec-pulse     { animation: vec-pulse-scale  8s ease-in-out infinite; }
+</style>
+
+<Layout title="Nosotros" description="COHONDUCAFÉ — Una tradición familiar desde 1954. Mayor exportador de café de Honduras y Centroamérica.">
+
+  <!-- PAGE HEADER -->
+  <section class="relative h-96 flex items-end overflow-hidden">
+    <img src="/img/Nosotros/BannerPrincipal/Familia.jpg" alt="COHONDUCAFE" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-dark/60 to-transparent"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-14 w-full">
+      <p data-i18n="nos.header.label" class="section-label mb-2">Una tradición familiar desde 1954</p>
+      <h1 data-i18n="nos.header.h1" class="font-display text-5xl md:text-6xl font-bold text-white">100% Hondureña</h1>
+    </div>
+  </section>
+
+  <!-- ─── QUIÉNES SOMOS ──────────────────────────────────────────── -->
+  <section class="py-24 bg-cream-light relative overflow-hidden">
+    <!-- Deco: coffee grande flotando izquierda -->
+    <div class="absolute -left-16 top-1/2 -translate-y-1/2 w-72 h-88 pointer-events-none select-none opacity-[0.05] vec-float" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Deco: oval-alt girando esquina superior derecha -->
+    <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+    </div>
+    <!-- Deco: benefit01 derivando fondo inferior derecho -->
+    <div class="absolute right-[8%] bottom-8 w-14 h-14 pointer-events-none select-none opacity-[0.07] vec-drift" aria-hidden="true">
+      <img src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.6);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p data-i18n="nos.qs.label" class="section-label mb-4 reveal">Nuestra empresa</p>
+        <h2 class="font-display text-4xl font-bold text-coffee-dark leading-tight mb-6 reveal">
+          <span data-i18n="nos.qs.h2a">Referente mundial en</span><br/><span data-i18n="nos.qs.h2b" class="italic text-coffee">café de alta calidad</span>
+        </h2>
+        <p data-i18n="nos.qs.p1" class="text-coffee/70 leading-relaxed mb-5 reveal">
+          COHONDUCAFÉ es una empresa que se destaca como referente en el comercio y la exportación mundial de café en grano de alta calidad en Honduras. Nos esforzamos por superar las expectativas y satisfacer las necesidades de nuestros clientes en todo el mundo, cumpliendo con las metas y objetivos organizacionales establecidos.
+        </p>
+        <p data-i18n="nos.qs.p2" class="text-coffee/70 leading-relaxed mb-8 reveal">
+          La historia comenzó con dos familias inmigrantes: Nicholas Hawit Badour, quien llegó de Jerusalem en la década de 1920, y Basilio Fuschich Packran, que emigró de Czechoslovakia en 1927. Hoy, cuatro generaciones después, sus descendientes continúan liderando la empresa con la misma pasión y compromiso.
+        </p>
+        <div class="flex flex-wrap gap-3 reveal">
+          {certificaciones.map(c => (
+            <span class={`text-xs font-bold tracking-wider uppercase px-3 py-1.5 rounded-full ${c.color}`}>{c.nombre}</span>
+          ))}
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 reveal">
+        <img src="/img/Nosotros/referentemundial/isa_1.png" alt="Café Cohonducafe" class="h-64 w-full object-cover" />
+        <img src="/img/Nosotros/referentemundial/isa_2.jpg" alt="Comunidad" class="h-64 w-full object-cover" />
+        <img src="/img/Nosotros/referentemundial/isa_3.png" alt="Producción" class="h-64 w-full object-cover col-span-2 object-center" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CIFRAS CLAVE ───────────────────────────────────────────── -->
+  <section id="cifras" class="relative overflow-hidden bg-[#1C0E08]">
+
+    <!-- Textura grain -->
+    <div class="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
+    <!-- Deco: oval grande girando esquina superior derecha -->
+    <div class="absolute -right-24 -top-24 w-80 h-80 pointer-events-none select-none opacity-[0.07] vec-spin" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: pen flotando izquierda inferior -->
+    <div class="absolute left-12 bottom-8 w-10 h-16 pointer-events-none select-none opacity-[0.10] vec-float-rev" aria-hidden="true">
+      <img src="/svg/pen.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: oval-alt pulsante centro -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none select-none opacity-[0.04] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+
+    <!-- Watermark año -->
+    <span class="absolute font-display font-bold select-none pointer-events-none leading-none"
+          aria-hidden="true"
+          style="font-size:28vw; right:-1vw; top:50%; transform:translateY(-52%); color:rgba(196,154,60,0.042)">
+      1954
+    </span>
+
+    <!-- Regla dorada superior -->
+    <div class="relative z-10 h-px bg-gradient-to-r from-transparent via-gold/45 to-transparent"></div>
+
+    <!-- Grid de cifras -->
+    <div class="relative z-10 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y divide-gold/10 sm:divide-y-0 sm:divide-x lg:divide-y-0">
+        {infraestructura.map((item, i) => (
+          <div class="cifra-card group relative px-8 py-20 text-center hover:bg-white/[0.03] transition-colors duration-300">
+
+            <!-- Línea de acento en hover -->
+            <div class="absolute top-0 inset-x-8 h-px bg-gold/50 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></div>
+
+            <!-- Ícono -->
+            <div class="flex justify-center mb-7">
+              <div class="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center group-hover:border-gold/50 transition-colors duration-300">
+                <svg class="w-4 h-4 text-gold/60 group-hover:text-gold/90 transition-colors duration-300"
+                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={item.iconPath}/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Número -->
+            <div class="cifra-num font-display font-bold text-gold leading-none mb-4"
+                 style={`font-size:clamp(2.6rem,3.8vw,3.8rem)`}>
+              {item.num}
+            </div>
+
+            <!-- Etiqueta -->
+            <div data-i18n={`nos.cifras.i${i}.lbl`} class="text-[9.5px] text-cream font-bold tracking-[0.42em] uppercase mb-3">
+              {item.label}
+            </div>
+
+            <!-- Separador puntual -->
+            <div class="flex items-center justify-center gap-1.5 mb-3">
+              <div class="w-3 h-px bg-gold/25"></div>
+              <div class="w-1 h-1 rounded-full bg-gold/35"></div>
+              <div class="w-3 h-px bg-gold/25"></div>
+            </div>
+
+            <!-- Sub texto -->
+            <div data-i18n={`nos.cifras.i${i}.sub`} class="text-cream/35 text-[11px] font-medium tracking-wide">
+              {item.sub}
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Regla dorada inferior -->
+    <div class="relative z-10 h-px bg-gradient-to-r from-transparent via-gold/45 to-transparent"></div>
+
+  </section>
+
+  <script is:inline>
+  (function () {
+    var section = document.getElementById('cifras');
+    if (!section) return;
+    var fired = false;
+    var CHARS = '0123456789';
+
+    function scramble(el, delay) {
+      var target = el.textContent.trim();
+      setTimeout(function () {
+        var frame = 0, total = 24;
+        var id = setInterval(function () {
+          el.textContent = target.split('').map(function (ch, ci) {
+            if (!/\d/.test(ch)) return ch;
+            if (frame >= total - ci * 2.5) return ch;
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          }).join('');
+          if (++frame > total) { clearInterval(id); el.textContent = target; }
+        }, 42);
+      }, delay);
+    }
+
+    new IntersectionObserver(function (entries) {
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+      section.querySelectorAll('.cifra-num').forEach(function (el, i) {
+        scramble(el, i * 140);
+      });
+    }, { threshold: 0.3 }).observe(section);
+  })();
+  </script>
+
+  <!-- ─── TIMELINE VERTICAL ─────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-cream-light" id="tl-section">
+
+    <div class="absolute inset-0 bg-grain opacity-15 pointer-events-none"></div>
+    <!-- Deco: oval pulsante izquierda centro -->
+    <div class="absolute -left-28 top-1/2 -translate-y-1/2 w-72 h-72 pointer-events-none select-none vec-pulse" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+    </div>
+    <!-- Deco: marker flotando derecha superior -->
+    <div class="absolute right-10 top-16 w-10 h-14 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
+      <img src="/svg/marker.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Deco: benefit02 derivando derecha inferior -->
+    <div class="absolute right-[5%] bottom-12 w-20 h-20 pointer-events-none select-none opacity-[0.06] vec-drift" aria-hidden="true">
+      <img src="/svg/benefit02.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
+    </div>
+
+    <!-- Regla dorada superior -->
+    <div class="h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent"></div>
+
+    <!-- Cabecera -->
+    <div class="max-w-3xl mx-auto px-6 pt-24 pb-20 text-center">
+      <p data-i18n="nos.tl.label" class="section-label mb-4">Nuestra trayectoria</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-coffee-dark leading-tight">
+        <span data-i18n="nos.tl.h2a">Hitos de</span><br/><em data-i18n="nos.tl.h2b" class="text-coffee not-italic">nuestra historia</em>
+      </h2>
+      <p data-i18n="nos.tl.range" class="text-coffee/30 mt-5 text-[10px] font-bold tracking-[0.45em] uppercase">
+        1954 — 2024
+      </p>
+    </div>
+
+    <!-- Cuerpo del timeline -->
+    <div class="relative max-w-3xl mx-auto px-6 pb-28" id="tl-body">
+
+      <!-- Línea vertical: se dibuja sola al hacer scroll -->
+      <div id="tl-vline"
+           class="absolute top-0 bottom-0 pointer-events-none"
+           style="left:33px; width:1px; background:linear-gradient(to bottom, rgba(196,154,60,0.5) 0%, rgba(196,154,60,0.18) 70%, transparent 100%); transform:scaleY(0); transform-origin:top; transition:transform 2s cubic-bezier(0.16,1,0.3,1)">
+      </div>
+
+      <!-- Entradas -->
+      {hitos.map((h, i) => (
+        <div class="tl-entry relative flex items-start gap-0 mb-12 last:mb-0"
+             data-tl
+             style={`opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); transition-delay:${i * 0.06}s`}>
+
+          <!-- Año ghost en fondo -->
+          <div class="absolute right-0 font-display font-bold select-none pointer-events-none leading-none"
+               aria-hidden="true"
+               style={`font-size:clamp(4.5rem,9vw,8.5rem); top:-6px; color:rgba(107,63,30,${i % 2 === 0 ? '0.07' : '0.04'})`}>
+            {h.year}
+          </div>
+
+          <!-- Columna izquierda: contador + dot -->
+          <div class="relative flex flex-col items-center shrink-0 pt-0.5" style="width:66px">
+            <span class="block text-center text-[8px] text-gold/60 font-bold tracking-[0.45em] uppercase mb-3">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <!-- Dot dorado -->
+            <div class="tl-dot w-3.5 h-3.5 rounded-full bg-gold border-2 border-cream-light"
+                 style="box-shadow:0 0 8px 2px rgba(196,154,60,0.35); transform:scale(0); transition:transform 0.55s cubic-bezier(0.34,1.56,0.64,1)">
+            </div>
+          </div>
+
+          <!-- Contenido -->
+          <div class="relative z-10 flex-1 pl-5 pb-3">
+
+            <!-- Año visible -->
+            <div class="font-display font-bold text-gold leading-none mb-3"
+                 style="font-size:clamp(1.8rem,2.8vw,2.4rem)">
+              {h.year}
+            </div>
+
+            <!-- Evento -->
+            <p data-i18n={`nos.hito.${i}`} class="text-coffee/65 text-sm leading-relaxed">
+              {h.evento}
+            </p>
+
+            <!-- Separador inferior (todos menos el último) -->
+            {i < hitos.length - 1 && (
+              <div class="flex items-center gap-2 mt-8">
+                <div class="w-6 h-px bg-gold/20"></div>
+                <div class="w-1 h-1 rounded-full bg-gold/30"></div>
+              </div>
+            )}
+
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Regla dorada inferior -->
+    <div class="h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent"></div>
+
+  </section>
+
+  <script is:inline>
+  (function () {
+    var section = document.getElementById('tl-section');
+    var vline   = document.getElementById('tl-vline');
+    var entries = document.querySelectorAll('[data-tl]');
+    if (!section) return;
+
+    /* Dibuja la línea cuando la sección entra en viewport */
+    new IntersectionObserver(function (obs) {
+      if (obs[0].isIntersecting && vline) {
+        vline.style.transform = 'scaleY(1)';
+      }
+    }, { threshold: 0.05 }).observe(section);
+
+    /* Revela cada entrada por separado al hacer scroll */
+    entries.forEach(function (el) {
+      new IntersectionObserver(function (obs) {
+        if (!obs[0].isIntersecting) return;
+        el.style.opacity  = '1';
+        el.style.transform = 'translateY(0)';
+        var dot = el.querySelector('.tl-dot');
+        if (dot) setTimeout(function () { dot.style.transform = 'scale(1)'; }, 160);
+      }, { threshold: 0.25 }).observe(el);
+    });
+
+  })();
+  </script>
+
+  <!-- ─── IMPACTO SOCIAL ────────────────────────────────────────── -->
+  <section class="py-24 bg-[#1C0E08] relative overflow-hidden">
+    <!-- Deco: coffee flotando izquierda inferior -->
+    <div class="absolute -left-12 bottom-0 w-48 h-64 pointer-events-none select-none opacity-[0.06] vec-float-rev" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: oval-alt girando superior derecha -->
+    <div class="absolute -right-20 -top-16 w-72 h-72 pointer-events-none select-none opacity-[0.05] vec-spin" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: benefit03 derivando centro inferior -->
+    <div class="absolute left-1/2 bottom-6 w-16 h-16 -translate-x-1/2 pointer-events-none select-none opacity-[0.08] vec-drift" aria-hidden="true">
+      <img src="/svg/benefit03.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <p data-i18n="nos.imp.label" class="section-label mb-4 reveal">Responsabilidad social</p>
+        <h2 data-i18n="nos.imp.h2" class="font-display text-4xl font-bold text-white reveal">Impacto social y ambiental</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {impacto.map((item, i) => (
+          <div class="bg-white/5 border border-white/10 p-8 text-center reveal hover:bg-white/10 transition-colors duration-300" style={`transition-delay:${i * 0.1}s`}>
+            <div class="text-gold flex justify-center mb-5" set:html={item.icon} />
+            <h3 data-i18n={`nos.imp.${i}.tit`} class="font-display text-xl font-bold text-gold mb-3">{item.titulo}</h3>
+            <p data-i18n={`nos.imp.${i}.dsc`} class="text-cream/60 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── REGIONES ──────────────────────────────────────────────── -->
+  <section class="py-24 bg-cream relative overflow-hidden">
+    <div class="absolute inset-0 bg-grain opacity-10 pointer-events-none"></div>
+    <div class="gold-rule absolute inset-x-0 top-0"></div>
+    <!-- Deco: oval-alt girando superior derecha -->
+    <div class="absolute -right-16 -top-16 w-72 h-72 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+    </div>
+    <!-- Deco: lemon flotando inferior izquierda -->
+    <div class="absolute left-[6%] bottom-10 w-14 h-14 pointer-events-none select-none opacity-[0.07] vec-float" aria-hidden="true">
+      <img src="/svg/lemon.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+      <div class="text-center mb-12">
+        <p data-i18n="nos.reg.label" class="section-label mb-4 reveal">Cobertura nacional</p>
+        <h2 data-i18n="nos.reg.h2" class="font-display text-4xl font-bold text-coffee-dark reveal">Regiones del café</h2>
+        <p data-i18n-html="nos.reg.sub" class="text-coffee/60 mt-4 reveal">
+          Oficina principal en <strong class="text-coffee-dark">San Pedro Sula</strong> · Puerto de embarque en <strong class="text-coffee-dark">Puerto Cortés</strong>
+        </p>
+      </div>
+
+      <!-- Grid: mapa + lista -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Mapa interactivo Honduras -->
+        <div class="reveal">
+          <div id="honduras-map" style="height:420px; width:100%;"></div>
+          <!-- Leyenda -->
+          <div class="flex gap-6 justify-center mt-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-sm inline-block" style="background:#6B3410"></span>
+              <span class="text-coffee/50 text-xs tracking-widest uppercase font-semibold">Región cafetalera</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-sm inline-block" style="background:#D4C5A9"></span>
+              <span class="text-coffee/50 text-xs tracking-widest uppercase font-semibold">Otros departamentos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de regiones -->
+        <div class="reveal">
+          <div class="grid grid-cols-2 gap-3">
+            {regiones.map(r => (
+              <div class="flex items-center gap-3 bg-white border border-coffee/10 px-4 py-3 hover:border-gold/50 hover:shadow-sm transition-all duration-200 group">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0 group-hover:scale-125 transition-transform"></span>
+                <span class="text-coffee/80 text-sm font-medium">{r}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="gold-rule absolute inset-x-0 bottom-0"></div>
+  </section>
+
+  <!-- ─── CTA JUNTA DIRECTIVA ─────────────────────────────────── -->
+  <section class="py-16 bg-cream border-t border-gold/20 relative overflow-hidden">
+    <!-- Deco: pen flotando derecha -->
+    <div class="absolute right-[10%] top-1/2 -translate-y-1/2 w-10 h-16 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
+      <img src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Deco: oval pulsante izquierda -->
+    <div class="absolute -left-20 top-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none select-none vec-pulse" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <p data-i18n="nos.cta.label" class="section-label mb-2">Empresa familiar</p>
+        <h2 data-i18n="nos.cta.h2" class="font-display text-3xl font-bold text-coffee-dark">Cuatro Generaciones</h2>
+        <p data-i18n="nos.cta.para" class="text-coffee/60 mt-2 max-w-md">Conoce a las familias que han construido COHONDUCAFE desde 1954.</p>
+      </div>
+      <a href="/junta-directiva" class="btn-primary shrink-0"><span data-i18n="nos.cta.btn">Ver Junta Directiva</span></a>
+    </div>
+  </section>
+
+
+
+</Layout>

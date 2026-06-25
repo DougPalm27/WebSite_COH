@@ -1,0 +1,927 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const marcas = [
+  {
+    slug: 'hosco',
+    nombre: 'HOSCO',
+    tipo: 'Comercialización & Exportación',
+    desc: 'Exportación y comercialización de café hondureño de especialidad hacia mercados internacionales.',
+    img: '/img/marcas/Hosco/hosco.jpg',
+  },
+  {
+    slug: 'minahonda',
+    nombre: 'Mina Honda',
+    tipo: 'Producción en Finca',
+    desc: 'Finca modelo de producción sostenible en las alturas de Honduras.',
+    img: '/img/marcas/MinaHonda/minahonda.jpg',
+  },
+  {
+    slug: 'fundacion',
+    nombre: 'Fundación Cohonducafe',
+    tipo: 'Responsabilidad Social',
+    desc: 'Desarrollo comunitario, educación y proyectos sociales para las familias cafetaleras.',
+    img: '/img/marcas/Fundacion/fundacion1.jpg',
+  },
+];
+
+const aliados = [
+  { nombre: 'USAID',                   img: '/img/logos_varios/USAID_Horiz_Spanish_RGB_2-Color.png' },
+  { nombre: "JDE Peet's",              img: "/img/logos_varios/JDE Peet's LOGO.png" },
+  { nombre: 'Cadelga',                 img: '/img/logos_varios/Cadelga Logo Corporativo-01.png' },
+  { nombre: 'Fundación Cohonducafe',   img: '/img/logos_varios/LogoFundacion.png' },
+];
+
+const stats = [
+  {
+    num: '1954',
+    label: 'Establecido',
+    desc: 'Cuatro generaciones',
+    iconPath: 'M12 2C6 2 3 7 3 11c0 6 9 11 9 11s9-5 9-11c0-4-3-9-9-9z M12 2c0 0 5 6 0 11',
+  },
+  {
+    num: '+70',
+    label: 'Años de experiencia',
+    desc: 'Décadas de liderazgo',
+    iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    num: '5',
+    label: 'Marcas & Empresas',
+    desc: 'Ecosistema integrado',
+    iconPath: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+  {
+    num: '100%',
+    label: 'Café hondureño',
+    desc: 'Origen certificado',
+    iconPath: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+];
+---
+
+<style>
+  @keyframes vec-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-20px) rotate(4deg); }
+  }
+  @keyframes vec-float-rev {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(20px) rotate(-4deg); }
+  }
+  @keyframes vec-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes vec-spin-rev {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @keyframes vec-drift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    33%       { transform: translate(14px, -10px) rotate(6deg) scale(1.04); }
+    66%       { transform: translate(-10px, 8px) rotate(-4deg) scale(0.97); }
+  }
+  @keyframes vec-pulse-scale {
+    0%, 100% { transform: scale(1);    opacity: 0.06; }
+    50%       { transform: scale(1.08); opacity: 0.10; }
+  }
+  .vec-float     { animation: vec-float     12s ease-in-out infinite; }
+  .vec-float-rev { animation: vec-float-rev 14s ease-in-out infinite; }
+  .vec-spin      { animation: vec-spin      60s linear infinite; }
+  .vec-spin-rev  { animation: vec-spin-rev  45s linear infinite; }
+  .vec-drift     { animation: vec-drift     18s ease-in-out infinite; }
+  .vec-pulse     { animation: vec-pulse-scale 8s ease-in-out infinite; }
+</style>
+
+<Layout title="Inicio" description="COHONDUCAFE — Empresa cafetalera hondureña desde 1954. Exportación, tostado, sostenibilidad y desarrollo comunitario.">
+
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
+  <section class="relative min-h-screen flex flex-col bg-[#1C0E08]">
+
+    <!-- Fondo: slideshow con las 6 imágenes hero -->
+    <div class="absolute inset-0 overflow-hidden" id="hero-slide-wrap">
+
+      <!-- Diapositivas -->
+      {[
+        '/img/hero/hero1.jpg',
+        '/img/hero/hero3.jpg',
+        '/img/hero/hero4.jpg',
+        '/img/hero/hero5.jpg',
+        '/img/hero/hero6.jpeg',
+        '/img/hero/hero7.png',
+      ].map((src, i) => (
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-in-out"
+          style={`opacity:${i === 0 ? '1' : '0'};`}
+        />
+      ))}
+
+      <!-- Overlays permanentes encima de las fotos -->
+      <div class="absolute inset-0 pointer-events-none"
+           style="background:linear-gradient(to right,rgba(28,14,8,0.93) 0%,rgba(28,14,8,0.72) 48%,rgba(28,14,8,0.28) 100%)">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#1C0E08]/70 via-transparent to-transparent pointer-events-none"></div>
+      <div class="absolute inset-0 bg-grain opacity-30 pointer-events-none"></div>
+
+      <!-- Indicadores de slide -->
+      <div class="absolute bottom-8 right-8 z-20 flex gap-2" id="hero-dots">
+        {[0,1,2,3,4,5].map(i => (
+          <button
+            class="hero-dot w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-gold transition-colors duration-200"
+            data-index={i}
+            aria-label={`Imagen ${i + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+
+
+    <!-- Watermark: año en fondo tenue -->
+    <span class="hero-v3__ghost absolute font-display font-bold select-none pointer-events-none leading-none"
+          aria-hidden="true"
+          style="font-size:24vw;right:1vw;top:50%;transform:translateY(-52%);color:rgba(196,154,60,0.055)">
+      1954
+    </span>
+
+    <!-- Contenido principal dinámico por slide -->
+    <div class="relative z-10 flex-1 flex items-center">
+      <div class="w-full px-6 lg:px-16 py-20 pt-32 max-w-4xl">
+
+        <!-- Bloque de texto — se actualiza con cada slide -->
+        <div id="hero-text" style="transition: opacity 0.35s ease, transform 0.35s ease;">
+
+          <!-- Chip -->
+          <div class="hero-v3__chip inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-10">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0" style="animation:pulse 2s ease-in-out infinite"></span>
+            <span id="hero-chip" data-i18n="idx.hero.slide0.chip" class="text-cream/65 text-[10px] font-semibold tracking-[0.38em] uppercase">Honduras · Café de Especialidad</span>
+          </div>
+
+          <!-- Título principal -->
+          <div class="hero-titles-float">
+            <div class="overflow-hidden mb-3">
+              <h1 id="hero-title" class="hero-v3__h1a font-display font-bold text-white leading-[0.9] tracking-tight"
+                  style="font-size:clamp(2rem,5.8vw,5.2rem)">
+                COHONDUCAFE
+              </h1>
+            </div>
+            <div class="overflow-hidden mb-9">
+              <p id="hero-sub" data-i18n="idx.hero.slide0.sub" class="hero-v3__h1b font-display font-bold text-gold italic leading-[1.1] tracking-tight"
+                  style="font-size:clamp(1.4rem,3vw,2.6rem)">
+                Cuatro Generaciones.
+              </p>
+            </div>
+          </div>
+
+          <!-- Divisor dorado -->
+          <div class="max-w-[200px] overflow-hidden mb-8">
+            <div class="hero-v3__rule h-px bg-gradient-to-r from-gold/70 to-transparent"></div>
+          </div>
+
+          <!-- Descripción -->
+          <p id="hero-desc" data-i18n="idx.hero.slide0.desc" class="hero-v3__para text-cream/55 text-base leading-relaxed max-w-[400px] mb-10">
+            Una tradición familiar desde 1954, arraigada en Honduras y construida sobre
+            confianza, colaboración y calidad exportada al mundo.
+          </p>
+
+          <!-- CTA -->
+          <div class="hero-v3__ctas flex flex-wrap gap-3 mb-12">
+            <a id="hero-cta" href="/nosotros"
+               class="inline-flex items-center gap-2 bg-gold text-coffee-dark font-bold text-sm tracking-widest uppercase px-7 py-3.5 rounded-full hover:bg-gold-light transition-colors duration-200 group">
+              <span id="hero-cta-label" data-i18n="idx.hero.slide0.cta">Nuestra Historia</span>
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Pills de datos fijos -->
+          <div class="hero-v3__stats flex flex-wrap gap-2.5">
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
+              <span class="font-display text-lg font-bold text-gold leading-none">1954</span>
+              <span class="w-px h-4 bg-white/15"></span>
+              <span data-i18n="idx.hero.s1" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Establecido</span>
+            </div>
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
+              <span class="font-display text-lg font-bold text-gold leading-none">+70</span>
+              <span class="w-px h-4 bg-white/15"></span>
+              <span data-i18n="idx.hero.s2" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Años de liderazgo</span>
+            </div>
+            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
+              <span class="font-display text-lg font-bold text-gold leading-none">100%</span>
+              <span class="w-px h-4 bg-white/15"></span>
+              <span data-i18n="idx.hero.s3" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Café hondureño</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Script: sincroniza texto con slides -->
+    <script is:inline>
+    (function () {
+      var slideHrefs = ['/nosotros', '/nosotros', '/marcas', '/junta-directiva', '/contacto', '/nosotros'];
+
+      function tt(key) {
+        var lang = window.__COHON_LANG || 'es';
+        var dict = (window.COHON_T || {})[lang] || {};
+        if (dict[key] !== undefined) return dict[key];
+        return ((window.COHON_T || {})['es'] || {})[key] || '';
+      }
+
+      function getSlide(i) {
+        var k = 'idx.hero.slide' + i;
+        return {
+          chip:  tt(k + '.chip'),
+          title: tt(k + '.title'),
+          sub:   tt(k + '.sub'),
+          desc:  tt(k + '.desc'),
+          cta:   { label: tt(k + '.cta'), href: slideHrefs[i] }
+        };
+      }
+
+      var textWrap  = document.getElementById('hero-text');
+      var chipEl    = document.getElementById('hero-chip');
+      var titleEl   = document.getElementById('hero-title');
+      var subEl     = document.getElementById('hero-sub');
+      var descEl    = document.getElementById('hero-desc');
+      var ctaEl     = document.getElementById('hero-cta');
+      var ctaLabel  = document.getElementById('hero-cta-label');
+
+      function updateText(i) {
+        var d = getSlide(i);
+        /* Fade out + slide down */
+        textWrap.style.opacity   = '0';
+        textWrap.style.transform = 'translateY(14px)';
+
+        setTimeout(function () {
+          chipEl.textContent    = d.chip;
+          titleEl.textContent   = d.title;
+          subEl.textContent     = d.sub;
+          descEl.textContent    = d.desc;
+          ctaEl.href            = d.cta.href;
+          ctaLabel.textContent  = d.cta.label;
+
+          /* Fade in + slide up */
+          textWrap.style.opacity   = '1';
+          textWrap.style.transform = 'translateY(0)';
+        }, 350);
+      }
+
+      /* Escucha al slideshow existente para sincronizarse */
+      var imgSlides = document.querySelectorAll('.hero-slide');
+      var dots      = document.querySelectorAll('.hero-dot');
+      var total     = imgSlides.length;
+      var current   = 0;
+
+      function goTo(n) {
+        imgSlides[current].style.opacity = '0';
+        dots[current].classList.remove('bg-gold');
+        dots[current].classList.add('bg-white/30');
+        current = (n + total) % total;
+        imgSlides[current].style.opacity = '1';
+        dots[current].classList.remove('bg-white/30');
+        dots[current].classList.add('bg-gold');
+        updateText(current);
+      }
+
+      /* Activar primer dot */
+      dots[0].classList.remove('bg-white/30');
+      dots[0].classList.add('bg-gold');
+
+      /* Auto-avance cada 6 s */
+      var timer = setInterval(function () { goTo(current + 1); }, 6000);
+
+      /* Click en dots */
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () {
+          clearInterval(timer);
+          goTo(i);
+          timer = setInterval(function () { goTo(current + 1); }, 6000);
+        });
+      });
+
+      /* Re-render del slide actual al cambiar de idioma (sin animación) */
+      window.addEventListener('cohonlangchange', function () {
+        var d = getSlide(current);
+        chipEl.textContent   = d.chip;
+        titleEl.textContent  = d.title;
+        subEl.textContent    = d.sub;
+        descEl.textContent   = d.desc;
+        ctaEl.href           = d.cta.href;
+        ctaLabel.textContent = d.cta.label;
+      });
+    })();
+    </script>
+
+    <!-- Ticker animado -->
+    <div class="relative z-10 border-t border-white/6 overflow-hidden py-3.5">
+      <div class="hero-v3__ticker flex whitespace-nowrap text-[9.5px] font-bold tracking-[0.42em] uppercase text-cream/25 select-none">
+        <span class="pr-12">DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp;</span>
+        <span class="pr-12">DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="relative z-10 flex justify-center pb-5">
+      <a href="#stats"
+         class="scroll-cue text-cream/20 hover:text-gold transition-colors duration-200"
+         aria-label="Desplázate hacia abajo">
+        <span class="text-[9px] font-bold tracking-[0.35em] uppercase">Scroll</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ─── CIFRAS ────────────────────────────────────────────────── -->
+  <section id="stats" class="relative bg-cream py-20 overflow-hidden">
+    <div class="gold-rule absolute inset-x-0 top-0"></div>
+    <!-- Decoración: oval girando fondo derecha -->
+    <div class="absolute -right-32 -top-32 w-96 h-96 pointer-events-none select-none opacity-[0.07] text-coffee vec-spin" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.4);" />
+    </div>
+    <!-- Decoración: oval-alt girando sentido contrario izquierda -->
+    <div class="absolute -left-20 -bottom-20 w-72 h-72 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+    </div>
+    <!-- Decoración: grano de café flotando -->
+    <div class="absolute right-[12%] bottom-4 w-16 h-16 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
+      <img src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4">
+        {stats.map((item, i) => (
+          <div
+            class={`stat-group text-center py-10 px-4 md:px-8 reveal ${i > 0 ? 'border-l border-gold/15' : ''}`}
+            style={`transition-delay:${i * 0.09}s`}
+          >
+            <div class="stat-icon">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={item.iconPath}/>
+              </svg>
+            </div>
+            <div class="stat-num mb-2.5">{item.num}</div>
+            <div data-i18n={`idx.stats.${i}.lbl`} class="text-[10px] text-earth font-bold tracking-[0.3em] uppercase mb-1.5">{item.label}</div>
+            <div data-i18n={`idx.stats.${i}.dsc`} class="text-xs text-coffee/55 font-medium">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="gold-rule absolute inset-x-0 bottom-0"></div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var section = document.getElementById('stats');
+    if (!section) return;
+    var fired = false;
+    var CHARS = '0123456789';
+
+    /* Prep: stroke-dashoffset en cada path de ícono → invisible */
+    section.querySelectorAll('.stat-icon svg path').forEach(function (path) {
+      try {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray  = len;
+        path.style.strokeDashoffset = len;
+        path.style.transition = 'stroke-dashoffset 0.85s cubic-bezier(0.16, 1, 0.3, 1)';
+      } catch (e) {}
+    });
+
+    /* Scramble: cada dígito cicla caracteres aleatorios antes de resolverse */
+    function scramble(el, delay) {
+      var target = el.textContent.trim();
+      setTimeout(function () {
+        var frame = 0, total = 22;
+        var id = setInterval(function () {
+          el.textContent = target.split('').map(function (ch, ci) {
+            if (!/\d/.test(ch)) return ch;            /* +, % se quedan fijos */
+            if (frame >= total - ci * 2.2) return ch; /* cada dígito resuelve en cascada */
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          }).join('');
+          if (++frame > total) { clearInterval(id); el.textContent = target; }
+        }, 42); /* ~42ms por frame = ~924ms total */
+      }, delay);
+    }
+
+    new IntersectionObserver(function (entries) {
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+
+      /* 1 — Sweep de luz dorada de izquierda a derecha */
+      section.classList.add('stats-sweep');
+
+      section.querySelectorAll('.stat-group').forEach(function (group, i) {
+        var d = i * 190;
+
+        /* 2 — Draw: el ícono se dibuja solo */
+        group.querySelectorAll('.stat-icon svg path').forEach(function (path) {
+          setTimeout(function () { path.style.strokeDashoffset = '0'; }, d + 60);
+        });
+
+        /* 3 — Scramble: el número decodifica */
+        var numEl = group.querySelector('.stat-num');
+        if (numEl) scramble(numEl, d + 60);
+      });
+
+    }, { threshold: 0.28 }).observe(section);
+  })();
+  </script>
+
+  <!-- ─── ABOUT INTRO ───────────────────────────────────────────── -->
+  <section id="about-intro" class="py-24 bg-cream-light overflow-hidden relative">
+    <!-- Decoración: planta de café grande derecha superior -->
+    <div class="absolute -right-16 -top-10 w-80 h-96 pointer-events-none select-none opacity-[0.05] vec-drift" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.6);" />
+    </div>
+    <!-- Decoración: oval pulsante centro izquierda -->
+    <div class="absolute -left-24 top-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none select-none vec-pulse" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Imágenes apiladas -->
+      <div class="relative h-[500px]">
+        <img
+          src="/img/raices_profundas/raiz1.jpg"
+          alt="Cultivo de café Cohonducafe"
+          class="about-clip-left absolute top-0 left-0 w-3/4 h-80 object-cover shadow-2xl"
+        />
+        <img
+          src="/img/raices_profundas/raiz2.png"
+          alt="Comunidad cafetalera"
+          class="about-clip-right absolute bottom-0 right-0 w-3/4 h-72 object-cover shadow-2xl border-8 border-cream-light"
+        />
+        <div class="about-badge absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gold flex flex-col items-center justify-center text-white shadow-xl">
+          <span class="about-badge-num font-display text-2xl font-bold leading-none">70+</span>
+          <span class="text-xs font-semibold tracking-wider uppercase mt-1">años</span>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div>
+        <p data-i18n="idx.about.label" class="section-label mb-4 reveal">Quiénes somos</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-coffee-dark leading-tight mb-6 reveal">
+          <span data-i18n="idx.about.h2a">Una empresa</span><br/><span data-i18n="idx.about.h2b" class="italic text-coffee">con raíces profundas</span>
+        </h2>
+        <p data-i18n="idx.about.p1" class="text-coffee/80 leading-relaxed mb-5 reveal">
+          COHONDUCAFE nació en 1954 como una cooperativa cafetalera en las montañas de Honduras. Hoy somos un grupo empresarial integrado que abarca desde la producción en finca hasta la exportación internacional.
+        </p>
+        <p data-i18n="idx.about.p2" class="text-coffee/80 leading-relaxed mb-8 reveal">
+          Nuestro modelo une calidad de grano, responsabilidad ambiental y desarrollo comunitario — porque creemos que el mejor café viene de comunidades prósperas y bosques sanos.
+        </p>
+        <a href="/nosotros" class="btn-primary reveal"><span data-i18n="idx.about.cta">Nuestra historia</span></a>
+
+        <!-- Certificaciones -->
+        <div class="mt-10 pt-8 border-t border-forest/10 reveal" style="transition-delay:0.35s">
+          <p class="text-[9px] text-gold font-bold tracking-[0.3em] uppercase mb-3">Certificaciones internacionales</p>
+          <div class="flex flex-wrap gap-2">
+            {['USDA Organic', 'EU Organic', '4C', 'Rainforest Alliance', 'Fairtrade'].map(cert => (
+              <span class="text-[9px] font-bold tracking-widest uppercase border border-coffee/20 text-coffee/60 px-3 py-1.5 hover:border-gold hover:text-gold transition-all duration-200 cursor-default">
+                {cert}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var section = document.getElementById('about-intro');
+    if (!section) return;
+    var fired = false;
+    var CHARS = '0123456789';
+
+    function scramble(el, delay) {
+      var target = el.textContent.trim();
+      setTimeout(function () {
+        var frame = 0, total = 22;
+        var id = setInterval(function () {
+          el.textContent = target.split('').map(function (ch, ci) {
+            if (!/\d/.test(ch)) return ch;
+            if (frame >= total - ci * 2.5) return ch;
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          }).join('');
+          if (++frame > total) { clearInterval(id); el.textContent = target; }
+        }, 42);
+      }, delay);
+    }
+
+    new IntersectionObserver(function (entries) {
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+
+      /* Clip-path reveal en imágenes */
+      var left  = section.querySelector('.about-clip-left');
+      var right = section.querySelector('.about-clip-right');
+      if (left)  left.classList.add('is-revealed');
+      if (right) right.classList.add('is-revealed');
+
+      /* Badge pop + scramble en "70+" */
+      var badge  = section.querySelector('.about-badge');
+      var numEl  = section.querySelector('.about-badge-num');
+      if (badge) badge.classList.add('is-revealed');
+      if (numEl) scramble(numEl, 380);
+
+    }, { threshold: 0.22 }).observe(section);
+  })();
+  </script>
+
+  <!-- ─── ALIANZAS ESTRATÉGICAS (reemplaza Socios y aliados) ────── -->
+  <section class="alianzas-section relative overflow-hidden">
+    <!-- Decoración: oval grande girando fondo -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none select-none opacity-[0.04] vec-spin" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Decoración: coffee flotando esquina inferior izquierda -->
+    <div class="absolute -left-10 bottom-0 w-48 h-60 pointer-events-none select-none opacity-[0.06] vec-float-rev" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 py-24">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-16 xl:gap-20">
+
+        <!-- IZQUIERDA: Plan Estratégico -->
+        <div class="lg:w-[400px] shrink-0">
+          <p data-i18n="idx.ali.label" class="section-label mb-4 reveal">Red de colaboración</p>
+          <h2 data-i18n="idx.ali.h2" class="font-display text-4xl font-bold text-coffee-dark mb-10 reveal">Alianzas Estratégicas</h2>
+
+          <div class="reveal">
+            <p data-i18n="idx.ali.plan" class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-gold mb-3">Plan Estratégico</p>
+            <div class="w-8 h-px bg-gold/40 mb-6"></div>
+            <p data-i18n="idx.ali.p1" class="text-coffee/70 text-sm leading-relaxed mb-4">
+              Nos esforzamos en apoyar a los caficultores y sus familias para la mejora de sus condiciones de vida y el aumento de sus ingresos.
+            </p>
+            <p data-i18n="idx.ali.p2" class="text-coffee/70 text-sm leading-relaxed mb-4">
+              Trabajamos directamente con más de 40.000 hogares productores de café en las zonas más remotas del país, beneficiando a más de 200.000 familias de bajos ingresos.
+            </p>
+            <p data-i18n="idx.ali.p3" class="text-coffee/70 text-sm leading-relaxed">
+              Nuestro objetivo es aumentar la productividad por hectárea mediante las mejores prácticas agrícolas y la gestión adecuada de nuestros recursos naturales.
+            </p>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex flex-wrap gap-3 mt-8 reveal">
+            <div class="border border-gold/30 px-4 py-3">
+              <div class="font-display text-2xl font-bold text-gold leading-none">+40,000</div>
+              <div class="text-[9px] text-coffee/50 font-bold tracking-[0.25em] uppercase mt-1">Hogares productores</div>
+            </div>
+            <div class="border border-gold/30 px-4 py-3">
+              <div class="font-display text-2xl font-bold text-gold leading-none">+200,000</div>
+              <div class="text-[9px] text-coffee/50 font-bold tracking-[0.25em] uppercase mt-1">Familias beneficiadas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DERECHA: Orbit -->
+        <div class="flex-1 flex justify-center items-center">
+          <div class="orbit-wrap">
+
+        <!-- SVG Tostadora (centro) -->
+        <div class="orbit-center">
+          <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="orbit-roaster orbit-roaster--static">
+            <defs>
+              <!-- Gradiente cuerpo: caramelo cálido → espresso oscuro -->
+              <linearGradient id="bGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"   stop-color="#b56228"/>
+                <stop offset="40%"  stop-color="#6b3010"/>
+                <stop offset="100%" stop-color="#1f0a05"/>
+              </linearGradient>
+              <!-- Sombra interna borde inferior-derecho -->
+              <radialGradient id="bShadow" cx="72%" cy="72%" r="55%" gradientUnits="objectBoundingBox">
+                <stop offset="0%"   stop-color="#1f0a05" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#1f0a05" stop-opacity="0"/>
+              </radialGradient>
+              <g id="bean">
+                <!-- Cuerpo orgánico (óvalo ligeramente asimétrico) -->
+                <path d="M-8.2,0.4 C-8.5,-4.2 -2.5,-5.5 1,-5.0 C4.5,-4.5 9.2,-2.2 9,0.8 C8.8,3.8 3.5,5.5 -0.5,5.2 C-4.5,4.8 -8,4.8 -8.2,0.4 Z" fill="url(#bGrad)"/>
+                <!-- Sombra interna esquina inferior-derecha -->
+                <path d="M-8.2,0.4 C-8.5,-4.2 -2.5,-5.5 1,-5.0 C4.5,-4.5 9.2,-2.2 9,0.8 C8.8,3.8 3.5,5.5 -0.5,5.2 C-4.5,4.8 -8,4.8 -8.2,0.4 Z" fill="url(#bShadow)"/>
+                <!-- Contorno oscuro para silueta clara a tamaño pequeño -->
+                <path d="M-8.2,0.4 C-8.5,-4.2 -2.5,-5.5 1,-5.0 C4.5,-4.5 9.2,-2.2 9,0.8 C8.8,3.8 3.5,5.5 -0.5,5.2 C-4.5,4.8 -8,4.8 -8.2,0.4 Z" fill="none" stroke="#1a0705" stroke-width="0.9" opacity="0.7"/>
+                <!-- Ranura: hendidura oscura que no atraviesa completa -->
+                <path d="M-5.5,0.5 C-3,-0.5 0.5,-1.3 5.5,0.3" fill="none" stroke="#1a0705" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+                <!-- Resalte cálido en borde superior de la ranura -->
+                <path d="M-5.2,-0.2 C-2.8,-1.2 0.5,-1.9 5.2,-0.4" fill="none" stroke="#c87a40" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+              </g>
+            </defs>
+
+            <!-- Sombra exterior -->
+            <circle cx="120" cy="120" r="116" fill="#D4C5A9" opacity="0.5"/>
+            <!-- Bandeja exterior -->
+            <circle cx="120" cy="120" r="113" stroke="#C49A3C" stroke-width="3.5" fill="#E8DCC8"/>
+            <!-- Aro interior -->
+            <circle cx="120" cy="120" r="104" stroke="#C49A3C50" stroke-width="1.5" fill="#DDD0B3"/>
+
+            <!-- GRUPO 1: r=88 — 14 granos — gira lento 21s -->
+            <g class="beans-g1">
+              <animateTransform attributeName="transform" type="rotate" from="0 120 120" to="360 120 120" dur="21s" repeatCount="indefinite"/>
+              <use href="#bean" transform="translate(208,120) rotate(0)"/>
+              <use href="#bean" transform="translate(202,153) rotate(22)"/>
+              <use href="#bean" transform="translate(177,187) rotate(50)"/>
+              <use href="#bean" transform="translate(138,206) rotate(78)"/>
+              <use href="#bean" transform="translate(97,205)  rotate(105)"/>
+              <use href="#bean" transform="translate(66,189)  rotate(128)"/>
+              <use href="#bean" transform="translate(40,157)  rotate(155)"/>
+              <use href="#bean" transform="translate(32,112)  rotate(185)"/>
+              <use href="#bean" transform="translate(44,76)   rotate(210)"/>
+              <use href="#bean" transform="translate(69,48)   rotate(235)"/>
+              <use href="#bean" transform="translate(105,33)  rotate(260)"/>
+              <use href="#bean" transform="translate(150,37)  rotate(290)"/>
+              <use href="#bean" transform="translate(185,61)  rotate(318)"/>
+              <use href="#bean" transform="translate(204,93)  rotate(342)"/>
+            </g>
+
+            <!-- GRUPO 2: r=62 — 11 granos — gira medio 13.5s -->
+            <g class="beans-g2">
+              <animateTransform attributeName="transform" type="rotate" from="0 120 120" to="360 120 120" dur="13.5s" repeatCount="indefinite"/>
+              <use href="#bean" transform="translate(182,120) rotate(0)   scale(0.88)"/>
+              <use href="#bean" transform="translate(174,151) rotate(30)  scale(0.88)"/>
+              <use href="#bean" transform="translate(146,176) rotate(65)  scale(0.88)"/>
+              <use href="#bean" transform="translate(115,182) rotate(95)  scale(0.88)"/>
+              <use href="#bean" transform="translate(82,169)  rotate(128) scale(0.88)"/>
+              <use href="#bean" transform="translate(60,136)  rotate(165) scale(0.88)"/>
+              <use href="#bean" transform="translate(60,104)  rotate(195) scale(0.88)"/>
+              <use href="#bean" transform="translate(79,74)   rotate(228) scale(0.88)"/>
+              <use href="#bean" transform="translate(111,58)  rotate(262) scale(0.88)"/>
+              <use href="#bean" transform="translate(149,65)  rotate(298) scale(0.88)"/>
+              <use href="#bean" transform="translate(174,89)  rotate(330) scale(0.88)"/>
+            </g>
+
+            <!-- GRUPO 3: r=38 — 9 granos — gira rápido 7.5s -->
+            <g class="beans-g3">
+              <animateTransform attributeName="transform" type="rotate" from="0 120 120" to="360 120 120" dur="7.5s" repeatCount="indefinite"/>
+              <use href="#bean" transform="translate(158,120) rotate(0)   scale(0.77)"/>
+              <use href="#bean" transform="translate(150,143) rotate(38)  scale(0.77)"/>
+              <use href="#bean" transform="translate(127,157) rotate(80)  scale(0.77)"/>
+              <use href="#bean" transform="translate(102,154) rotate(118) scale(0.77)"/>
+              <use href="#bean" transform="translate(84,133)  rotate(160) scale(0.77)"/>
+              <use href="#bean" transform="translate(84,107)  rotate(200) scale(0.77)"/>
+              <use href="#bean" transform="translate(104,86)  rotate(245) scale(0.77)"/>
+              <use href="#bean" transform="translate(130,83)  rotate(285) scale(0.77)"/>
+              <use href="#bean" transform="translate(151,98)  rotate(325) scale(0.77)"/>
+            </g>
+
+            <!-- Cruz del agitador — gira más rápido (8s) que los granos -->
+            <g>
+              <animateTransform attributeName="transform" type="rotate"
+                from="0 120 120" to="360 120 120" dur="12s" repeatCount="indefinite"/>
+              <line x1="120" y1="10"  x2="120" y2="230" stroke="#8C6239" stroke-width="6" stroke-linecap="round"/>
+              <line x1="10"  y1="120" x2="230" y2="120" stroke="#8C6239" stroke-width="6" stroke-linecap="round"/>
+              <line x1="120" y1="10"  x2="120" y2="230" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+              <line x1="10"  y1="120" x2="230" y2="120" stroke="#C49A3C" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            </g>
+
+            <!-- Hub central (estático) -->
+            <circle cx="120" cy="120" r="22" fill="#E8DCC8" stroke="#8C6239" stroke-width="3"/>
+            <circle cx="120" cy="120" r="14" fill="#C49A3C"/>
+            <circle cx="120" cy="120" r="7"  fill="#E8DCC8"/>
+            <circle cx="120" cy="120" r="3"  fill="#8C6239"/>
+          </svg>
+        </div>
+
+        <!-- 6 aliados — posición inicial, JS los anima -->
+        {[
+          { label: 'Municipalidades, Comunidades y Cajas Rurales', angle: -90  },
+          { label: 'Tostadores Internacionales',                   angle: -30  },
+          { label: 'Cooperativas y Asociaciones de Productores',   angle:  30  },
+          { label: 'Importadores Internacionales',                 angle:  90  },
+          { label: 'Caficultores Directos',                        angle:  150 },
+          { label: 'ONGs, Iniciativas Sociales y Humanitarias',    angle: -150 },
+        ].map((item) => (
+          <div class="orbit-item" data-start-angle={item.angle}>
+            <p class="orbit-item__label">{item.label}</p>
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+    <!-- Animación orbital con JS — texto siempre recto -->
+    <script is:inline>
+    (function () {
+      var wrap = document.querySelector('.orbit-wrap');
+      if (!wrap) return;
+      var items = Array.from(wrap.querySelectorAll('.orbit-item'));
+      var radius  = 290;   /* px desde el centro hasta los items */
+      var period  = 28000; /* ms para una vuelta completa */
+      var startAngles = items.map(function(el) {
+        return parseFloat(el.dataset.startAngle) || 0;
+      });
+      var startTime = null;
+
+      function tick(ts) {
+        if (!startTime) startTime = ts;
+        var delta = ((ts - startTime) % period) / period * 360;
+
+        items.forEach(function(item, i) {
+          var deg = startAngles[i] + delta;
+          var rad = deg * Math.PI / 180;
+          var x   = Math.round(Math.cos(rad) * radius);
+          var y   = Math.round(Math.sin(rad) * radius);
+          /* translate centra el item en su punto orbital */
+          item.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+        });
+
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    })();
+    </script>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── MAPA MUNDIAL ───────────────────────────────────────────── -->
+  <section class="py-24 bg-forest-dark overflow-hidden relative">
+    <!-- Decoración: oval superior derecha -->
+    <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.07] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Decoración: marker flotando izquierda -->
+    <div class="absolute left-8 top-16 w-10 h-14 pointer-events-none select-none opacity-[0.12] vec-float" aria-hidden="true">
+      <img src="/svg/marker.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Decoración: oval-alt inferior izquierda -->
+    <div class="absolute -left-16 bottom-8 w-56 h-56 pointer-events-none select-none opacity-[0.06] vec-spin" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+      <div class="text-center mb-10">
+        <p data-i18n="idx.map.label" class="section-label mb-4 reveal">Presencia global</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white reveal">
+          <span data-i18n="idx.map.h2a">Del campo hondureño</span><br/><span data-i18n="idx.map.h2b" class="italic text-gold">al mundo</span>
+        </h2>
+        <p data-i18n="idx.map.hint" class="text-cream/50 mt-4 text-sm reveal">Pasa el cursor sobre un país para más información</p>
+      </div>
+
+      <div id="world-map" class="w-full rounded-sm reveal" style="height:480px"></div>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-8 reveal">
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-sm inline-block" style="background:#4A7C59"></span>
+          <span class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-4 h-4 rounded-sm inline-block bg-gold"></span>
+          <span class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── VIDEO GENERAL ───────────────────────────────────────────── -->
+  <section class="relative bg-[#0F1A12] overflow-hidden">
+    <video
+      autoplay muted loop playsinline preload="metadata"
+      class="w-full max-h-[70vh] object-cover"
+      style="display:block;">
+      <source src="/img/video_inicio_final/General.mp4" type="video/mp4" />
+    </video>
+    <!-- Overlay suave arriba y abajo para fundir con las secciones vecinas -->
+    <div class="absolute inset-x-0 top-0 h-24 pointer-events-none"
+         style="background: linear-gradient(to bottom, #0F3D28, transparent);"></div>
+    <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+         style="background: linear-gradient(to top, #1C0810, transparent);"></div>
+  </section>
+
+  <!-- ─── MARCAS ─────────────────────────────────────────────────── -->
+  <section id="marcas" class="py-24 relative overflow-hidden bg-vino-dark">
+
+    <!-- Gradiente diagonal vino → vino oscuro -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background:linear-gradient(135deg, #1C0810 0%, #4F1B23 45%, #2A0D16 100%)">
+    </div>
+    <!-- Glow dorado suave desde arriba — el oro y el vino se complementan -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="background:radial-gradient(ellipse 75% 38% at 50% 0%, rgba(196,154,60,0.12) 0%, transparent 68%)">
+    </div>
+    <!-- Grain -->
+    <div class="absolute inset-0 bg-grain opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+      <!-- Header con watermark "03" de fondo -->
+      <div class="relative text-center mb-16 overflow-hidden py-6">
+        <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-bold select-none pointer-events-none leading-none"
+              aria-hidden="true"
+              style="font-size:clamp(10rem,26vw,22rem);color:rgba(196,154,60,0.055)">03</span>
+        <p data-i18n="idx.brands.label" class="section-label mb-4 reveal relative z-10">Nuestro ecosistema</p>
+        <h2 data-i18n="idx.brands.h2" class="font-display text-4xl md:text-5xl font-bold text-white reveal relative z-10">
+          Marcas & Empresas
+        </h2>
+        <p data-i18n="idx.brands.sub" class="text-cream/35 mt-4 text-sm reveal relative z-10">Cada unidad es parte del mismo origen</p>
+      </div>
+
+      <!-- Bento grid asimétrico: HOSCO ocupa toda la columna izquierda -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:[grid-template-rows:312px_312px]">
+        {marcas.map((m, i) => (
+          <a href={`/marcas#${m.slug}`} class={`brand-bento-card brand-min-card ${
+            i === 0
+              ? 'h-[480px] lg:h-auto lg:row-span-2'
+              : 'h-[300px] lg:h-auto'
+          }`}>
+            <img
+              src={m.img}
+              alt={m.nombre}
+              onerror="this.style.background='#4F1B23';this.style.display='block'"
+            />
+            <div class="brand-min-card__info">
+              <span class="brand-min-card__tipo">{m.tipo}</span>
+              <h3 class="brand-min-card__name">{m.nombre}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="/marcas" class="btn-outline">Ver todas las marcas</a>
+      </div>
+
+    </div>
+  </section>
+
+  <script is:inline>
+  (function () {
+    var section = document.getElementById('marcas');
+    if (!section) return;
+    var fired = false;
+
+    new IntersectionObserver(function (entries) {
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+      section.querySelectorAll('.brand-bento-card').forEach(function (card, i) {
+        setTimeout(function () { card.classList.add('is-revealed'); }, i * 210);
+      });
+    }, { threshold: 0.1 }).observe(section);
+  })();
+  </script>
+
+  <!-- ─── CTA FINAL ─────────────────────────────────────────────── -->
+  <section class="py-28 bg-cream relative overflow-hidden">
+
+    <!-- Separador desde la sección vino -->
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent"></div>
+    <!-- Decoración: coffee grande fondo izquierda -->
+    <div class="absolute -left-20 top-1/2 -translate-y-1/2 w-72 h-88 pointer-events-none select-none opacity-[0.05] vec-float" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Decoración: coffee espejo fondo derecha -->
+    <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-72 h-88 pointer-events-none select-none opacity-[0.05] vec-float-rev" aria-hidden="true" style="transform: scaleX(-1);">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Decoración: oval central pulsante -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none select-none vec-pulse" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+    </div>
+
+    <div class="max-w-2xl mx-auto px-6 text-center relative z-10">
+
+      <!-- Icono de café -->
+      <div class="inline-flex items-center gap-3 mb-8 reveal">
+        <div class="h-px w-10 bg-gold/40"></div>
+        <svg class="w-4 h-4 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6 2 3 7 3 11c0 6 9 11 9 11s9-5 9-11c0-4-3-9-9-9z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2c0 0 5 6 0 11"/>
+        </svg>
+        <div class="h-px w-10 bg-gold/40"></div>
+      </div>
+
+      <p data-i18n="idx.cta.label" class="section-label mb-5 reveal">¿Hablamos?</p>
+
+      <h2 data-i18n="idx.cta.h2" class="font-display text-4xl md:text-5xl font-bold text-coffee-dark leading-tight mb-6 reveal">
+        Conecta con nosotros
+      </h2>
+
+      <p data-i18n="idx.cta.para" class="text-coffee/65 text-lg leading-relaxed mb-10 max-w-md mx-auto reveal">
+        Si eres importador, distribuidor o tostador y quieres conocer nuestro café, nos encantaría escucharte.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 reveal">
+        <a href="/contacto" class="btn-primary"><span data-i18n="idx.cta.btn1">Escríbenos</span></a>
+        <a href="/marcas"
+           class="border border-coffee/25 text-coffee font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-coffee hover:text-cream transition-colors duration-200">
+          <span data-i18n="idx.cta.btn2">Ver nuestras marcas</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Separador inferior -->
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent"></div>
+
+  </section>
+
+</Layout>

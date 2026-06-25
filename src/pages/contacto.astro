@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<style>
+  @keyframes vec-float     { 0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-20px) rotate(4deg)} }
+  @keyframes vec-float-rev { 0%,100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(20px) rotate(-4deg)} }
+  @keyframes vec-spin      { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes vec-spin-rev  { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+  @keyframes vec-drift     { 0%,100%{transform:translate(0,0) rotate(0deg) scale(1)} 33%{transform:translate(14px,-10px) rotate(6deg) scale(1.04)} 66%{transform:translate(-10px,8px) rotate(-4deg) scale(0.97)} }
+  @keyframes vec-pulse-scale { 0%,100%{transform:scale(1);opacity:0.06} 50%{transform:scale(1.08);opacity:0.10} }
+  .vec-float     { animation: vec-float      13s ease-in-out infinite; }
+  .vec-float-rev { animation: vec-float-rev  15s ease-in-out infinite; }
+  .vec-spin      { animation: vec-spin       65s linear infinite; }
+  .vec-spin-rev  { animation: vec-spin-rev   48s linear infinite; }
+  .vec-drift     { animation: vec-drift      22s ease-in-out infinite; }
+  .vec-pulse     { animation: vec-pulse-scale 10s ease-in-out infinite; }
+</style>
+
+<Layout title="Contacto" description="Ponte en contacto con COHONDUCAFE. Exportación, alianzas y más.">
+
+  <!-- ─── PAGE HEADER ───────────────────────────────────────────── -->
+  <section class="relative h-[60vh] min-h-80 flex items-end overflow-hidden">
+    <img src="/img/Bosques/Bosques3.jpg" alt="Contacto" class="absolute inset-0 w-full h-full object-cover scale-105"
+         style="animation: heroV3BgZoom 1.2s ease-out forwards;" />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(28,14,8,0.97) 0%, rgba(28,14,8,0.5) 55%, rgba(28,14,8,0.1) 100%)"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 w-full">
+      <p data-i18n="con.header.label" class="section-label mb-3">¿Hablamos?</p>
+      <h1 class="font-display font-bold text-white leading-tight" style="font-size:clamp(2.8rem,6vw,5rem);">
+        <span data-i18n="con.header.h1a">Conecta con</span><br/><span data-i18n="con.header.h1b" class="text-gold italic">COHONDUCAFE.</span>
+      </h1>
+      <p data-i18n="con.header.sub" class="text-cream/45 mt-4 max-w-md text-base">
+        Importadores, tostadores y distribuidores — estamos listos para escucharte.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── MOTIVOS DE CONTACTO ───────────────────────────────────── -->
+  <section class="bg-[#1C0E08] py-10 border-b border-white/8 relative overflow-hidden">
+    <!-- Deco: oval-alt girando derecha -->
+    <div class="absolute -right-16 top-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: marker flotando izquierda -->
+    <div class="absolute left-[3%] top-1/2 -translate-y-1/2 w-8 h-12 pointer-events-none select-none opacity-[0.10] vec-float" aria-hidden="true">
+      <img src="/svg/marker.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/8">
+        {[
+          { icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4', tituloKey: 'con.mot.0.tit', subKey: 'con.mot.0.sub', titulo: 'Importación & Exportación', sub: 'Café hondureño al mundo' },
+          { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', tituloKey: 'con.mot.1.tit', subKey: 'con.mot.1.sub', titulo: 'Alianzas estratégicas', sub: 'Trabajemos juntos' },
+          { icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z', tituloKey: 'con.mot.2.tit', subKey: 'con.mot.2.sub', titulo: 'Fundación Cohonducafe', sub: 'Responsabilidad social' },
+        ].map(item => (
+          <div class="flex items-center gap-4 px-8 py-5 first:pl-0 last:pr-0">
+            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+              <svg class="w-4.5 h-4.5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>
+              </svg>
+            </div>
+            <div>
+              <p data-i18n={item.tituloKey} class="text-white/80 text-sm font-semibold leading-tight">{item.titulo}</p>
+              <p data-i18n={item.subKey} class="text-white/35 text-xs mt-0.5">{item.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTENIDO PRINCIPAL ───────────────────────────────────── -->
+  <section class="py-24 bg-cream-light relative overflow-hidden">
+    <!-- Deco: coffee flotando derecha -->
+    <div class="absolute -right-14 top-1/2 -translate-y-1/2 w-56 h-72 pointer-events-none select-none opacity-[0.05] vec-drift" aria-hidden="true">
+      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <!-- Deco: oval pulsante izquierda -->
+    <div class="absolute -left-24 top-1/3 w-64 h-64 pointer-events-none select-none vec-pulse" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+    </div>
+    <!-- Deco: pen flotando superior derecha -->
+    <div class="absolute right-[12%] top-8 w-9 h-14 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
+      <img src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-5 gap-16">
+
+      <!-- Columna izquierda (2/5) -->
+      <div class="lg:col-span-2">
+        <p data-i18n="con.form.label" class="section-label mb-4 reveal">Escríbenos</p>
+        <h2 class="font-display text-3xl font-bold text-coffee-dark mb-5 reveal">
+          <span data-i18n="con.form.h2a">Estamos aquí</span><br/>
+          <span data-i18n="con.form.h2b" class="italic text-gold">para escucharte.</span>
+        </h2>
+        <p data-i18n="con.form.para" class="text-coffee/60 leading-relaxed mb-10 reveal text-sm">
+          Si eres importador, tostador, distribuidor o simplemente quieres saber más sobre el café hondureño de COHONDUCAFE, no dudes en escribirnos.
+        </p>
+
+        <!-- Info de contacto -->
+        <div class="space-y-5 reveal mb-12">
+          {[
+            {
+              icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z',
+              titulo: 'Ubicación',
+              valor: 'San Pedro Sula, Honduras',
+              link: null,
+            },
+            {
+              icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+              titulo: 'Correo electrónico',
+              valor: 'info@grupocoh.com',
+              link: 'mailto:info@grupocoh.com',
+            },
+          ].map(item => (
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 border border-gold/30 flex items-center justify-center shrink-0">
+                <svg class="w-4.5 h-4.5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-gold mb-1">{item.titulo}</p>
+                {item.link
+                  ? <a href={item.link} class="text-coffee-dark font-medium text-sm hover:text-gold transition-colors duration-200">{item.valor}</a>
+                  : <p class="text-coffee-dark font-medium text-sm">{item.valor}</p>
+                }
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Separador -->
+        <div class="h-px bg-gradient-to-r from-gold/30 to-transparent mb-8 reveal"></div>
+
+        <!-- Tiempo de respuesta -->
+        <div class="reveal">
+          <p class="text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/40 mb-2">Tiempo de respuesta</p>
+          <p class="text-coffee/60 text-sm leading-relaxed">
+            Respondemos todos los mensajes en un plazo de <span class="text-coffee-dark font-semibold">24 a 48 horas hábiles.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Formulario (3/5) -->
+      <div class="lg:col-span-3 reveal">
+        <form id="contactForm" class="bg-white border border-cream-dark p-8 md:p-10 space-y-6">
+
+          <!-- Banda dorada superior -->
+          <div class="h-px bg-gradient-to-r from-gold via-gold/40 to-transparent -mx-10 -mt-10 mb-10"></div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label data-i18n="con.form.nombre" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Nombre *</label>
+              <input type="text" name="nombre" required
+                data-i18n-ph="con.form.nombre.ph"
+                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+                placeholder="Tu nombre completo" />
+            </div>
+            <div>
+              <label data-i18n="con.form.empresa" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Empresa</label>
+              <input type="text" name="empresa"
+                data-i18n-ph="con.form.empresa.ph"
+                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+                placeholder="Tu empresa (opcional)" />
+            </div>
+          </div>
+
+          <div>
+            <label data-i18n="con.form.email" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Correo electrónico *</label>
+            <input type="email" name="email" required
+              data-i18n-ph="con.form.email.ph"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+              placeholder="tu@correo.com" />
+          </div>
+
+          <div>
+            <label data-i18n="con.form.asunto" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Asunto</label>
+            <select name="asunto"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200">
+              <option data-i18n-opt="con.form.asunto.ph" value="">Selecciona un tema</option>
+              <option data-i18n-opt="con.form.opt1">Importación / Exportación</option>
+              <option data-i18n-opt="con.form.opt2">Alianza comercial</option>
+              <option data-i18n-opt="con.form.opt3">Fundación Cohonducafe</option>
+              <option data-i18n-opt="con.form.opt4">Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label data-i18n="con.form.msg" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Mensaje *</label>
+            <textarea name="mensaje" rows="5" required
+              data-i18n-ph="con.form.msg.ph"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200 resize-none"
+              placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+          </div>
+
+          <div class="flex items-center justify-between gap-4 pt-2">
+            <p data-i18n="con.form.req" class="text-coffee/35 text-[10px]">* Campos obligatorios</p>
+            <button type="submit" class="btn-primary px-10"><span data-i18n="con.form.send">Enviar mensaje</span></button>
+          </div>
+
+          <!-- Mensaje de confirmación -->
+          <div id="formMsg" class="hidden border border-gold/30 bg-gold/5 px-5 py-4 text-center">
+            <p data-i18n="con.form.ok.tit" class="text-coffee-dark text-sm font-semibold">✓ Mensaje enviado correctamente</p>
+            <p data-i18n="con.form.ok.sub" class="text-coffee/50 text-xs mt-1">Nos pondremos en contacto en las próximas 24–48 horas.</p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CIERRE ────────────────────────────────────────────────── -->
+  <section class="py-20 bg-[#1C0E08] text-center relative overflow-hidden">
+    <span class="absolute font-display font-bold select-none pointer-events-none text-white/[0.025]"
+          style="font-size:18vw; left:50%; top:50%; transform:translate(-50%,-50%);">1954</span>
+    <!-- Deco: oval grande girando centro -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] pointer-events-none select-none opacity-[0.04] vec-spin" aria-hidden="true">
+      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: benefit01 flotando izquierda -->
+    <div class="absolute left-[8%] bottom-6 w-12 h-12 pointer-events-none select-none opacity-[0.09] vec-float-rev" aria-hidden="true">
+      <img src="/svg/benefit01.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <!-- Deco: oval-alt derecha superior -->
+    <div class="absolute -right-10 -top-10 w-56 h-56 pointer-events-none select-none opacity-[0.05] vec-spin-rev" aria-hidden="true">
+      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+    <div class="relative z-10 max-w-lg mx-auto px-6">
+      <p data-i18n="con.close.region" class="text-cream/30 text-[10px] tracking-[0.4em] uppercase mb-4">Honduras · Centroamérica</p>
+      <p class="font-display text-2xl font-bold text-white mb-2">COHONDUCAFE</p>
+      <p data-i18n="con.close.tagline" class="text-cream/40 text-sm">Más de 70 años exportando café hondureño al mundo.</p>
+      <div class="flex items-center gap-4 justify-center mt-6">
+        <div class="flex-1 h-px bg-white/8 max-w-20"></div>
+        <span class="text-gold text-xs">✦</span>
+        <div class="flex-1 h-px bg-white/8 max-w-20"></div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const msg  = document.getElementById('formMsg')!;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    msg.classList.remove('hidden');
+    form.reset();
+    msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>
