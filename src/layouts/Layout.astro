@@ -81,7 +81,7 @@ const { title, description = 'COHONDUCAFE — Empresa cafetalera hondureña desd
               })
             );
             chart.chartContainer.get('background').setAll({ fill: am5.color('#0F3D28'), fillOpacity: 1 });
-            var exportIds = ['US','CA','MX','DE','BE','IT','FR','SE','NL','GB','CH','ES','FI','NO','DK','JP','KR','CN','TW','AU','NZ','CO'];
+            var exportIds = ['US','CA','MX','DE','BE','IT','FR','SE','NL','GB','CH','ES','FI','NO','DK','JP','KR','CN','TW','AU','NZ','CO','EC','ZA'];
             var polygonSeries = chart.series.push(
               am5map.MapPolygonSeries.new(root, { geoJSON: am5geodata_worldLow, exclude: ['AQ'] })
             );
