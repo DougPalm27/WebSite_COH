@@ -8,7 +8,7 @@ export default {
         forest:  { DEFAULT: '#1A6B40', light: '#25904F', dark: '#0F3D28' },
         coffee:  { DEFAULT: '#6B3F1E', light: '#9B6240', dark: '#3E2410' },
         cream:   { DEFAULT: '#F5EFE0', light: '#FBF8F2', dark: '#E8DCC8' },
-        gold:    { DEFAULT: '#C49A3C', light: '#E0BA64', dark: '#8F6E28' },
+        gold:    { DEFAULT: '#C49A3C', light: '#E0BA64', dark: '#8F6E28', ink: '#7A5C1E' }, /* ink: texto dorado sobre fondos claros (≥4.5:1) */
         earth:   { DEFAULT: '#8C6239', light: '#B38E6A', dark: '#5C3D1E' },
         vino:    { DEFAULT: '#7B2D38', light: '#A34455', dark: '#4F1B23' },
       },

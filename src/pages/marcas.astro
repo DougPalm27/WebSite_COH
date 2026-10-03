@@ -30,7 +30,7 @@ const marcas = [
     ],
     img: '/img/marcas/Hosco/hosco.webp',
     imgs: ['/img/marcas/Hosco/hosco1.webp', '/img/marcas/Hosco/hosco2.webp'],
-    accentColor: '#C49A3C',
+    accentColor: '#7A5C1E',
     bgDark: '#1C0E08',
     cta: 'Exportar con HOSCO',
   },
@@ -48,7 +48,7 @@ const marcas = [
     ],
     img: '/img/marcas/MinaHonda/minahonda.webp',
     imgs: ['/img/marcas/MinaHonda/granos.webp', '/img/marcas/MinaHonda/Vivero mina honda, yorito.webp'],
-    accentColor: '#8B6914',
+    accentColor: '#1A6B40',
     bgDark: '#1C1005',
     cta: 'Conocer la finca',
   },
@@ -66,7 +66,7 @@ const marcas = [
     ],
     img: '/img/marcas/Fundacion/fundacion1.webp',
     imgs: ['/img/marcas/Fundacion/fundacion2.webp', '/img/marcas/Fundacion/fundacion3.webp'],
-    accentColor: '#C49A3C',
+    accentColor: '#7B2D38',
     bgDark: '#100A02',
     cta: 'Conocer la fundación',
   },
@@ -112,7 +112,7 @@ const marcas = [
       <h1 class="font-display font-bold text-white leading-tight" style="font-size:clamp(2.8rem,6vw,5.5rem);">
         <span data-i18n="mar.header.h1a">Marcas &</span><br/><span data-i18n="mar.header.h1b" class="text-gold italic">Empresas.</span>
       </h1>
-      <p data-i18n="mar.header.sub" class="text-cream/50 mt-4 max-w-md text-base leading-relaxed">
+      <p data-i18n="mar.header.sub" class="text-cream/70 mt-4 max-w-md text-base leading-relaxed">
         Tres marcas especializadas, respaldadas por COHONDUCAFE, que cubren toda la cadena del café — desde la semilla hasta la taza.
       </p>
       <!-- Pills de marcas en el header -->
@@ -142,13 +142,13 @@ const marcas = [
         <div>
           <p data-i18n="mar.hc.tipo" class="section-label mb-5 reveal">{grupo.tipo}</p>
           <h2 class="font-display font-bold text-white leading-none mb-8 reveal" style="font-size:clamp(2.4rem,5vw,4rem);">COHONDUCAFE</h2>
-          <p data-i18n="mar.hc.desc" class="text-cream/65 leading-relaxed text-lg mb-10 reveal">{grupo.desc}</p>
+          <p data-i18n="mar.hc.desc" class="text-cream/70 leading-relaxed text-lg mb-10 reveal">{grupo.desc}</p>
 
           <div class="grid grid-cols-2 gap-x-8 gap-y-6 reveal">
             {grupo.features.map((f, fi) => (
               <div class="border-l-2 border-gold/50 pl-4">
                 <p data-i18n={`mar.hc.f${fi}.lbl`} class="font-display font-bold text-white text-base leading-tight">{f.label}</p>
-                <p data-i18n={`mar.hc.f${fi}.sub`} class="text-cream/40 text-xs mt-1">{f.sub}</p>
+                <p data-i18n={`mar.hc.f${fi}.sub`} class="text-cream/70 text-xs mt-1">{f.sub}</p>
               </div>
             ))}
           </div>
@@ -173,7 +173,7 @@ const marcas = [
       <div class="mt-20 reveal">
         <div class="flex items-center gap-4 mb-8">
           <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold/40"></div>
-          <p data-i18n="mar.hc.brands" class="text-gold text-[11px] font-bold tracking-[0.35em] uppercase text-center">Tres marcas, un mismo origen</p>
+          <p data-i18n="mar.hc.brands" class="text-gold text-xs font-bold tracking-[0.35em] uppercase text-center">Tres marcas, un mismo origen</p>
           <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold/40"></div>
         </div>
         <div class="grid sm:grid-cols-3 gap-4">
@@ -201,7 +201,7 @@ const marcas = [
       <div class="flex items-center gap-0 overflow-x-auto scrollbar-hide">
         {marcas.map((m, i) => (
           <a href={`#${m.id}`}
-             class="marcas-tab shrink-0 relative px-7 py-4 text-xs font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors duration-200 whitespace-nowrap"
+             class="marcas-tab shrink-0 relative px-7 py-4 text-xs font-bold tracking-widest uppercase text-white/70 hover:text-white transition-colors duration-200 whitespace-nowrap"
              data-tab={m.id}>
             <span>{m.nombre}</span>
             <div class="marcas-tab-line absolute bottom-0 left-0 right-0 h-px bg-gold scale-x-0 transition-transform duration-300 origin-left"></div>
@@ -213,7 +213,7 @@ const marcas = [
 
   <!-- ─── MARCAS ────────────────────────────────────────────────── -->
   {marcas.map((m, i) => (
-    <section id={m.id} class="scroll-mt-32 relative overflow-hidden" style={`background: ${i % 2 === 0 ? '#F5EFE0' : '#EDE3CC'};`}>
+    <section id={m.id} class="tone-light scroll-mt-32 relative overflow-hidden" style={`background: ${i % 2 === 0 ? '#F5EFE0' : '#EDE3CC'};`}>
 
       <!-- Deco vectorial por sección de marca (varía por índice) -->
       {i === 0 && <>
@@ -258,7 +258,7 @@ const marcas = [
         <!-- Header de sección -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16 reveal">
           <div>
-            <span data-i18n={`${m.i18nPrefix}.tipo`} class="text-[10px] font-bold tracking-[0.4em] uppercase mb-2 block" style={`color:${m.accentColor};`}>{m.tipo}</span>
+            <span data-i18n={`${m.i18nPrefix}.tipo`} class="text-xs font-bold tracking-[0.4em] uppercase mb-2 block" style={`color:${m.accentColor};`}>{m.tipo}</span>
             <h2 data-i18n={`${m.i18nPrefix}.nom`} class="font-display font-bold text-coffee-dark" style={`font-size:clamp(2.4rem,5vw,4rem);`}>{m.nombre}</h2>
           </div>
           <a href="/contacto"
@@ -295,7 +295,7 @@ const marcas = [
           <!-- Columna contenido -->
           <div>
             <!-- Descripción -->
-            <p data-i18n={`${m.i18nPrefix}.desc`} class="text-coffee/70 leading-relaxed text-lg mb-10 reveal">{m.desc}</p>
+            <p data-i18n={`${m.i18nPrefix}.desc`} class="text-coffee/85 leading-relaxed text-lg mb-10 reveal">{m.desc}</p>
 
             <!-- Features en grid de cards -->
             <div class="grid grid-cols-2 gap-3 mb-10 reveal">
@@ -303,7 +303,7 @@ const marcas = [
                 <div class="bg-white border border-coffee/10 p-5 hover:border-coffee/25 hover:shadow-sm transition-all duration-200 group">
                   <div class="w-1 h-6 mb-3" style={`background:${m.accentColor};`}></div>
                   <p data-i18n={`${m.i18nPrefix}.f${fi}.lbl`} class="font-display font-bold text-coffee-dark text-sm leading-tight">{f.label}</p>
-                  <p data-i18n={`${m.i18nPrefix}.f${fi}.sub`} class="text-coffee/45 text-xs mt-1">{f.sub}</p>
+                  <p data-i18n={`${m.i18nPrefix}.f${fi}.sub`} class="text-coffee/85 text-xs mt-1">{f.sub}</p>
                 </div>
               ))}
             </div>
@@ -316,7 +316,7 @@ const marcas = [
               <>
                 <div class="flex flex-wrap items-center gap-2 reveal">
                   {['USDA Organic', 'EU Organic', '4C', 'Rainforest Alliance', 'Fairtrade'].map(c => (
-                    <span class="text-[10px] font-bold tracking-widest uppercase border px-3 py-1.5"
+                    <span class="text-xs font-bold tracking-widest uppercase border px-3 py-1.5"
                           style={`border-color:${m.accentColor}55; color:${m.accentColor};`}>
                       {c}
                     </span>
@@ -329,7 +329,7 @@ const marcas = [
                 {[{n:'1954', l:'Año de fundación'}, {n:'1,600m', l:'Altitud promedio'}, {n:'100%', l:'Café hondureño'}].map((s, si) => (
                   <div class="text-center">
                     <p class="font-display font-bold text-coffee-dark text-2xl" style={`color:${m.accentColor};`}>{s.n}</p>
-                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
+                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/85 text-xs tracking-widest uppercase mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
@@ -339,7 +339,7 @@ const marcas = [
                 {[{n:'+40K', l:'Familias apoyadas'}, {n:'2013', l:'Año de fundación'}, {n:'+200K', l:'Personas beneficiadas'}].map((s, si) => (
                   <div class="text-center">
                     <p class="font-display font-bold text-2xl" style={`color:${m.accentColor};`}>{s.n}</p>
-                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
+                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/85 text-xs tracking-widest uppercase mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
@@ -364,11 +364,11 @@ const marcas = [
       <!-- Banda inferior oscura por marca -->
       <div class="py-10" style={`background:${m.bgDark};`}>
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="text-white/40 text-sm">
+          <p class="text-white/70 text-sm">
             <span class="text-white/70 font-semibold">{m.nombre}</span> — <span data-i18n={`${m.i18nPrefix}.tipo`}>{m.tipo}</span>
           </p>
           <a href="/contacto"
-             class="text-xs font-bold tracking-widest uppercase px-6 py-3 transition-colors duration-200 text-white/50 hover:text-white flex items-center gap-2">
+             class="text-xs font-bold tracking-widest uppercase px-6 py-3 transition-colors duration-200 text-white/70 hover:text-white flex items-center gap-2">
             <span data-i18n="mar.contact">Contactar</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -382,7 +382,7 @@ const marcas = [
 
   <!-- ─── CTA FINAL ─────────────────────────────────────────────── -->
   <section class="py-28 bg-[#1C0E08] text-center relative overflow-hidden">
-    <span class="absolute font-display font-bold select-none pointer-events-none text-white/[0.03]"
+    <span aria-hidden="true" class="absolute font-display font-bold select-none pointer-events-none text-white/[0.03]"
           style="font-size:20vw; left:50%; top:50%; transform:translate(-50%,-50%);">CAFÉ</span>
     <!-- Deco: oval girando grande centro -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none select-none opacity-[0.04] vec-spin-rev" aria-hidden="true">
@@ -399,7 +399,7 @@ const marcas = [
     <div class="relative z-10 max-w-2xl mx-auto px-6">
       <p data-i18n="mar.cta.label" class="section-label mb-4 reveal">¿Te interesa trabajar con nosotros?</p>
       <h2 data-i18n="mar.cta.h2" class="font-display text-4xl md:text-5xl font-bold text-white mb-4 reveal">Hablemos de café</h2>
-      <p data-i18n="mar.cta.para" class="text-cream/40 mb-10 leading-relaxed reveal">
+      <p data-i18n="mar.cta.para" class="text-cream/70 mb-10 leading-relaxed reveal">
         Si eres importador, tostador o distribuidor, estamos listos para conectar contigo.
       </p>
       <div class="flex flex-wrap gap-4 justify-center reveal">

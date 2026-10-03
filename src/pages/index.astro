@@ -95,21 +95,24 @@ const stats = [
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
   <section class="relative min-h-screen flex flex-col bg-[#1C0E08]">
 
-    <!-- Fondo: slideshow con las 6 imágenes hero -->
+    <!-- Fondo: slideshow con 3 imágenes (cada una en 800/1280/1920 px según la pantalla) -->
     <div class="absolute inset-0 overflow-hidden" id="hero-slide-wrap">
 
       <!-- Diapositivas -->
       {[
-        '/img/hero/hero1.webp',
-        '/img/hero/hero3.webp',
-        '/img/hero/hero4.webp',
-        '/img/hero/hero5.webp',
-        '/img/hero/hero6.webp',
-        '/img/hero/hero7.webp',
-      ].map((src, i) => (
+        /* empresa: manos con café */
+        { src: '/img/hero/hero1.webp', set: '/img/hero/hero1-800.webp 800w, /img/hero/hero1-1280.webp 1280w, /img/hero/hero1.webp 1920w' },
+        /* marcas: cosecha en la montaña */
+        { src: '/img/hero/hero6.webp', set: '/img/hero/hero6-800.webp 800w, /img/hero/hero6.webp 1280w' },
+        /* importadores: patio de secado */
+        { src: '/img/hero/hero5.webp', set: '/img/hero/hero5-800.webp 800w, /img/hero/hero5-1280.webp 1280w, /img/hero/hero5.webp 1920w' },
+      ].map((img, i) => (
         <img
-          src={i === 0 ? src : undefined}
-          data-src={i === 0 ? undefined : src}
+          src={i === 0 ? img.src : undefined}
+          srcset={i === 0 ? img.set : undefined}
+          data-src={i === 0 ? undefined : img.src}
+          data-srcset={i === 0 ? undefined : img.set}
+          sizes="100vw"
           fetchpriority={i === 0 ? 'high' : undefined}
           alt=""
           aria-hidden="true"
@@ -126,10 +129,11 @@ const stats = [
       <div class="absolute inset-0 bg-grain opacity-30 pointer-events-none"></div>
 
       <!-- Indicadores de slide -->
-      <div class="absolute bottom-8 right-8 z-20 flex gap-2" id="hero-dots">
-        {[0,1,2,3,4,5].map(i => (
+      <div class="absolute bottom-8 right-8 z-20 flex gap-4" id="hero-dots">
+        {[0,1,2].map(i => (
+          <!-- punto de 12px con área táctil ampliada (after:-inset-3) -->
           <button
-            class="hero-dot w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-gold transition-colors duration-200"
+            class="hero-dot relative w-3 h-3 rounded-full bg-white/50 hover:bg-gold transition-colors duration-200 after:absolute after:-inset-3 after:content-['']"
             data-index={i}
             aria-label={`Imagen ${i + 1}`}
             data-i18n-aria="a11y.slide" data-i18n-n={i + 1}
@@ -156,21 +160,22 @@ const stats = [
           <!-- Chip -->
           <div class="hero-v3__chip inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-10">
             <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0" style="animation:pulse 2s ease-in-out infinite"></span>
-            <span id="hero-chip" data-i18n="idx.hero.slide0.chip" class="text-cream/65 text-[10px] font-semibold tracking-[0.38em] uppercase">Honduras · Café de Especialidad</span>
+            <span id="hero-chip" data-i18n="idx.hero.slide0.chip" class="text-cream/70 text-xs font-semibold tracking-[0.38em] uppercase">Honduras · Café de Especialidad</span>
           </div>
 
           <!-- Título principal -->
           <div class="hero-titles-float">
             <!-- h1 fijo para buscadores y lectores de pantalla; el título visual rota con cada slide -->
             <h1 data-i18n="idx.hero.h1" class="sr-only">COHONDUCAFE — Café hondureño de especialidad desde 1954</h1>
-            <div class="overflow-hidden mb-3" aria-hidden="true">
-              <p id="hero-title" class="hero-v3__h1a font-display font-bold text-white leading-[0.9] tracking-tight"
+            <!-- pb: espacio para los trazos descendentes (p, g, q) dentro del recorte de la animación -->
+            <div class="overflow-hidden" aria-hidden="true">
+              <p id="hero-title" class="hero-v3__h1a font-display font-bold text-white leading-[1] pb-[0.22em] tracking-tight"
                   style="font-size:clamp(2rem,5.8vw,5.2rem)">
                 COHONDUCAFE
               </p>
             </div>
-            <div class="overflow-hidden mb-9">
-              <p id="hero-sub" data-i18n="idx.hero.slide0.sub" class="hero-v3__h1b font-display font-bold text-gold italic leading-[1.1] tracking-tight"
+            <div class="overflow-hidden mb-8">
+              <p id="hero-sub" data-i18n="idx.hero.slide0.sub" class="hero-v3__h1b font-display font-bold text-gold italic leading-[1.1] pb-[0.2em] tracking-tight"
                   style="font-size:clamp(1.4rem,3vw,2.6rem)">
                 Cuatro Generaciones.
               </p>
@@ -183,7 +188,7 @@ const stats = [
           </div>
 
           <!-- Descripción -->
-          <p id="hero-desc" data-i18n="idx.hero.slide0.desc" class="hero-v3__para text-cream/55 text-base leading-relaxed max-w-[400px] mb-10">
+          <p id="hero-desc" data-i18n="idx.hero.slide0.desc" class="hero-v3__para text-cream/70 text-base leading-relaxed max-w-[400px] mb-10">
             Una tradición familiar desde 1954, arraigada en Honduras y construida sobre
             confianza, colaboración y calidad exportada al mundo.
           </p>
@@ -204,17 +209,12 @@ const stats = [
             <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
               <span class="font-display text-lg font-bold text-gold leading-none">1954</span>
               <span class="w-px h-4 bg-white/15"></span>
-              <span data-i18n="idx.hero.s1" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Establecido</span>
-            </div>
-            <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
-              <span class="font-display text-lg font-bold text-gold leading-none">+70</span>
-              <span class="w-px h-4 bg-white/15"></span>
-              <span data-i18n="idx.hero.s2" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Años de liderazgo</span>
+              <span data-i18n="idx.hero.s1" class="text-xs text-cream/70 font-bold tracking-[0.25em] uppercase">Establecido</span>
             </div>
             <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 backdrop-blur-sm">
               <span class="font-display text-lg font-bold text-gold leading-none">100%</span>
               <span class="w-px h-4 bg-white/15"></span>
-              <span data-i18n="idx.hero.s3" class="text-[9px] text-cream/40 font-bold tracking-[0.25em] uppercase">Café hondureño</span>
+              <span data-i18n="idx.hero.s3" class="text-xs text-cream/70 font-bold tracking-[0.25em] uppercase">Café hondureño</span>
             </div>
           </div>
 
@@ -225,7 +225,9 @@ const stats = [
     <!-- Script: sincroniza texto con slides -->
     <script is:inline>
     (function () {
-      var slideHrefs = ['/nosotros', '/nosotros', '/marcas', '/junta-directiva', '/contacto', '/nosotros'];
+      /* 3 mensajes: empresa, marcas e importadores (claves de traducción slide0/2/4) */
+      var slideKeys  = [0, 2, 4];
+      var slideHrefs = ['/nosotros', '/marcas', '/contacto?tema=importacion'];
 
       function tt(key) {
         var lang = window.__COHON_LANG || 'es';
@@ -235,7 +237,7 @@ const stats = [
       }
 
       function getSlide(i) {
-        var k = 'idx.hero.slide' + i;
+        var k = 'idx.hero.slide' + slideKeys[i];
         return {
           chip:  tt(k + '.chip'),
           title: tt(k + '.title'),
@@ -282,10 +284,10 @@ const stats = [
       function goTo(n) {
         imgSlides[current].style.opacity = '0';
         dots[current].classList.remove('bg-gold');
-        dots[current].classList.add('bg-white/30');
+        dots[current].classList.add('bg-white/50');
         current = (n + total) % total;
         imgSlides[current].style.opacity = '1';
-        dots[current].classList.remove('bg-white/30');
+        dots[current].classList.remove('bg-white/50');
         dots[current].classList.add('bg-gold');
         updateText(current);
       }
@@ -293,6 +295,7 @@ const stats = [
       /* Cargar el resto de diapositivas cuando la página ya terminó de cargar */
       function loadRest() {
         imgSlides.forEach(function (img) {
+          if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.removeAttribute('data-srcset'); }
           if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
         });
       }
@@ -300,7 +303,7 @@ const stats = [
       else window.addEventListener('load', loadRest);
 
       /* Activar primer dot */
-      dots[0].classList.remove('bg-white/30');
+      dots[0].classList.remove('bg-white/50');
       dots[0].classList.add('bg-gold');
 
       /* Auto-avance cada 6 s (desactivado si el usuario pidió reducir el movimiento) */
@@ -331,7 +334,7 @@ const stats = [
 
     <!-- Ticker animado -->
     <div class="relative z-10 border-t border-white/6 overflow-hidden py-3.5">
-      <div class="hero-v3__ticker flex whitespace-nowrap text-[9.5px] font-bold tracking-[0.42em] uppercase text-cream/25 select-none">
+      <div class="hero-v3__ticker flex whitespace-nowrap text-xs font-bold tracking-[0.42em] uppercase text-cream/70 select-none">
         <span class="pr-12"><span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp;</span>
         <span class="pr-12"><span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp;</span>
       </div>
@@ -340,9 +343,9 @@ const stats = [
     <!-- Scroll cue -->
     <div class="relative z-10 flex justify-center pb-5">
       <a href="#stats"
-         class="scroll-cue text-cream/20 hover:text-gold transition-colors duration-200"
+         class="scroll-cue text-cream/70 hover:text-gold transition-colors duration-200"
          aria-label="Desplázate hacia abajo" data-i18n-aria="a11y.scroll">
-        <span data-i18n="idx.scroll" class="text-[9px] font-bold tracking-[0.35em] uppercase">Scroll</span>
+        <span data-i18n="idx.scroll" class="text-xs font-bold tracking-[0.35em] uppercase">Scroll</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
         </svg>
@@ -379,8 +382,8 @@ const stats = [
               </svg>
             </div>
             <div class="stat-num mb-2.5">{item.num}</div>
-            <div data-i18n={`idx.stats.${i}.lbl`} class="text-[10px] text-earth font-bold tracking-[0.3em] uppercase mb-1.5">{item.label}</div>
-            <div data-i18n={`idx.stats.${i}.dsc`} class="text-xs text-coffee/55 font-medium">{item.desc}</div>
+            <div data-i18n={`idx.stats.${i}.lbl`} class="text-xs text-earth font-bold tracking-[0.3em] uppercase mb-1.5">{item.label}</div>
+            <div data-i18n={`idx.stats.${i}.dsc`} class="text-xs text-coffee/85 font-medium">{item.desc}</div>
           </div>
         ))}
       </div>
@@ -469,7 +472,7 @@ const stats = [
           alt="Comunidad cafetalera"
           class="about-clip-right absolute bottom-0 right-0 w-3/4 h-72 object-cover shadow-2xl border-8 border-cream-light"
         />
-        <div class="about-badge absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gold flex flex-col items-center justify-center text-white shadow-xl">
+        <div class="about-badge absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gold flex flex-col items-center justify-center text-coffee-dark shadow-xl">
           <span class="about-badge-num font-display text-2xl font-bold leading-none">70+</span>
           <span data-i18n="idx.about.yrs" class="text-xs font-semibold tracking-wider uppercase mt-1">años</span>
         </div>
@@ -481,20 +484,20 @@ const stats = [
         <h2 class="font-display text-4xl md:text-5xl font-bold text-coffee-dark leading-tight mb-6 reveal">
           <span data-i18n="idx.about.h2a">Una empresa</span><br/><span data-i18n="idx.about.h2b" class="italic text-coffee">con raíces profundas</span>
         </h2>
-        <p data-i18n="idx.about.p1" class="text-coffee/80 leading-relaxed mb-5 reveal">
+        <p data-i18n="idx.about.p1" class="text-coffee/85 leading-relaxed mb-5 reveal">
           COHONDUCAFE nació en 1954 como una empresa familiar cafetalera en las montañas de Honduras. Hoy somos un grupo empresarial integrado que abarca desde la producción en finca hasta la exportación internacional.
         </p>
-        <p data-i18n="idx.about.p2" class="text-coffee/80 leading-relaxed mb-8 reveal">
+        <p data-i18n="idx.about.p2" class="text-coffee/85 leading-relaxed mb-8 reveal">
           Nuestro modelo une calidad de grano, responsabilidad ambiental y desarrollo comunitario — porque creemos que el mejor café viene de comunidades prósperas y bosques sanos.
         </p>
         <a href="/nosotros" class="btn-primary reveal"><span data-i18n="idx.about.cta">Nuestra historia</span></a>
 
         <!-- Certificaciones -->
         <div class="mt-10 pt-8 border-t border-forest/10 reveal" style="transition-delay:0.35s">
-          <p data-i18n="idx.about.certs" class="text-[9px] text-gold font-bold tracking-[0.3em] uppercase mb-3">Certificaciones internacionales</p>
+          <p data-i18n="idx.about.certs" class="text-xs text-gold font-bold tracking-[0.3em] uppercase mb-3">Certificaciones internacionales</p>
           <div class="flex flex-wrap gap-2">
             {['USDA Organic', 'EU Organic', '4C', 'Rainforest Alliance', 'Fairtrade'].map(cert => (
-              <span class="text-[9px] font-bold tracking-widest uppercase border border-coffee/20 text-coffee/60 px-3 py-1.5 hover:border-gold hover:text-gold transition-all duration-200 cursor-default">
+              <span class="text-xs font-bold tracking-widest uppercase border border-coffee/20 text-coffee/85 px-3 py-1.5 hover:border-gold hover:text-gold transition-all duration-200 cursor-default">
                 {cert}
               </span>
             ))}
@@ -548,7 +551,7 @@ const stats = [
   </script>
 
   <!-- ─── ALIANZAS ESTRATÉGICAS (reemplaza Socios y aliados) ────── -->
-  <section class="alianzas-section relative overflow-hidden">
+  <section class="alianzas-section tone-light relative overflow-hidden">
     <!-- Decoración: oval grande girando fondo -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none select-none opacity-[0.04] vec-spin" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
@@ -566,15 +569,15 @@ const stats = [
           <h2 data-i18n="idx.ali.h2" class="font-display text-4xl font-bold text-coffee-dark mb-10 reveal">Alianzas Estratégicas</h2>
 
           <div class="reveal">
-            <p data-i18n="idx.ali.plan" class="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-gold mb-3">Plan Estratégico</p>
+            <p data-i18n="idx.ali.plan" class="font-sans text-xs font-bold tracking-[0.35em] uppercase text-gold mb-3">Plan Estratégico</p>
             <div class="w-8 h-px bg-gold/40 mb-6"></div>
-            <p data-i18n="idx.ali.p1" class="text-coffee/70 text-sm leading-relaxed mb-4">
+            <p data-i18n="idx.ali.p1" class="text-coffee/85 text-sm leading-relaxed mb-4">
               Nos esforzamos en apoyar a los caficultores y sus familias para la mejora de sus condiciones de vida y el aumento de sus ingresos.
             </p>
-            <p data-i18n="idx.ali.p2" class="text-coffee/70 text-sm leading-relaxed mb-4">
-              Trabajamos directamente con más de 40.000 hogares productores de café en las zonas más remotas del país, beneficiando a más de 200.000 personas de bajos ingresos.
+            <p data-i18n="idx.ali.p2" class="text-coffee/85 text-sm leading-relaxed mb-4">
+              Trabajamos directamente con más de 40,000 hogares productores de café en las zonas más remotas del país, beneficiando a más de 200,000 personas de bajos ingresos.
             </p>
-            <p data-i18n="idx.ali.p3" class="text-coffee/70 text-sm leading-relaxed">
+            <p data-i18n="idx.ali.p3" class="text-coffee/85 text-sm leading-relaxed">
               Nuestro objetivo es aumentar la productividad por hectárea mediante las mejores prácticas agrícolas y la gestión adecuada de nuestros recursos naturales.
             </p>
           </div>
@@ -803,38 +806,46 @@ const stats = [
         <h2 class="font-display text-4xl md:text-5xl font-bold text-white reveal">
           <span data-i18n="idx.map.h2a">Del campo hondureño</span><br/><span data-i18n="idx.map.h2b" class="italic text-gold">al mundo</span>
         </h2>
-        <p data-i18n="idx.map.hint" class="text-cream/50 mt-4 text-sm reveal">Pasa el cursor sobre un país para más información</p>
+        <!-- Indicación distinta para pantallas táctiles y para mouse -->
+        <p data-i18n="idx.map.hint" class="only-hover text-cream/70 mt-4 text-sm reveal">Pasa el cursor sobre un país para ver su nombre</p>
+        <p data-i18n="idx.map.hint.touch" class="only-touch text-cream/70 mt-4 text-sm reveal">Toca un país para ver su nombre · usa + y − para acercar</p>
       </div>
 
-      <div id="world-map" class="w-full rounded-sm reveal" style="height:480px"></div>
+      <div id="world-map" class="w-full rounded-sm reveal h-[260px] sm:h-[380px] md:h-[480px]"></div>
 
       <div class="flex flex-wrap justify-center gap-6 mt-8 reveal">
         <div class="flex items-center gap-2">
           <span class="w-4 h-4 rounded-sm inline-block" style="background:#4A7C59"></span>
-          <span data-i18n="idx.map.leg1" class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
+          <span data-i18n="idx.map.leg1" class="text-cream/70 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-4 h-4 rounded-sm inline-block bg-gold"></span>
-          <span data-i18n="idx.map.leg2" class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
+          <span data-i18n="idx.map.leg2" class="text-cream/70 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ─── VIDEO GENERAL ───────────────────────────────────────────── -->
-  <section class="relative bg-[#0F1A12] overflow-hidden">
-    <video
-      data-lazy-video muted loop playsinline preload="none"
-      class="w-full max-h-[70vh] object-cover"
-      style="display:block;">
-      <source src="/img/video_inicio_final/General.mp4" type="video/mp4" />
-    </video>
-    <!-- Overlay suave arriba y abajo para fundir con las secciones vecinas -->
-    <div class="absolute inset-x-0 top-0 h-24 pointer-events-none"
-         style="background: linear-gradient(to bottom, #0F3D28, transparent);"></div>
-    <div class="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-         style="background: linear-gradient(to top, #1C0810, transparent);"></div>
+  <!-- ─── VIDEO INSTITUCIONAL ─────────────────────────────────────
+       Es un video narrado en inglés con subtítulos: se muestra completo, con
+       controles y sin reproducción automática (no se descarga hasta darle play) -->
+  <section class="relative bg-[#1C0E08] py-20 md:py-24 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-10">
+        <p data-i18n="idx.video.label" class="section-label mb-4 reveal">En video</p>
+        <h2 data-i18n="idx.video.h2" class="font-display text-4xl md:text-5xl font-bold text-white reveal">Conoce COHONDUCAFE</h2>
+        <p data-i18n="idx.video.note" class="text-cream/70 text-sm mt-4 reveal">Video institucional · 2 min · en inglés</p>
+      </div>
+      <div class="reveal shadow-2xl" style="border:1px solid rgba(196,154,60,0.25);">
+        <video controls playsinline preload="none"
+               poster="/img/video_inicio_final/general-portada.webp"
+               class="block w-full aspect-video bg-black"
+               aria-label="Video institucional de COHONDUCAFE">
+          <source src="/img/video_inicio_final/General.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
   </section>
 
   <!-- ─── MARCAS ─────────────────────────────────────────────────── -->
@@ -862,7 +873,7 @@ const stats = [
         <h2 data-i18n="idx.brands.h2" class="font-display text-4xl md:text-5xl font-bold text-white reveal relative z-10">
           Marcas & Empresas
         </h2>
-        <p data-i18n="idx.brands.sub" class="text-cream/35 mt-4 text-sm reveal relative z-10">Cada unidad es parte del mismo origen</p>
+        <p data-i18n="idx.brands.sub" class="text-cream/70 mt-4 text-sm reveal relative z-10">Cada unidad es parte del mismo origen</p>
       </div>
 
       <!-- Bento grid asimétrico: HOSCO ocupa toda la columna izquierda -->
@@ -945,7 +956,7 @@ const stats = [
         ¿Buscas café hondureño de calidad?
       </h2>
 
-      <p data-i18n="idx.cta.para" class="text-coffee/65 text-lg leading-relaxed mb-10 max-w-md mx-auto reveal">
+      <p data-i18n="idx.cta.para" class="text-coffee/85 text-lg leading-relaxed mb-10 max-w-md mx-auto reveal">
         Cuéntanos qué volumen, perfil y certificaciones necesitas. Más de 70 años exportando café hondureño respaldan cada lote.
       </p>
 
@@ -957,9 +968,9 @@ const stats = [
         </a>
       </div>
 
-      <p class="text-coffee/45 text-xs mt-8 reveal">
+      <p class="text-coffee/85 text-xs mt-8 reveal">
         <span data-i18n="idx.cta.note">Respuesta en 24–48 horas hábiles</span> ·
-        <a href="mailto:info@honducafeproyectos.com" class="text-coffee/70 font-semibold hover:text-gold transition-colors duration-200">info@honducafeproyectos.com</a>
+        <a href="mailto:info@honducafeproyectos.com" class="text-coffee/85 font-semibold hover:text-gold transition-colors duration-200">info@honducafeproyectos.com</a>
       </p>
 
     </div>

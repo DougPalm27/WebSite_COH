@@ -8,14 +8,14 @@ const directivos = [
     miembros: [
       {
         nombre: 'Nicholas Hawit Badour', cargo: 'Co-fundador',
-        detalle: 'Emigró de Jerusalem en la década de 1920',
+        detalle: 'Emigró de Jerusalén en la década de 1920',
         img: '/img/junta%20directiva/NHB.webp',
-        bio: 'Llegó a Honduras desde Jerusalem a inicios de los años 20 con una visión emprendedora. Junto a Basilio Fuschich Packran, sentó las bases de lo que hoy es COHONDUCAFE, apostando por el café hondureño cuando pocos lo hacían.',
-        pills: ['Fundador 1920s', 'Jerusalem', 'Visionario'],
+        bio: 'Llegó a Honduras desde Jerusalén a inicios de los años 20 con una visión emprendedora. Junto a Basilio Fuschich Packran, sentó las bases de lo que hoy es COHONDUCAFE, apostando por el café hondureño cuando pocos lo hacían.',
+        pills: ['Fundador 1920s', 'Jerusalén', 'Visionario'],
       },
       {
         nombre: 'Basilio Fuschich Packran', cargo: 'Co-fundador',
-        detalle: 'Emigró de Czechoslovakia en 1927',
+        detalle: 'Emigró de Checoslovaquia en 1927',
         img: '/img/junta%20directiva/BFP.webp',
         bio: 'Emigró de Checoslovaquia en 1927 y encontró en Honduras su tierra de oportunidades. Su pasión por la agricultura y el café lo llevó a cofundar la empresa familiar que hoy lleva cuatro generaciones exportando calidad al mundo.',
         pills: ['Fundador 1927', 'Checoslovaquia', 'Agricultor'],
@@ -24,7 +24,7 @@ const directivos = [
   },
   {
     gen: '2da Generación', sub: 'Liderazgo actual', year: '1954',
-    color: '#C49A3C',
+    color: '#7A5C1E',
     miembros: [
       {
         nombre: 'Basilio Fuschich', cargo: 'Presidente',
@@ -86,13 +86,32 @@ const directivos = [
   },
 ];
 
+// Atributos comunes de cada tarjeta: los usa el modal de biografía (árbol y lista)
+type Gen = typeof directivos[number];
+type Miembro = Gen['miembros'][number] & { nombre2?: string; cargo2?: string; img2?: string };
+function cardAttrs(m: Miembro, gen: Gen) {
+  const nombre = m.nombre2 ? `${m.nombre} & ${m.nombre2}` : m.nombre;
+  return {
+    role: 'button', tabindex: '0',
+    'aria-label': `Ver biografía: ${m.nombre2 ? `${m.nombre} y ${m.nombre2}` : m.nombre}`,
+    'data-i18n-aria': 'a11y.bio', 'data-i18n-n': nombre,
+    'data-nombre': nombre,
+    'data-cargo': m.nombre2 ? `${m.cargo} · ${m.cargo2}` : m.cargo,
+    'data-bio': m.bio || '',
+    'data-pills': m.pills ? m.pills.join('||') : '',
+    'data-color': gen.color,
+    'data-img': m.nombre2 ? (m.img2 || '') : (m.img || ''),
+  };
+}
+
 // ── Cálculo de posiciones para los conectores SVG ──────────────────────
 const CARD_H  = 160;   // altura de cada tarjeta (px)
 const CARD_G  = 16;    // gap entre tarjetas (px)
 const UNIT    = CARD_H + CARD_G;
-const CONN_W  = 64;    // ancho del área de conector
-const L_BAR   = 10;    // x de la barra vertical izquierda del conector
-const R_BAR   = CONN_W - 10; // x de la barra vertical derecha
+const IMG_W   = 104;   // ancho de la foto en las tarjetas del árbol (px)
+const CONN_W  = 40;    // ancho del área de conector
+const L_BAR   = 8;     // x de la barra vertical izquierda del conector
+const R_BAR   = CONN_W - 8; // x de la barra vertical derecha
 
 const counts  = directivos.map(g => g.miembros.length);
 const maxH    = Math.max(...counts.map(n => n * CARD_H + (n - 1) * CARD_G));
@@ -214,7 +233,7 @@ for (let i = 0; i < directivos.length - 1; i++) {
   </section>
 
   <!-- ── ÁRBOL GENERACIONAL HORIZONTAL ─────────────────────────────── -->
-  <section class="bg-cream py-20 overflow-x-auto relative">
+  <section class="bg-cream py-16 xl:py-20 overflow-hidden relative">
     <!-- Deco: oval girando superior derecha (fuera del scroll horizontal) -->
     <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.06] vec-spin" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.35);" />
@@ -227,17 +246,18 @@ for (let i = 0; i < directivos.length - 1; i++) {
     <div class="absolute left-1/2 top-6 w-9 h-14 pointer-events-none select-none opacity-[0.07] vec-drift" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
     </div>
-    <div class="min-w-[860px] max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Árbol horizontal: solo en pantallas anchas (≥1280px) -->
+    <div class="hidden xl:block max-w-7xl mx-auto px-6 lg:px-12">
 
       <!-- Etiquetas de generación (encima de cada columna) -->
       <div class="flex mb-6" style="align-items:flex-end;">
         {directivos.map((gen, i) => (
           <>
-            <div class="flex-1 flex flex-col items-center gap-1">
-              <p data-i18n={`jd.gen${i}.sub`} class="text-[10px] tracking-widest uppercase font-semibold" style={`color:${gen.color};`}>{gen.sub}</p>
-              <div class="gen-badge text-[10px] font-bold tracking-widest uppercase px-3 py-1 text-white w-full text-center"
+            <div class="flex-1 min-w-0 flex flex-col items-center gap-1">
+              <p data-i18n={`jd.gen${i}.sub`} class="text-xs tracking-widest uppercase font-semibold" style={`color:${gen.color};`}>{gen.sub}</p>
+              <div class="gen-badge text-xs font-bold tracking-widest uppercase px-3 py-1 text-white w-full text-center"
                    style={`background:${gen.color}; transition-delay:${i * 0.12}s`}>
-                <span data-i18n={`jd.gen${i}.gen`}>{gen.gen}</span> · {gen.year}
+                <span data-i18n={`jd.gen${i}.gen`}>{gen.gen}</span> · <span class="normal-case">{gen.year}</span>
               </div>
             </div>
             {i < directivos.length - 1 && (
@@ -257,25 +277,17 @@ for (let i = 0; i < directivos.length - 1; i++) {
           return (
             <>
               <!-- Columna de tarjetas, centrada verticalmente -->
-              <div class="flex-1 flex flex-col relative" style={`gap:${CARD_G}px; margin-top:${offset}px;`}>
+              <div class="flex-1 min-w-0 flex flex-col relative" style={`gap:${CARD_G}px; margin-top:${offset}px;`}>
                 {gen.miembros.map(m => (
                   <div class="jd-card bg-white cursor-pointer"
-                       role="button" tabindex="0"
-                       aria-label={`Ver biografía: ${m.nombre2 ? `${m.nombre} y ${m.nombre2}` : m.nombre}`}
-                       data-i18n-aria="a11y.bio" data-i18n-n={m.nombre2 ? `${m.nombre} & ${m.nombre2}` : m.nombre}
-                       data-nombre={m.nombre2 ? `${m.nombre} & ${m.nombre2}` : m.nombre}
-                       data-cargo={m.nombre2 ? `${m.cargo} · ${m.cargo2}` : m.cargo}
-                       data-bio={m.bio || ''}
-                       data-pills={m.pills ? m.pills.join('||') : ''}
-                       data-color={gen.color}
-                       data-img={m.nombre2 ? (m.img2 || '') : (m.img || '')}
+                       {...cardAttrs(m, gen)}
                        style={`height:${CARD_H}px; border:1px solid ${gen.color}20; border-left:3px solid ${gen.color}; overflow:hidden; transition-delay:${(i * 0.15 + gen.miembros.indexOf(m) * 0.1)}s`}>
 
                     {m.nombre2 ? (
                       /* ── Tarjeta doble (pareja) ── */
                       <div class="flex h-full">
                         <div class="shrink-0 flex items-center justify-center h-full overflow-hidden"
-                             style={`width:${CARD_H}px; background:${gen.color}08; border-right:1px dashed ${gen.color}25;`}>
+                             style={`width:${IMG_W}px; background:${gen.color}08; border-right:1px dashed ${gen.color}25;`}>
                           {m.img2
                             ? <img loading="lazy" decoding="async" src={m.img2} alt={`${m.nombre} y ${m.nombre2}`} class="w-full h-full object-cover" />
                             : <svg class="w-10 h-10 opacity-20" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24" style={`color:${gen.color};`}>
@@ -287,12 +299,12 @@ for (let i = 0; i < directivos.length - 1; i++) {
                         <div class="flex flex-col justify-center px-3 gap-2 min-w-0">
                           <div class="min-w-0">
                             <p class="font-display font-bold text-coffee-dark text-xs leading-tight">{m.nombre}</p>
-                            <p class="text-[10px] font-medium" style={`color:${gen.color};`}>{m.cargo}</p>
+                            <p class="text-xs font-medium" style={`color:${gen.color};`}>{m.cargo}</p>
                           </div>
                           <div class="w-full h-px" style={`background:${gen.color}20;`}></div>
                           <div class="min-w-0">
                             <p class="font-display font-bold text-coffee-dark text-xs leading-tight">{m.nombre2}</p>
-                            <p class="text-[10px] font-medium" style={`color:${gen.color};`}>{m.cargo2}</p>
+                            <p class="text-xs font-medium" style={`color:${gen.color};`}>{m.cargo2}</p>
                           </div>
                         </div>
                       </div>
@@ -300,7 +312,7 @@ for (let i = 0; i < directivos.length - 1; i++) {
                       /* ── Tarjeta simple ── */
                       <div class="flex h-full">
                         <div class="shrink-0 flex items-center justify-center h-full overflow-hidden"
-                             style={`width:${CARD_H}px; background:${gen.color}08; border-right:1px dashed ${gen.color}25;`}>
+                             style={`width:${IMG_W}px; background:${gen.color}08; border-right:1px dashed ${gen.color}25;`}>
                           {m.img
                             ? <img loading="lazy" decoding="async" src={m.img} alt={m.nombre} class="w-full h-full object-cover" />
                             : <svg class="w-9 h-9 opacity-20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style={`color:${gen.color};`}>
@@ -309,10 +321,10 @@ for (let i = 0; i < directivos.length - 1; i++) {
                               </svg>
                           }
                         </div>
-                        <div class="flex flex-col justify-center px-4 min-w-0">
+                        <div class="flex flex-col justify-center px-3 min-w-0">
                           <p class="font-display font-bold text-coffee-dark text-sm leading-tight">{m.nombre}</p>
                           <p class="text-xs mt-0.5 font-medium leading-snug" style={`color:${gen.color};`}>{m.cargo}</p>
-                          {m.detalle && <p class="text-coffee/40 text-[10px] mt-1 italic leading-snug">{m.detalle}</p>}
+                          {m.detalle && <p class="text-coffee/85 text-xs mt-1 italic leading-snug">{m.detalle}</p>}
                         </div>
                       </div>
                     )}
@@ -338,6 +350,47 @@ for (let i = 0; i < directivos.length - 1; i++) {
 
       </div>
     </div>
+
+    <!-- Lista por generación: tablet y móvil (<1280px) -->
+    <div class="xl:hidden max-w-3xl mx-auto px-6 relative">
+      {directivos.map((gen, i) => (
+        <div class={i < directivos.length - 1 ? 'pb-10 mb-10 border-b border-gold/20' : ''}>
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+            <span class="gen-badge text-xs font-bold tracking-widest uppercase px-3 py-1 text-white"
+                  style={`background:${gen.color};`}>
+              <span data-i18n={`jd.gen${i}.gen`}>{gen.gen}</span> · <span class="normal-case">{gen.year}</span>
+            </span>
+            <span data-i18n={`jd.gen${i}.sub`} class="text-xs tracking-widest uppercase font-semibold" style={`color:${gen.color};`}>{gen.sub}</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {gen.miembros.map((m: Miembro) => (
+              <div class="jd-card bg-white cursor-pointer flex"
+                   {...cardAttrs(m, gen)}
+                   style={`border:1px solid ${gen.color}20; border-left:3px solid ${gen.color};`}>
+                <div class="shrink-0 w-24 self-stretch min-h-[7rem] overflow-hidden" style={`background:${gen.color}08;`}>
+                  {(m.nombre2 ? m.img2 : m.img) &&
+                    <img loading="lazy" decoding="async" src={m.nombre2 ? m.img2 : m.img}
+                         alt={m.nombre2 ? `${m.nombre} y ${m.nombre2}` : m.nombre} class="w-full h-full object-cover" />}
+                </div>
+                <div class="flex flex-col justify-center gap-2 px-4 py-3 min-w-0">
+                  <div>
+                    <p class="font-display font-bold text-coffee-dark text-base leading-tight">{m.nombre}</p>
+                    <p class="text-xs mt-0.5 font-medium leading-snug" style={`color:${gen.color};`}>{m.cargo}</p>
+                    {m.detalle && <p class="text-coffee/85 text-xs mt-1 italic leading-snug">{m.detalle}</p>}
+                  </div>
+                  {m.nombre2 && (
+                    <div>
+                      <p class="font-display font-bold text-coffee-dark text-base leading-tight">{m.nombre2}</p>
+                      <p class="text-xs mt-0.5 font-medium leading-snug" style={`color:${gen.color};`}>{m.cargo2}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   </section>
 
   <!-- ─── CTA ───────────────────────────────────────────────────── -->
@@ -357,7 +410,7 @@ for (let i = 0; i < directivos.length - 1; i++) {
     <div class="max-w-xl mx-auto px-6 relative z-10">
       <p data-i18n="jd.cta.label" class="section-label mb-4">¿Hablamos?</p>
       <h2 data-i18n="jd.cta.h2" class="font-display text-4xl font-bold text-white mb-6">Conecta con nosotros</h2>
-      <p data-i18n="jd.cta.para" class="text-cream/55 mb-8 leading-relaxed">Si eres importador, tostador o distribuidor y quieres conocer más sobre nuestra empresa.</p>
+      <p data-i18n="jd.cta.para" class="text-cream/70 mb-8 leading-relaxed">Si eres importador, tostador o distribuidor y quieres conocer más sobre nuestra empresa.</p>
       <a href="/contacto" class="btn-primary"><span data-i18n="jd.cta.btn">Escríbenos</span></a>
     </div>
   </section>
@@ -377,7 +430,7 @@ for (let i = 0; i < directivos.length - 1; i++) {
 
       <!-- Botón cerrar -->
       <button id="jd-modal-close"
-              class="absolute top-4 right-4 text-coffee/40 hover:text-coffee transition-colors duration-200 z-10"
+              class="absolute top-4 right-4 text-coffee/85 hover:text-coffee transition-colors duration-200 z-10"
               aria-label="Cerrar" data-i18n-aria="a11y.close">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -408,11 +461,11 @@ for (let i = 0; i < directivos.length - 1; i++) {
       <!-- Bio y pills -->
       <div class="px-7 py-5 flex flex-col gap-5">
         <div>
-          <p data-i18n="jd.modal.bio" class="text-[9px] font-bold tracking-[0.3em] uppercase text-coffee/35 mb-2">Biografía</p>
-          <p id="jd-modal-bio" class="text-coffee/65 text-sm leading-relaxed"></p>
+          <p data-i18n="jd.modal.bio" class="text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Biografía</p>
+          <p id="jd-modal-bio" class="text-coffee/85 text-sm leading-relaxed"></p>
         </div>
         <div>
-          <p data-i18n="jd.modal.profile" class="text-[9px] font-bold tracking-[0.3em] uppercase text-coffee/35 mb-3">Perfil</p>
+          <p data-i18n="jd.modal.profile" class="text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-3">Perfil</p>
           <div id="jd-modal-pills" class="flex flex-wrap gap-2"></div>
         </div>
       </div>
@@ -495,7 +548,7 @@ for (let i = 0; i < directivos.length - 1; i++) {
       pills.forEach(function (p) {
         var s = document.createElement('span');
         s.textContent = p;
-        s.style.cssText = 'background:' + color + ';color:#fff;font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;padding:4px 12px;border-radius:999px;';
+        s.style.cssText = 'background:' + color + ';color:#fff;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;';
         pillsEl.appendChild(s);
       });
 

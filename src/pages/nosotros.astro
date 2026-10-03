@@ -71,8 +71,8 @@ const directivos = [
     gen: '1ra Generación',
     sub: 'Los fundadores',
     miembros: [
-      { nombre: 'Nicholas Hawit Badour', cargo: 'Emigró de Jerusalem en la década de 1920' },
-      { nombre: 'Basilio Fuschich Packran', cargo: 'Emigró de Czechoslovakia en 1927' },
+      { nombre: 'Nicholas Hawit Badour', cargo: 'Emigró de Jerusalén en la década de 1920' },
+      { nombre: 'Basilio Fuschich Packran', cargo: 'Emigró de Checoslovaquia en 1927' },
     ]
   },
   {
@@ -124,11 +124,11 @@ const directivos = [
         <h2 class="font-display text-4xl font-bold text-coffee-dark leading-tight mb-6 reveal">
           <span data-i18n="nos.qs.h2a">Referente mundial en</span><br/><span data-i18n="nos.qs.h2b" class="italic text-coffee">café de alta calidad</span>
         </h2>
-        <p data-i18n="nos.qs.p1" class="text-coffee/70 leading-relaxed mb-5 reveal">
+        <p data-i18n="nos.qs.p1" class="text-coffee/85 leading-relaxed mb-5 reveal">
           COHONDUCAFE es una empresa que se destaca como referente en el comercio y la exportación mundial de café en grano de alta calidad en Honduras. Nos esforzamos por superar las expectativas y satisfacer las necesidades de nuestros clientes en todo el mundo, cumpliendo con las metas y objetivos organizacionales establecidos.
         </p>
-        <p data-i18n="nos.qs.p2" class="text-coffee/70 leading-relaxed mb-8 reveal">
-          La historia comenzó con dos familias inmigrantes: Nicholas Hawit Badour, quien llegó de Jerusalem en la década de 1920, y Basilio Fuschich Packran, que emigró de Czechoslovakia en 1927. Sus hijos, Basilio Fuschich y Suyapa Hawit-Fuschich, fundaron la empresa en 1954. Hoy, cuatro generaciones después, sus descendientes continúan liderándola con la misma pasión y compromiso.
+        <p data-i18n="nos.qs.p2" class="text-coffee/85 leading-relaxed mb-8 reveal">
+          La historia comenzó con dos familias inmigrantes: Nicholas Hawit Badour, quien llegó de Jerusalén en la década de 1920, y Basilio Fuschich Packran, que emigró de Checoslovaquia en 1927. Sus hijos, Basilio Fuschich y Suyapa Hawit-Fuschich, fundaron la empresa en 1954. Hoy, cuatro generaciones después, sus descendientes continúan liderándola con la misma pasión y compromiso.
         </p>
         <div class="flex flex-wrap gap-3 reveal">
           {certificaciones.map(c => (
@@ -186,7 +186,7 @@ const directivos = [
             </div>
 
             <!-- Etiqueta -->
-            <div data-i18n={`nos.cifras.i${i}.lbl`} class="text-[9.5px] text-cream font-bold tracking-[0.42em] uppercase mb-3">
+            <div data-i18n={`nos.cifras.i${i}.lbl`} class="text-xs text-cream font-bold tracking-[0.42em] uppercase mb-3">
               {item.label}
             </div>
 
@@ -198,7 +198,7 @@ const directivos = [
             </div>
 
             <!-- Sub texto -->
-            <div data-i18n={`nos.cifras.i${i}.sub`} class="text-cream/35 text-[11px] font-medium tracking-wide">
+            <div data-i18n={`nos.cifras.i${i}.sub`} class="text-cream/70 text-xs font-medium tracking-wide">
               {item.sub}
             </div>
 
@@ -245,7 +245,7 @@ const directivos = [
   </script>
 
   <!-- ─── TIMELINE HORIZONTAL INTERACTIVO ────────────────────── -->
-  <section class="htl-section">
+  <section class="htl-section tone-light">
 
 
     <div class="max-w-[1380px] mx-auto px-8 lg:px-16 relative z-10">
@@ -430,7 +430,7 @@ const directivos = [
           <div class="bg-white/5 border border-white/10 p-8 text-center reveal hover:bg-white/10 transition-colors duration-300" style={`transition-delay:${i * 0.1}s`}>
             <div class="text-gold flex justify-center mb-5" set:html={item.icon} />
             <h3 data-i18n={`nos.imp.${i}.tit`} class="font-display text-xl font-bold text-gold mb-3">{item.titulo}</h3>
-            <p data-i18n={`nos.imp.${i}.dsc`} class="text-cream/60 text-sm leading-relaxed">{item.desc}</p>
+            <p data-i18n={`nos.imp.${i}.dsc`} class="text-cream/70 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -460,11 +460,11 @@ const directivos = [
           <div class="flex gap-6 justify-center mt-4">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-sm inline-block bg-gold"></span>
-              <span class="text-cream/60 text-xs tracking-widest uppercase font-semibold" data-i18n="nos.reg.l1">Región cafetalera</span>
+              <span class="text-cream/70 text-xs tracking-widest uppercase font-semibold" data-i18n="nos.reg.l1">Región cafetalera</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-sm inline-block" style="background:#1A6B40"></span>
-              <span class="text-cream/60 text-xs tracking-widest uppercase font-semibold" data-i18n="nos.reg.l2">Otros departamentos</span>
+              <span class="text-cream/70 text-xs tracking-widest uppercase font-semibold" data-i18n="nos.reg.l2">Otros departamentos</span>
             </div>
           </div>
         </div>
@@ -491,7 +491,7 @@ const directivos = [
       <div class="text-center mb-16">
         <p data-i18n="nos.cta.label" class="section-label mb-4 reveal">Empresa familiar</p>
         <h2 data-i18n="nos.cta.h2" class="font-display text-4xl font-bold text-coffee-dark reveal">Cuatro Generaciones</h2>
-        <p class="text-coffee/60 mt-4 max-w-xl mx-auto reveal">
+        <p class="text-coffee/85 mt-4 max-w-xl mx-auto reveal">
           Desde dos familias inmigrantes en la década de 1920 hasta una empresa líder en exportación mundial de café. Un legado vivo.
         </p>
       </div>
@@ -502,7 +502,7 @@ const directivos = [
           <div class="flex items-center flex-1">
             <div class="flex flex-col items-center">
               <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center shadow-md">
-                <span class="text-white font-bold text-xs">{g}</span>
+                <span class="text-coffee-dark font-bold text-xs">{g}</span>
               </div>
             </div>
             {i < 3 && <div class="flex-1 h-px bg-gold/30 mx-2"></div>}
@@ -515,8 +515,8 @@ const directivos = [
           <div class="reveal" style={`transition-delay:${i * 0.1}s`}>
             <!-- Cabecera de generación -->
             <div class={`p-4 mb-4 ${i === 0 ? 'bg-earth/10 border border-earth/20' : i === 1 ? 'bg-coffee/10 border border-coffee/20' : i === 2 ? 'bg-gold/10 border border-gold/20' : 'bg-coffee/10 border border-coffee/20'}`}>
-              <span data-i18n={`jd.gen${i}.gen`} class={`text-xs font-bold tracking-widest uppercase block ${i === 0 ? 'text-earth' : i === 1 ? 'text-coffee' : i === 2 ? 'text-gold' : 'text-coffee'}`}>{gen.gen}</span>
-              <span data-i18n={`jd.gen${i}.sub`} class="text-coffee/50 text-[10px] tracking-wider uppercase">{gen.sub}</span>
+              <span data-i18n={`jd.gen${i}.gen`} class={`text-xs font-bold tracking-widest uppercase block ${i === 0 ? 'text-earth-dark' : i === 1 ? 'text-coffee' : i === 2 ? 'text-gold' : 'text-coffee'}`}>{gen.gen}</span>
+              <span data-i18n={`jd.gen${i}.sub`} class="text-coffee/85 text-xs tracking-wider uppercase">{gen.sub}</span>
             </div>
             <!-- Miembros -->
             <div class="space-y-3">

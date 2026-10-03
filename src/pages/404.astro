@@ -37,7 +37,7 @@ const enlaces = [
         <span data-i18n="e404.h1a">Este grano</span><br/>
         <span data-i18n="e404.h1b" class="italic text-gold">se perdió en el camino.</span>
       </h1>
-      <p data-i18n="e404.para" class="text-cream/55 text-base leading-relaxed max-w-md mx-auto mb-10">
+      <p data-i18n="e404.para" class="text-cream/70 text-base leading-relaxed max-w-md mx-auto mb-10">
         La página que buscas no existe o fue movida. Te ayudamos a volver a la ruta.
       </p>
 
@@ -51,7 +51,7 @@ const enlaces = [
         {enlaces.map((l, i) => (
           <>
             {i > 0 && <span class="w-1 h-1 rounded-full bg-gold/40" aria-hidden="true"></span>}
-            <a href={l.href} data-i18n={l.key} class="text-cream/45 hover:text-gold transition-colors duration-200">{l.label}</a>
+            <a href={l.href} data-i18n={l.key} class="text-cream/70 hover:text-gold transition-colors duration-200">{l.label}</a>
           </>
         ))}
       </div>

@@ -20,23 +20,30 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contacto" description="Ponte en contacto con COHONDUCAFE. Exportación, alianzas y más.">
 
   <!-- ─── PAGE HEADER ───────────────────────────────────────────── -->
-  <section class="relative h-[60vh] min-h-80 flex items-end overflow-hidden">
-    <img src="/img/Bosques/bosques3.webp" alt="Contacto" class="absolute inset-0 w-full h-full object-cover scale-105"
-         style="animation: heroV3BgZoom 1.2s ease-out forwards;" />
-    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(28,14,8,0.97) 0%, rgba(28,14,8,0.5) 55%, rgba(28,14,8,0.1) 100%)"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 w-full">
-      <p data-i18n="con.header.label" class="section-label mb-3">¿Hablamos?</p>
-      <h1 class="font-display font-bold text-white leading-tight" style="font-size:clamp(2.8rem,6vw,5rem);">
-        <span data-i18n="con.header.h1a">Conecta con</span><br/><span data-i18n="con.header.h1b" class="text-gold italic">COHONDUCAFE.</span>
-      </h1>
-      <p data-i18n="con.header.sub" class="text-cream/45 mt-4 max-w-md text-base">
-        Importadores, tostadores y distribuidores — estamos listos para escucharte.
-      </p>
+  <!-- Móvil: foto arriba y texto debajo. Tablet/escritorio: texto a la izquierda y
+       foto en la mitad derecha, para que el texto no tape a la persona de la foto -->
+  <section class="relative overflow-hidden bg-[#1C0E08]">
+    <div class="relative h-56 md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[58%] overflow-hidden">
+      <img src="/img/Bosques/bosques3.webp" alt="Vivero de café de COHONDUCAFE" class="absolute inset-0 w-full h-full object-cover object-[50%_35%] scale-105"
+           style="animation: heroV3BgZoom 1.2s ease-out forwards;" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#1C0E08] via-[#1C0E08]/20 to-[#1C0E08]/40 md:bg-gradient-to-r md:from-[#1C0E08] md:via-[#1C0E08]/30 md:to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-2 pb-12 md:pt-28 md:pb-20 md:min-h-[60vh] flex flex-col justify-end">
+      <div class="md:max-w-[44%]">
+        <p data-i18n="con.header.label" class="section-label mb-3">¿Hablamos?</p>
+        <h1 class="font-display font-bold text-white leading-tight" style="font-size:clamp(2.2rem,4.6vw,4.5rem);">
+          <span data-i18n="con.header.h1a">Conecta con</span><br/><span data-i18n="con.header.h1b" class="text-gold italic">COHONDUCAFE.</span>
+        </h1>
+        <p data-i18n="con.header.sub" class="text-cream/70 mt-4 max-w-md text-base">
+          Importadores, tostadores y distribuidores — estamos listos para escucharte.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ─── MOTIVOS DE CONTACTO ───────────────────────────────────── -->
-  <section class="bg-[#1C0E08] py-10 border-b border-white/8 relative overflow-hidden">
+  <!-- En móvil se oculta: repite los temas del formulario y lo empujaba muy abajo -->
+  <section class="hidden sm:block bg-[#1C0E08] py-10 border-b border-white/8 relative overflow-hidden">
     <!-- Deco: oval-alt girando derecha -->
     <div class="absolute -right-16 top-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
@@ -60,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div>
               <p data-i18n={item.tituloKey} class="text-white/80 text-sm font-semibold leading-tight">{item.titulo}</p>
-              <p data-i18n={item.subKey} class="text-white/35 text-xs mt-0.5">{item.sub}</p>
+              <p data-i18n={item.subKey} class="text-white/70 text-xs mt-0.5">{item.sub}</p>
             </div>
           </div>
         ))}
@@ -69,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ─── CONTENIDO PRINCIPAL ───────────────────────────────────── -->
-  <section class="py-24 bg-cream-light relative overflow-hidden">
+  <section class="py-16 md:py-24 bg-cream-light relative overflow-hidden">
     <!-- Deco: coffee flotando derecha -->
     <div class="absolute -right-14 top-1/2 -translate-y-1/2 w-56 h-72 pointer-events-none select-none opacity-[0.05] vec-drift" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
@@ -82,19 +89,23 @@ import Layout from '../layouts/Layout.astro';
     <div class="absolute right-[12%] top-8 w-9 h-14 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
       <img loading="lazy" decoding="async" src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
     </div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-5 gap-16">
+    <!-- En móvil: título → formulario → datos. En escritorio: título y datos a la izquierda, formulario a la derecha -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-5 gap-x-16 gap-y-12 lg:gap-y-10">
 
-      <!-- Columna izquierda (2/5) -->
-      <div class="lg:col-span-2">
+      <!-- Título (izquierda, fila 1) -->
+      <div class="lg:col-span-2 lg:col-start-1 lg:row-start-1">
         <p data-i18n="con.form.label" class="section-label mb-4 reveal">Escríbenos</p>
         <h2 class="font-display text-3xl font-bold text-coffee-dark mb-5 reveal">
           <span data-i18n="con.form.h2a">Estamos aquí</span><br/>
           <span data-i18n="con.form.h2b" class="italic text-gold">para escucharte.</span>
         </h2>
-        <p data-i18n="con.form.para" class="text-coffee/60 leading-relaxed mb-10 reveal text-sm">
+        <p data-i18n="con.form.para" class="text-coffee/85 leading-relaxed reveal text-base">
           Si eres importador, tostador, distribuidor o simplemente quieres saber más sobre el café hondureño de COHONDUCAFE, no dudes en escribirnos.
         </p>
+      </div>
 
+      <!-- Datos de contacto (izquierda, fila 2) -->
+      <div class="lg:col-span-2 lg:col-start-1 lg:row-start-2">
         <!-- Info de contacto -->
         <div class="space-y-5 reveal mb-12">
           {[
@@ -118,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <div>
-                <p data-i18n={item.tituloKey} class="text-[10px] font-bold tracking-[0.3em] uppercase text-gold mb-1">{item.titulo}</p>
+                <p data-i18n={item.tituloKey} class="text-xs font-bold tracking-[0.3em] uppercase text-gold mb-1">{item.titulo}</p>
                 {item.link
                   ? <a href={item.link} class="text-coffee-dark font-medium text-sm hover:text-gold transition-colors duration-200">{item.valor}</a>
                   : <p data-i18n={item.valorKey} class="text-coffee-dark font-medium text-sm">{item.valor}</p>
@@ -133,8 +144,8 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Tiempo de respuesta -->
         <div class="reveal">
-          <p data-i18n="con.form.resp.tit" class="text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/40 mb-2">Tiempo de respuesta</p>
-          <p data-i18n-html="con.form.resp.txt" class="text-coffee/60 text-sm leading-relaxed">
+          <p data-i18n="con.form.resp.tit" class="text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Tiempo de respuesta</p>
+          <p data-i18n-html="con.form.resp.txt" class="text-coffee/85 text-sm leading-relaxed">
             Respondemos todos los mensajes en un plazo de <span class="text-coffee-dark font-semibold">24 a 48 horas hábiles.</span>
           </p>
         </div>
@@ -150,7 +161,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div class="min-w-0">
             <p data-i18n="con.fs.tit" class="text-coffee-dark font-semibold text-sm leading-tight">Descargar factsheet 2026</p>
-            <p data-i18n="con.fs.sub" class="text-coffee/45 text-xs mt-0.5">PDF · 3 MB · en español</p>
+            <p data-i18n="con.fs.sub" class="text-coffee/85 text-xs mt-0.5">PDF · 3 MB · en español</p>
           </div>
           <svg class="w-4 h-4 text-gold ml-auto shrink-0 group-hover:translate-y-0.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
@@ -158,8 +169,8 @@ import Layout from '../layouts/Layout.astro';
         </a>
       </div>
 
-      <!-- Formulario (3/5) -->
-      <div class="lg:col-span-3 reveal">
+      <!-- Formulario (derecha, ocupa las dos filas) -->
+      <div class="lg:col-span-3 lg:col-start-3 lg:row-start-1 lg:row-span-2 reveal">
         <form id="contactForm" class="scroll-mt-28 bg-white border border-cream-dark p-8 md:p-10 space-y-6">
 
           <!-- Banda dorada superior -->
@@ -167,33 +178,33 @@ import Layout from '../layouts/Layout.astro';
 
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label data-i18n="con.form.nombre" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Nombre *</label>
-              <input type="text" name="nombre" required
+              <label for="f-nombre" data-i18n="con.form.nombre" class="block text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Nombre *</label>
+              <input id="f-nombre" type="text" name="nombre" required
                 data-i18n-ph="con.form.nombre.ph"
-                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-base focus:outline-none focus:border-gold transition-colors duration-200"
                 placeholder="Tu nombre completo" />
             </div>
             <div>
-              <label data-i18n="con.form.empresa" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Empresa</label>
-              <input type="text" name="empresa"
+              <label for="f-empresa" data-i18n="con.form.empresa" class="block text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Empresa</label>
+              <input id="f-empresa" type="text" name="empresa"
                 data-i18n-ph="con.form.empresa.ph"
-                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+                class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-base focus:outline-none focus:border-gold transition-colors duration-200"
                 placeholder="Tu empresa (opcional)" />
             </div>
           </div>
 
           <div>
-            <label data-i18n="con.form.email" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Correo electrónico *</label>
-            <input type="email" name="email" required
+            <label for="f-email" data-i18n="con.form.email" class="block text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Correo electrónico *</label>
+            <input id="f-email" type="email" name="email" required
               data-i18n-ph="con.form.email.ph"
-              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-base focus:outline-none focus:border-gold transition-colors duration-200"
               placeholder="tu@correo.com" />
           </div>
 
           <div>
-            <label data-i18n="con.form.asunto" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Asunto</label>
-            <select name="asunto"
-              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200">
+            <label for="f-asunto" data-i18n="con.form.asunto" class="block text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Asunto</label>
+            <select id="f-asunto" name="asunto"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-base focus:outline-none focus:border-gold transition-colors duration-200">
               <option data-i18n-opt="con.form.asunto.ph" value="">Selecciona un tema</option>
               <option value="importacion" data-i18n-opt="con.form.opt1">Importación / Exportación</option>
               <option value="alianza" data-i18n-opt="con.form.opt2">Alianza comercial</option>
@@ -203,10 +214,10 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div>
-            <label data-i18n="con.form.msg" class="block text-[10px] font-bold tracking-[0.3em] uppercase text-coffee/50 mb-2">Mensaje *</label>
-            <textarea name="mensaje" rows="5" required
+            <label for="f-mensaje" data-i18n="con.form.msg" class="block text-xs font-bold tracking-[0.3em] uppercase text-coffee/85 mb-2">Mensaje *</label>
+            <textarea id="f-mensaje" name="mensaje" rows="5" required
               data-i18n-ph="con.form.msg.ph"
-              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-sm focus:outline-none focus:border-gold transition-colors duration-200 resize-none"
+              class="w-full border border-cream-dark bg-cream-light px-4 py-3 text-coffee-dark text-base focus:outline-none focus:border-gold transition-colors duration-200 resize-none"
               placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
           </div>
 
@@ -215,7 +226,7 @@ import Layout from '../layouts/Layout.astro';
                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
 
           <div class="flex items-center justify-between gap-4 pt-2">
-            <p data-i18n="con.form.req" class="text-coffee/35 text-[10px]">* Campos obligatorios</p>
+            <p data-i18n="con.form.req" class="text-coffee/85 text-xs">* Campos obligatorios</p>
             <button id="formSubmit" type="submit" class="btn-primary px-10 disabled:opacity-60 disabled:cursor-wait">
               <span id="formSubmitLabel" data-i18n="con.form.send">Enviar mensaje</span>
             </button>
@@ -224,13 +235,13 @@ import Layout from '../layouts/Layout.astro';
           <!-- Mensaje de confirmación -->
           <div id="formMsg" role="status" class="hidden border border-gold/30 bg-gold/5 px-5 py-4 text-center">
             <p data-i18n="con.form.ok.tit" class="text-coffee-dark text-sm font-semibold">✓ Mensaje enviado correctamente</p>
-            <p data-i18n="con.form.ok.sub" class="text-coffee/50 text-xs mt-1">Nos pondremos en contacto en las próximas 24–48 horas.</p>
+            <p data-i18n="con.form.ok.sub" class="text-coffee/85 text-xs mt-1">Nos pondremos en contacto en las próximas 24–48 horas.</p>
           </div>
 
           <!-- Mensaje de error -->
           <div id="formErr" role="alert" class="hidden border border-vino/30 bg-vino/5 px-5 py-4 text-center">
             <p data-i18n="con.form.err.tit" class="text-vino text-sm font-semibold">No pudimos enviar tu mensaje</p>
-            <p class="text-coffee/60 text-xs mt-1">
+            <p class="text-coffee/85 text-xs mt-1">
               <span data-i18n="con.form.err.sub">Inténtalo de nuevo o escríbenos directamente a</span>{' '}
               <a href="mailto:info@honducafeproyectos.com" class="font-semibold text-coffee-dark underline hover:text-gold">info@honducafeproyectos.com</a>
             </p>
@@ -244,7 +255,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ─── CIERRE ────────────────────────────────────────────────── -->
   <section class="py-20 bg-[#1C0E08] text-center relative overflow-hidden">
-    <span class="absolute font-display font-bold select-none pointer-events-none text-white/[0.025]"
+    <span aria-hidden="true" class="absolute font-display font-bold select-none pointer-events-none text-white/[0.025]"
           style="font-size:18vw; left:50%; top:50%; transform:translate(-50%,-50%);">1954</span>
     <!-- Deco: oval grande girando centro -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] pointer-events-none select-none opacity-[0.04] vec-spin" aria-hidden="true">
@@ -259,9 +270,9 @@ import Layout from '../layouts/Layout.astro';
       <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <div class="relative z-10 max-w-lg mx-auto px-6">
-      <p data-i18n="con.close.region" class="text-cream/30 text-[10px] tracking-[0.4em] uppercase mb-4">Honduras · Centroamérica</p>
+      <p data-i18n="con.close.region" class="text-cream/70 text-xs tracking-[0.4em] uppercase mb-4">Honduras · Centroamérica</p>
       <p class="font-display text-2xl font-bold text-white mb-2">COHONDUCAFE</p>
-      <p data-i18n="con.close.tagline" class="text-cream/40 text-sm">Más de 70 años exportando café hondureño al mundo.</p>
+      <p data-i18n="con.close.tagline" class="text-cream/70 text-sm">Más de 70 años exportando café hondureño al mundo.</p>
       <div class="flex items-center gap-4 justify-center mt-6">
         <div class="flex-1 h-px bg-white/8 max-w-20"></div>
         <span class="text-gold text-xs">✦</span>

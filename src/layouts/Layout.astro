@@ -37,7 +37,8 @@ const fullTitle = `${title} | COHONDUCAFE`;
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
   <link rel="sitemap" href="/sitemap-index.xml" />
-  <link rel="icon" type="image/png" href="/img/logos_varios/Logotipo_COHONDUCAFE_Colores.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <script src="/js/translations.js" is:inline></script>
 </head>
 <body class="overflow-x-hidden">
@@ -138,6 +139,13 @@ const fullTitle = `${title} | COHONDUCAFE`;
               });
             });
             pointSeries.data.push({ geometry: { type: 'Point', coordinates: [-86.5, 15] } });
+            /* Botones +/− para acercar (útiles sobre todo en celular) */
+            var zoom = chart.set('zoomControl', am5map.ZoomControl.new(root, {}));
+            [zoom.plusButton, zoom.minusButton].forEach(function (b) {
+              b.get('background').setAll({ fill: am5.color('#C49A3C'), fillOpacity: 1, stroke: am5.color('#0F3D28') });
+              b.get('background').states.create('hover', { fill: am5.color('#E0BA64') });
+              b.get('icon').setAll({ stroke: am5.color('#3E2410') });
+            });
             chart.appear(1000, 100);
           }
 

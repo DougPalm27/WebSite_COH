@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* ── Custom easing curves (Emil Kowalski) ───────────────────── */
 :root {
@@ -25,7 +25,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-block bg-gold text-white font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-gold-dark hover:tracking-wider;
+    @apply inline-block bg-gold text-coffee-dark font-sans font-bold text-sm tracking-widest uppercase px-8 py-4 hover:bg-gold-light hover:tracking-wider;
     transition: background-color 200ms var(--ease-out), letter-spacing 200ms var(--ease-out), transform 160ms var(--ease-out);
   }
   .btn-primary:active { transform: scale(0.97); }
@@ -132,7 +132,7 @@
 .leaf-info h3 {
   margin: 10px 0 8px;
   color: #C49A3C;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 4px;
   font-weight: 700;
   font-family: 'Montserrat', sans-serif;
@@ -416,7 +416,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .htl__card:hover .htl__year {
-    color: #C49A3C;
+    color: #7A5C1E;
     transform: scale(1.1);
   }
 }
@@ -492,7 +492,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 32px;
   font-weight: 700;
-  color: #C49A3C;
+  color: #E0BA64;
   line-height: 1;
   margin-bottom: 10px;
 }
@@ -502,7 +502,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   line-height: 1.65;
-  color: rgba(237, 227, 204, 0.80);
+  color: #F5EFE0;
   margin: 0;
 }
 
@@ -544,7 +544,7 @@
   box-shadow: 0 8px 30px #C49A3C18;
   background: #fffdf7;
 }
-.htl__item--active .htl__year { color: #C49A3C; }
+.htl__item--active .htl__year { color: #7A5C1E; }
 
 /* cursor pointer en items */
 .htl__item { cursor: pointer; }
@@ -592,7 +592,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(27,58,45,0.65);
+  color: rgba(27,58,45,0.92);
   margin: 0;
 }
 
@@ -694,7 +694,7 @@
 }
 .brand-card__tag {
   font-family: 'Montserrat', sans-serif;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -732,7 +732,7 @@
 }
 .brand-card__cta {
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -853,7 +853,7 @@
 .brand-min-card__tipo {
   display: block;
   font-family: 'Montserrat', sans-serif;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -1244,8 +1244,8 @@
   top: 50%;
   left: 50%;
   margin-top: -44px;
-  margin-left: -60px;
-  width: 120px;
+  margin-left: -68px;
+  width: 136px;
   min-height: 88px;
   background: #FBF8F2;
   border: 1px solid #E8DCC8;
@@ -1284,7 +1284,7 @@
 
 .orbit-item__label {
   font-family: 'Montserrat', sans-serif;
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
   color: #3E2410;
@@ -1354,6 +1354,7 @@
   border-color: rgba(196,154,60,0.5);
   color: #C49A3C;
 }
+.lang-pill-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
 .lang-globe { width: 14px; height: 14px; flex-shrink: 0; }
 .lang-caret { width: 8px; height: 8px; flex-shrink: 0; opacity: 0.5; transition: transform 200ms ease; }
 .lang-dropdown--open ~ .lang-pill .lang-caret,
@@ -1396,6 +1397,31 @@
 }
 .lang-opt-btn:hover { background: rgba(196,154,60,0.1); color: #C49A3C; }
 .lang-opt-btn--active { color: #C49A3C; }
-.lang-opt-flag   { font-size: 16px; line-height: 1; }
+.lang-opt-code   { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; min-width: 22px; }
 .lang-opt-native { font-size: 12px; }
 
+
+/* ── Contraste: dorado de texto sobre fondos claros ────────────────
+   El dorado de marca (#C49A3C) sobre crema da ~2.3:1. En secciones claras
+   los textos dorados usan el dorado oscuro gold-ink (#7A5C1E, ≥4.5:1).
+   Las clases de Tailwind se nombran como atributo ([class~=...]) a propósito:
+   con ".bg-cream-light", Tailwind copia la regla al body (que hace
+   @apply bg-cream-light) y la aplicaría a toda la página. */
+:is([class~="bg-cream"], [class~="bg-cream-light"], [class~="bg-white"], .tone-light) :is(.section-label, [class~="text-gold"]) {
+  color: #7A5C1E;
+}
+/* Dentro de una sección clara, los bloques oscuros recuperan el dorado de marca */
+:is([class~="bg-cream"], [class~="bg-cream-light"], [class~="bg-white"], .tone-light)
+  :is(.tone-dark, [class*="bg-[#1C0E08]"], [class~="bg-forest-dark"], [class~="bg-coffee"], [class~="bg-vino-dark"])
+  :is(.section-label, [class~="text-gold"]) {
+  color: #C49A3C;
+}
+/* Sobre el fondo café (Regiones), la etiqueta usa el dorado claro (4.8:1) */
+[class~="bg-coffee"] .section-label { color: #E0BA64; }
+
+/* Textos según el tipo de puntero: mouse (hover) o pantalla táctil */
+.only-touch { display: none; }
+@media (hover: none) {
+  .only-hover { display: none; }
+  .only-touch { display: block; }
+}

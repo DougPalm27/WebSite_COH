@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
     50%      { transform: translateY(20px) rotate(-4deg); }
   }
 </style>
-<footer class="bg-forest-dark text-cream/65 relative overflow-hidden">
+<footer class="bg-forest-dark text-cream/70 relative overflow-hidden">
 
   <!-- Decoraciones vectoriales de fondo -->
   <div class="absolute -left-24 top-0 w-72 h-72 pointer-events-none select-none opacity-[0.05]"
@@ -34,9 +34,9 @@ const year = new Date().getFullYear();
     <div class="lg:col-span-2">
       <a href="/" class="inline-flex items-center gap-3 mb-5 group">
         <img loading="lazy" decoding="async"
-          src="/img/logos_varios/Logotipo_COHONDUCAFE_Blanco.png"
+          src="/img/logos_varios/logo-cohonducafe-blanco-240.webp" width="240" height="194"
           alt="COHONDUCAFE"
-          class="h-9 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+          class="h-9 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
         />
       </a>
       <p data-i18n="footer.tagline" class="text-sm leading-relaxed max-w-xs mt-4 mb-6">
@@ -46,7 +46,7 @@ const year = new Date().getFullYear();
       <!-- Certificaciones mini -->
       <div class="flex flex-wrap gap-2">
         {['USDA Organic', 'Rainforest', 'Fairtrade'].map(cert => (
-          <span class="text-[8px] font-bold tracking-widest uppercase border border-white/15 text-white/40 px-2.5 py-1">
+          <span class="text-xs font-bold tracking-widest uppercase border border-white/15 text-white/70 px-2.5 py-1">
             {cert}
           </span>
         ))}
@@ -95,7 +95,7 @@ const year = new Date().getFullYear();
       </ul>
 
       <!-- CTA pequeño -->
-      <a href="/contacto" data-i18n="footer.cta" class="inline-block mt-8 text-[10px] font-bold tracking-[0.25em] uppercase border border-gold/40 text-gold px-5 py-2.5 hover:bg-gold hover:text-white hover:border-gold transition-colors duration-200">
+      <a href="/contacto" data-i18n="footer.cta" class="inline-block mt-8 text-xs font-bold tracking-[0.25em] uppercase border border-gold/40 text-gold px-5 py-2.5 hover:bg-gold hover:text-white hover:border-gold transition-colors duration-200">
         Escríbenos →
       </a>
     </div>
@@ -103,7 +103,7 @@ const year = new Date().getFullYear();
   </div>
 
   <!-- Bottom bar -->
-  <div class="border-t border-white/8 max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-cream/30">
+  <div class="border-t border-white/8 max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-cream/70">
     <span>&copy; {year} COHONDUCAFE. Todos los derechos reservados.</span>
     <span class="flex items-center gap-1.5">
       <span class="w-1 h-1 rounded-full bg-gold/50"></span>
