@@ -4,58 +4,54 @@ import Layout from '../layouts/Layout.astro';
 const marcas = [
   {
     slug: 'hosco',
+    i18nPrefix: 'mar.hosco',
     nombre: 'HOSCO',
     tipo: 'Comercialización & Exportación',
     desc: 'Exportación y comercialización de café hondureño de especialidad hacia mercados internacionales.',
-    img: '/img/marcas/Hosco/hosco.jpg',
+    img: '/img/marcas/Hosco/hosco.webp',
   },
   {
     slug: 'minahonda',
+    i18nPrefix: 'mar.mh',
     nombre: 'Mina Honda',
     tipo: 'Producción en Finca',
     desc: 'Finca modelo de producción sostenible en las alturas de Honduras.',
-    img: '/img/marcas/MinaHonda/minahonda.jpg',
+    img: '/img/marcas/MinaHonda/minahonda.webp',
   },
   {
     slug: 'fundacion',
-    nombre: 'Fundación Cohonducafe',
+    i18nPrefix: 'mar.fund',
+    nombre: 'Fundación COHONDUCAFE',
     tipo: 'Responsabilidad Social',
     desc: 'Desarrollo comunitario, educación y proyectos sociales para las familias cafetaleras.',
-    img: '/img/marcas/Fundacion/fundacion1.jpg',
+    img: '/img/marcas/Fundacion/fundacion1.webp',
   },
-];
-
-const aliados = [
-  { nombre: 'USAID',                   img: '/img/logos_varios/USAID_Horiz_Spanish_RGB_2-Color.png' },
-  { nombre: "JDE Peet's",              img: "/img/logos_varios/JDE Peet's LOGO.png" },
-  { nombre: 'Cadelga',                 img: '/img/logos_varios/Cadelga Logo Corporativo-01.png' },
-  { nombre: 'Fundación Cohonducafe',   img: '/img/logos_varios/LogoFundacion.png' },
 ];
 
 const stats = [
   {
-    num: '1954',
-    label: 'Establecido',
-    desc: 'Cuatro generaciones',
-    iconPath: 'M12 2C6 2 3 7 3 11c0 6 9 11 9 11s9-5 9-11c0-4-3-9-9-9z M12 2c0 0 5 6 0 11',
-  },
-  {
     num: '+70',
     label: 'Años de experiencia',
-    desc: 'Décadas de liderazgo',
+    desc: 'Cuatro generaciones',
     iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    num: '5',
-    label: 'Marcas & Empresas',
-    desc: 'Ecosistema integrado',
-    iconPath: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+    num: '+40,000',
+    label: 'Hogares productores',
+    desc: 'Trabajo directo',
+    iconPath: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
   },
   {
-    num: '100%',
-    label: 'Café hondureño',
-    desc: 'Origen certificado',
-    iconPath: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+    num: '+200,000',
+    label: 'Personas beneficiadas',
+    desc: 'En zonas cafetaleras',
+    iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    num: '30%',
+    label: 'De la producción nacional',
+    desc: 'Exportada en 2022',
+    iconPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
   },
 ];
 ---
@@ -104,15 +100,17 @@ const stats = [
 
       <!-- Diapositivas -->
       {[
-        '/img/hero/hero1.jpg',
-        '/img/hero/hero3.jpg',
-        '/img/hero/hero4.jpg',
-        '/img/hero/hero5.jpg',
-        '/img/hero/hero6.jpeg',
-        '/img/hero/hero7.png',
+        '/img/hero/hero1.webp',
+        '/img/hero/hero3.webp',
+        '/img/hero/hero4.webp',
+        '/img/hero/hero5.webp',
+        '/img/hero/hero6.webp',
+        '/img/hero/hero7.webp',
       ].map((src, i) => (
         <img
-          src={src}
+          src={i === 0 ? src : undefined}
+          data-src={i === 0 ? undefined : src}
+          fetchpriority={i === 0 ? 'high' : undefined}
           alt=""
           aria-hidden="true"
           class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-in-out"
@@ -134,6 +132,7 @@ const stats = [
             class="hero-dot w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-gold transition-colors duration-200"
             data-index={i}
             aria-label={`Imagen ${i + 1}`}
+            data-i18n-aria="a11y.slide" data-i18n-n={i + 1}
           ></button>
         ))}
       </div>
@@ -162,11 +161,13 @@ const stats = [
 
           <!-- Título principal -->
           <div class="hero-titles-float">
-            <div class="overflow-hidden mb-3">
-              <h1 id="hero-title" class="hero-v3__h1a font-display font-bold text-white leading-[0.9] tracking-tight"
+            <!-- h1 fijo para buscadores y lectores de pantalla; el título visual rota con cada slide -->
+            <h1 data-i18n="idx.hero.h1" class="sr-only">COHONDUCAFE — Café hondureño de especialidad desde 1954</h1>
+            <div class="overflow-hidden mb-3" aria-hidden="true">
+              <p id="hero-title" class="hero-v3__h1a font-display font-bold text-white leading-[0.9] tracking-tight"
                   style="font-size:clamp(2rem,5.8vw,5.2rem)">
                 COHONDUCAFE
-              </h1>
+              </p>
             </div>
             <div class="overflow-hidden mb-9">
               <p id="hero-sub" data-i18n="idx.hero.slide0.sub" class="hero-v3__h1b font-display font-bold text-gold italic leading-[1.1] tracking-tight"
@@ -289,19 +290,29 @@ const stats = [
         updateText(current);
       }
 
+      /* Cargar el resto de diapositivas cuando la página ya terminó de cargar */
+      function loadRest() {
+        imgSlides.forEach(function (img) {
+          if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+        });
+      }
+      if (document.readyState === 'complete') loadRest();
+      else window.addEventListener('load', loadRest);
+
       /* Activar primer dot */
       dots[0].classList.remove('bg-white/30');
       dots[0].classList.add('bg-gold');
 
-      /* Auto-avance cada 6 s */
-      var timer = setInterval(function () { goTo(current + 1); }, 6000);
+      /* Auto-avance cada 6 s (desactivado si el usuario pidió reducir el movimiento) */
+      var autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var timer = autoplay ? setInterval(function () { goTo(current + 1); }, 6000) : null;
 
       /* Click en dots */
       dots.forEach(function (dot, i) {
         dot.addEventListener('click', function () {
           clearInterval(timer);
           goTo(i);
-          timer = setInterval(function () { goTo(current + 1); }, 6000);
+          if (autoplay) timer = setInterval(function () { goTo(current + 1); }, 6000);
         });
       });
 
@@ -321,8 +332,8 @@ const stats = [
     <!-- Ticker animado -->
     <div class="relative z-10 border-t border-white/6 overflow-hidden py-3.5">
       <div class="hero-v3__ticker flex whitespace-nowrap text-[9.5px] font-bold tracking-[0.42em] uppercase text-cream/25 select-none">
-        <span class="pr-12">DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp;</span>
-        <span class="pr-12">DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp; DE LA FINCA A TU TAZA &nbsp;·&nbsp;</span>
+        <span class="pr-12"><span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp;</span>
+        <span class="pr-12"><span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp; <span data-i18n="idx.ticker">DE LA FINCA A TU TAZA</span> &nbsp;·&nbsp;</span>
       </div>
     </div>
 
@@ -330,8 +341,8 @@ const stats = [
     <div class="relative z-10 flex justify-center pb-5">
       <a href="#stats"
          class="scroll-cue text-cream/20 hover:text-gold transition-colors duration-200"
-         aria-label="Desplázate hacia abajo">
-        <span class="text-[9px] font-bold tracking-[0.35em] uppercase">Scroll</span>
+         aria-label="Desplázate hacia abajo" data-i18n-aria="a11y.scroll">
+        <span data-i18n="idx.scroll" class="text-[9px] font-bold tracking-[0.35em] uppercase">Scroll</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
         </svg>
@@ -345,21 +356,21 @@ const stats = [
     <div class="gold-rule absolute inset-x-0 top-0"></div>
     <!-- Decoración: oval girando fondo derecha -->
     <div class="absolute -right-32 -top-32 w-96 h-96 pointer-events-none select-none opacity-[0.07] text-coffee vec-spin" aria-hidden="true">
-      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.4);" />
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.4);" />
     </div>
     <!-- Decoración: oval-alt girando sentido contrario izquierda -->
     <div class="absolute -left-20 -bottom-20 w-72 h-72 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
-      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+      <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
     </div>
     <!-- Decoración: grano de café flotando -->
     <div class="absolute right-[12%] bottom-4 w-16 h-16 pointer-events-none select-none opacity-[0.08] vec-float" aria-hidden="true">
-      <img src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+      <img loading="lazy" decoding="async" src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="grid grid-cols-2 md:grid-cols-4">
         {stats.map((item, i) => (
           <div
-            class={`stat-group text-center py-10 px-4 md:px-8 reveal ${i > 0 ? 'border-l border-gold/15' : ''}`}
+            class={`stat-group text-center py-10 px-2 md:px-4 reveal ${i > 0 ? 'border-l border-gold/15' : ''}`}
             style={`transition-delay:${i * 0.09}s`}
           >
             <div class="stat-icon">
@@ -438,29 +449,29 @@ const stats = [
   <section id="about-intro" class="py-24 bg-cream-light overflow-hidden relative">
     <!-- Decoración: planta de café grande derecha superior -->
     <div class="absolute -right-16 -top-10 w-80 h-96 pointer-events-none select-none opacity-[0.05] vec-drift" aria-hidden="true">
-      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.6);" />
+      <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.6);" />
     </div>
     <!-- Decoración: oval pulsante centro izquierda -->
     <div class="absolute -left-24 top-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none select-none vec-pulse" aria-hidden="true">
-      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+      <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
 
       <!-- Imágenes apiladas -->
       <div class="relative h-[500px]">
-        <img
-          src="/img/raices_profundas/raiz1.jpg"
-          alt="Cultivo de café Cohonducafe"
+        <img loading="lazy" decoding="async"
+          src="/img/raices_profundas/raiz1.webp"
+          alt="Cultivo de café COHONDUCAFE"
           class="about-clip-left absolute top-0 left-0 w-3/4 h-80 object-cover shadow-2xl"
         />
-        <img
-          src="/img/raices_profundas/raiz2.png"
+        <img loading="lazy" decoding="async"
+          src="/img/raices_profundas/raiz2.webp"
           alt="Comunidad cafetalera"
           class="about-clip-right absolute bottom-0 right-0 w-3/4 h-72 object-cover shadow-2xl border-8 border-cream-light"
         />
         <div class="about-badge absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full bg-gold flex flex-col items-center justify-center text-white shadow-xl">
           <span class="about-badge-num font-display text-2xl font-bold leading-none">70+</span>
-          <span class="text-xs font-semibold tracking-wider uppercase mt-1">años</span>
+          <span data-i18n="idx.about.yrs" class="text-xs font-semibold tracking-wider uppercase mt-1">años</span>
         </div>
       </div>
 
@@ -471,7 +482,7 @@ const stats = [
           <span data-i18n="idx.about.h2a">Una empresa</span><br/><span data-i18n="idx.about.h2b" class="italic text-coffee">con raíces profundas</span>
         </h2>
         <p data-i18n="idx.about.p1" class="text-coffee/80 leading-relaxed mb-5 reveal">
-          COHONDUCAFE nació en 1954 como una cooperativa cafetalera en las montañas de Honduras. Hoy somos un grupo empresarial integrado que abarca desde la producción en finca hasta la exportación internacional.
+          COHONDUCAFE nació en 1954 como una empresa familiar cafetalera en las montañas de Honduras. Hoy somos un grupo empresarial integrado que abarca desde la producción en finca hasta la exportación internacional.
         </p>
         <p data-i18n="idx.about.p2" class="text-coffee/80 leading-relaxed mb-8 reveal">
           Nuestro modelo une calidad de grano, responsabilidad ambiental y desarrollo comunitario — porque creemos que el mejor café viene de comunidades prósperas y bosques sanos.
@@ -480,7 +491,7 @@ const stats = [
 
         <!-- Certificaciones -->
         <div class="mt-10 pt-8 border-t border-forest/10 reveal" style="transition-delay:0.35s">
-          <p class="text-[9px] text-gold font-bold tracking-[0.3em] uppercase mb-3">Certificaciones internacionales</p>
+          <p data-i18n="idx.about.certs" class="text-[9px] text-gold font-bold tracking-[0.3em] uppercase mb-3">Certificaciones internacionales</p>
           <div class="flex flex-wrap gap-2">
             {['USDA Organic', 'EU Organic', '4C', 'Rainforest Alliance', 'Fairtrade'].map(cert => (
               <span class="text-[9px] font-bold tracking-widest uppercase border border-coffee/20 text-coffee/60 px-3 py-1.5 hover:border-gold hover:text-gold transition-all duration-200 cursor-default">
@@ -540,17 +551,17 @@ const stats = [
   <section class="alianzas-section relative overflow-hidden">
     <!-- Decoración: oval grande girando fondo -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none select-none opacity-[0.04] vec-spin" aria-hidden="true">
-      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <!-- Decoración: coffee flotando esquina inferior izquierda -->
     <div class="absolute -left-10 bottom-0 w-48 h-60 pointer-events-none select-none opacity-[0.06] vec-float-rev" aria-hidden="true">
-      <img src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 py-24">
-      <div class="flex flex-col lg:flex-row lg:items-center gap-16 xl:gap-20">
+      <div class="flex flex-col xl:flex-row xl:items-center gap-16 xl:gap-20">
 
         <!-- IZQUIERDA: Plan Estratégico -->
-        <div class="lg:w-[400px] shrink-0">
+        <div class="max-w-xl xl:max-w-none xl:w-[400px] shrink-0">
           <p data-i18n="idx.ali.label" class="section-label mb-4 reveal">Red de colaboración</p>
           <h2 data-i18n="idx.ali.h2" class="font-display text-4xl font-bold text-coffee-dark mb-10 reveal">Alianzas Estratégicas</h2>
 
@@ -561,29 +572,28 @@ const stats = [
               Nos esforzamos en apoyar a los caficultores y sus familias para la mejora de sus condiciones de vida y el aumento de sus ingresos.
             </p>
             <p data-i18n="idx.ali.p2" class="text-coffee/70 text-sm leading-relaxed mb-4">
-              Trabajamos directamente con más de 40.000 hogares productores de café en las zonas más remotas del país, beneficiando a más de 200.000 familias de bajos ingresos.
+              Trabajamos directamente con más de 40.000 hogares productores de café en las zonas más remotas del país, beneficiando a más de 200.000 personas de bajos ingresos.
             </p>
             <p data-i18n="idx.ali.p3" class="text-coffee/70 text-sm leading-relaxed">
               Nuestro objetivo es aumentar la productividad por hectárea mediante las mejores prácticas agrícolas y la gestión adecuada de nuestros recursos naturales.
             </p>
           </div>
-
-          <!-- Stats -->
-          <div class="flex flex-wrap gap-3 mt-8 reveal">
-            <div class="border border-gold/30 px-4 py-3">
-              <div class="font-display text-2xl font-bold text-gold leading-none">+40,000</div>
-              <div class="text-[9px] text-coffee/50 font-bold tracking-[0.25em] uppercase mt-1">Hogares productores</div>
-            </div>
-            <div class="border border-gold/30 px-4 py-3">
-              <div class="font-display text-2xl font-bold text-gold leading-none">+200,000</div>
-              <div class="text-[9px] text-coffee/50 font-bold tracking-[0.25em] uppercase mt-1">Familias beneficiadas</div>
-            </div>
-          </div>
         </div>
 
         <!-- DERECHA: Orbit -->
-        <div class="flex-1 flex justify-center items-center">
+        <div class="flex-1 min-w-0 flex justify-center items-center">
           <div class="orbit-wrap">
+
+        <!-- Red de conexiones: anillo que une a los aliados + enlaces hacia el centro (JS los mueve) -->
+        <svg class="orbit-links" viewBox="0 0 700 700" aria-hidden="true">
+          <circle cx="350" cy="350" r="290" class="orbit-links__ring" />
+          {[0,1,2,3,4,5].map(() => (
+            <g class="orbit-links__spoke">
+              <line x1="350" y1="350" x2="350" y2="350" />
+              <circle cx="350" cy="350" r="3.5" />
+            </g>
+          ))}
+        </svg>
 
         <!-- SVG Tostadora (centro) -->
         <div class="orbit-center">
@@ -686,6 +696,10 @@ const stats = [
             <circle cx="120" cy="120" r="7"  fill="#E8DCC8"/>
             <circle cx="120" cy="120" r="3"  fill="#8C6239"/>
           </svg>
+          <!-- Marca madre al centro del ecosistema -->
+          <div class="orbit-badge">
+            <img loading="lazy" decoding="async" src="/img/logos_varios/logo-cohonducafe-colores-360.webp" alt="COHONDUCAFE" width="360" height="292" />
+          </div>
         </div>
 
         <!-- 6 aliados — posición inicial, JS los anima -->
@@ -696,9 +710,9 @@ const stats = [
           { label: 'Importadores Internacionales',                 angle:  90  },
           { label: 'Caficultores Directos',                        angle:  150 },
           { label: 'ONGs, Iniciativas Sociales y Humanitarias',    angle: -150 },
-        ].map((item) => (
+        ].map((item, i) => (
           <div class="orbit-item" data-start-angle={item.angle}>
-            <p class="orbit-item__label">{item.label}</p>
+            <p data-i18n={`idx.orbit.${i}`} class="orbit-item__label">{item.label}</p>
           </div>
         ))}
 
@@ -716,25 +730,51 @@ const stats = [
       var startAngles = items.map(function(el) {
         return parseFloat(el.dataset.startAngle) || 0;
       });
-      var startTime = null;
+      var stacked = window.matchMedia('(max-width: 767px)');           /* versión apilada: sin órbita */
+      var still   = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var elapsed = 0, last = null, raf = null, visible = false;
 
-      function tick(ts) {
-        if (!startTime) startTime = ts;
-        var delta = ((ts - startTime) % period) / period * 360;
+      var spokes = Array.from(wrap.querySelectorAll('.orbit-links__spoke'));
+      var RIM = 222; /* borde de la tostadora, en unidades del viewBox (700) */
 
+      function place(delta) {
         items.forEach(function(item, i) {
-          var deg = startAngles[i] + delta;
-          var rad = deg * Math.PI / 180;
-          var x   = Math.round(Math.cos(rad) * radius);
-          var y   = Math.round(Math.sin(rad) * radius);
+          var rad = (startAngles[i] + delta) * Math.PI / 180;
+          var cos = Math.cos(rad), sin = Math.sin(rad);
           /* translate centra el item en su punto orbital */
-          item.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+          item.style.transform = 'translate(' + Math.round(cos * radius) + 'px, ' + Math.round(sin * radius) + 'px)';
+          /* enlace desde el borde de la tostadora hasta el aliado */
+          var sp = spokes[i];
+          if (sp) {
+            var line = sp.firstElementChild, dot = sp.lastElementChild;
+            var x1 = 350 + cos * RIM, y1 = 350 + sin * RIM;
+            line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+            line.setAttribute('x2', 350 + cos * radius); line.setAttribute('y2', 350 + sin * radius);
+            dot.setAttribute('cx', x1); dot.setAttribute('cy', y1);
+          }
         });
-
-        requestAnimationFrame(tick);
       }
 
-      requestAnimationFrame(tick);
+      function tick(ts) {
+        if (last !== null) elapsed += ts - last;
+        last = ts;
+        place((elapsed % period) / period * 360);
+        raf = requestAnimationFrame(tick);
+      }
+
+      function update() {
+        var run = visible && !stacked.matches && !still.matches;
+        if (run && raf === null) { last = null; raf = requestAnimationFrame(tick); }
+        if (!run && raf !== null) { cancelAnimationFrame(raf); raf = null; }
+      }
+
+      place(0); /* posición inicial (y definitiva si no hay animación) */
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        update();
+      }).observe(wrap);
+      stacked.addEventListener('change', update);
+      still.addEventListener('change', update);
     })();
     </script>
     </div>
@@ -746,15 +786,15 @@ const stats = [
   <section class="py-24 bg-forest-dark overflow-hidden relative">
     <!-- Decoración: oval superior derecha -->
     <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.07] vec-spin-rev" aria-hidden="true">
-      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <!-- Decoración: marker flotando izquierda -->
     <div class="absolute left-8 top-16 w-10 h-14 pointer-events-none select-none opacity-[0.12] vec-float" aria-hidden="true">
-      <img src="/svg/marker.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/marker.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <!-- Decoración: oval-alt inferior izquierda -->
     <div class="absolute -left-16 bottom-8 w-56 h-56 pointer-events-none select-none opacity-[0.06] vec-spin" aria-hidden="true">
-      <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
@@ -771,11 +811,11 @@ const stats = [
       <div class="flex flex-wrap justify-center gap-6 mt-8 reveal">
         <div class="flex items-center gap-2">
           <span class="w-4 h-4 rounded-sm inline-block" style="background:#4A7C59"></span>
-          <span class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
+          <span data-i18n="idx.map.leg1" class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
         </div>
         <div class="flex items-center gap-2">
           <span class="w-4 h-4 rounded-sm inline-block bg-gold"></span>
-          <span class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
+          <span data-i18n="idx.map.leg2" class="text-cream/60 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
         </div>
       </div>
 
@@ -785,7 +825,7 @@ const stats = [
   <!-- ─── VIDEO GENERAL ───────────────────────────────────────────── -->
   <section class="relative bg-[#0F1A12] overflow-hidden">
     <video
-      autoplay muted loop playsinline preload="metadata"
+      data-lazy-video muted loop playsinline preload="none"
       class="w-full max-h-[70vh] object-cover"
       style="display:block;">
       <source src="/img/video_inicio_final/General.mp4" type="video/mp4" />
@@ -833,13 +873,13 @@ const stats = [
               ? 'h-[480px] lg:h-auto lg:row-span-2'
               : 'h-[300px] lg:h-auto'
           }`}>
-            <img
+            <img loading="lazy" decoding="async"
               src={m.img}
               alt={m.nombre}
               onerror="this.style.background='#4F1B23';this.style.display='block'"
             />
             <div class="brand-min-card__info">
-              <span class="brand-min-card__tipo">{m.tipo}</span>
+              <span data-i18n={`${m.i18nPrefix}.tipo`} class="brand-min-card__tipo">{m.tipo}</span>
               <h3 class="brand-min-card__name">{m.nombre}</h3>
             </div>
           </a>
@@ -847,7 +887,7 @@ const stats = [
       </div>
 
       <div class="text-center mt-12 reveal">
-        <a href="/marcas" class="btn-outline">Ver todas las marcas</a>
+        <a href="/marcas" class="btn-outline"><span data-i18n="idx.brands.cta">Ver todas las marcas</span></a>
       </div>
 
     </div>
@@ -876,15 +916,15 @@ const stats = [
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent"></div>
     <!-- Decoración: coffee grande fondo izquierda -->
     <div class="absolute -left-20 top-1/2 -translate-y-1/2 w-72 h-88 pointer-events-none select-none opacity-[0.05] vec-float" aria-hidden="true">
-      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+      <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
     </div>
     <!-- Decoración: coffee espejo fondo derecha -->
     <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-72 h-88 pointer-events-none select-none opacity-[0.05] vec-float-rev" aria-hidden="true" style="transform: scaleX(-1);">
-      <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
+      <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.5);" />
     </div>
     <!-- Decoración: oval central pulsante -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 pointer-events-none select-none vec-pulse" aria-hidden="true">
-      <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full" style="filter: sepia(1) saturate(0.3);" />
     </div>
 
     <div class="max-w-2xl mx-auto px-6 text-center relative z-10">
@@ -899,23 +939,28 @@ const stats = [
         <div class="h-px w-10 bg-gold/40"></div>
       </div>
 
-      <p data-i18n="idx.cta.label" class="section-label mb-5 reveal">¿Hablamos?</p>
+      <p data-i18n="idx.cta.label" class="section-label mb-5 reveal">Importadores y tostadores</p>
 
       <h2 data-i18n="idx.cta.h2" class="font-display text-4xl md:text-5xl font-bold text-coffee-dark leading-tight mb-6 reveal">
-        Conecta con nosotros
+        ¿Buscas café hondureño de calidad?
       </h2>
 
       <p data-i18n="idx.cta.para" class="text-coffee/65 text-lg leading-relaxed mb-10 max-w-md mx-auto reveal">
-        Si eres importador, distribuidor o tostador y quieres conocer nuestro café, nos encantaría escucharte.
+        Cuéntanos qué volumen, perfil y certificaciones necesitas. Más de 70 años exportando café hondureño respaldan cada lote.
       </p>
 
       <div class="flex flex-wrap justify-center gap-4 reveal">
-        <a href="/contacto" class="btn-primary"><span data-i18n="idx.cta.btn1">Escríbenos</span></a>
-        <a href="/marcas"
+        <a href="/contacto?tema=importacion" class="btn-primary"><span data-i18n="idx.cta.btn1">Hablemos de negocios</span></a>
+        <a href="/marcas#hosco"
            class="border border-coffee/25 text-coffee font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-coffee hover:text-cream transition-colors duration-200">
-          <span data-i18n="idx.cta.btn2">Ver nuestras marcas</span>
+          <span data-i18n="idx.cta.btn2">Conoce nuestro café</span>
         </a>
       </div>
+
+      <p class="text-coffee/45 text-xs mt-8 reveal">
+        <span data-i18n="idx.cta.note">Respuesta en 24–48 horas hábiles</span> ·
+        <a href="mailto:info@honducafeproyectos.com" class="text-coffee/70 font-semibold hover:text-gold transition-colors duration-200">info@honducafeproyectos.com</a>
+      </p>
 
     </div>
 

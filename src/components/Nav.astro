@@ -38,13 +38,13 @@ const current = Astro.url.pathname;
         );
       })}
       <!-- Language switcher -->
-      <div id="lang-switcher"></div>
+      <div id="lang-switcher" class="lang-switcher"></div>
     </nav>
 
     <!-- Right side mobile: lang pill + hamburger -->
     <div class="md:hidden flex items-center gap-3">
-      <div id="lang-switcher-mobile"></div>
-      <button id="menuBtn" class="text-white p-2" aria-label="Menú" aria-expanded="false">
+      <div id="lang-switcher-mobile" class="lang-switcher"></div>
+      <button id="menuBtn" class="text-white p-2" aria-label="Menú" data-i18n-aria="a11y.menu" aria-expanded="false">
         <svg id="iconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -76,37 +76,6 @@ const current = Astro.url.pathname;
     </nav>
   </div>
 </header>
-
-<script is:inline>
-(function () {
-  /* Clone lang-switcher into mobile slot */
-  function cloneSwitcherToMobile() {
-    var src  = document.getElementById('lang-switcher');
-    var dest = document.getElementById('lang-switcher-mobile');
-    if (!src || !dest || dest.children.length > 0) return;
-    var clone = src.cloneNode(true);
-    clone.id = 'lang-switcher-mobile-inner';
-    /* re-wire click events by removing innerHTML and re-running buildSwitcher in the clone */
-    dest.innerHTML = src.innerHTML;
-    /* sync clicks back to main switcher */
-    dest.querySelectorAll('.lang-opt-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (window.__cohonSetLang) window.__cohonSetLang(btn.dataset.lang);
-      });
-    });
-  }
-
-  /* Wait for i18n to build the switcher then clone */
-  var tries = 0;
-  var id = setInterval(function () {
-    var src = document.getElementById('lang-switcher');
-    if ((src && src.innerHTML) || ++tries > 40) {
-      clearInterval(id);
-      cloneSwitcherToMobile();
-    }
-  }, 80);
-})();
-</script>
 
 <script>
   const navbar    = document.getElementById('navbar')!;

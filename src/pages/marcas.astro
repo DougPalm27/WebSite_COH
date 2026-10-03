@@ -1,25 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// Marca madre: se presenta aparte, no como una marca más
+const grupo = {
+  tipo: 'Marca madre · Desde 1954',
+  desc: 'COHONDUCAFE nació en 1954 como una empresa familiar cafetalera en las montañas de Honduras. Hoy es el grupo que respalda a tres marcas especializadas, uniendo calidad de grano, responsabilidad ambiental y desarrollo comunitario en toda la cadena del café.',
+  features: [
+    { label: 'Desde 1954', sub: 'Tradición familiar' },
+    { label: '100% café hondureño', sub: 'Calidad de origen' },
+    { label: 'Cadena de valor integrada', sub: 'De la finca a la exportación' },
+    { label: 'Desarrollo comunitario', sub: 'Compromiso ambiental y social' },
+  ],
+  img: '/img/marcas/cohonducafe.webp',
+  imgs: ['/img/cohonducafe/export1.webp', '/img/cohonducafe/export2.webp'],
+};
+
 const marcas = [
-  {
-    id: 'honducafe',
-    i18nPrefix: 'mar.hc',
-    nombre: 'Honducafé',
-    tipo: 'Empresa',
-    desc: 'Honducafé nació en 1954 como una cooperativa cafetalera en las montañas de Honduras. Hoy es un grupo empresarial integrado que abarca desde la producción en finca hasta la exportación internacional, uniendo calidad de grano, responsabilidad ambiental y desarrollo comunitario.',
-    features: [
-      { label: 'Desde 1954', sub: 'Tradición familiar' },
-      { label: '100% café hondureño', sub: 'Calidad de origen' },
-      { label: 'Cadena de valor integrada', sub: 'De la finca a la exportación' },
-      { label: 'Desarrollo comunitario', sub: 'Compromiso ambiental y social' },
-    ],
-    img: '/img/marcas/cohonducafe.jpg',
-    imgs: ['/img/cohonducafe/export1.jpg', '/img/cohonducafe/export2.jpg'],
-    accentColor: '#A8632E',
-    bgDark: '#170B04',
-    cta: 'Conocer Honducafé',
-  },
   {
     id: 'hosco',
     i18nPrefix: 'mar.hosco',
@@ -32,8 +28,8 @@ const marcas = [
       { label: 'Trazabilidad completa', sub: 'Del grano a la taza' },
       { label: 'Relaciones directas', sub: 'Con tostadoras internacionales' },
     ],
-    img: '/img/marcas/Hosco/hosco.jpg',
-    imgs: ['/img/marcas/Hosco/hosco1.jpg', '/img/marcas/Hosco/hosco2.jpg'],
+    img: '/img/marcas/Hosco/hosco.webp',
+    imgs: ['/img/marcas/Hosco/hosco1.webp', '/img/marcas/Hosco/hosco2.webp'],
     accentColor: '#C49A3C',
     bgDark: '#1C0E08',
     cta: 'Exportar con HOSCO',
@@ -50,8 +46,8 @@ const marcas = [
       { label: 'Beneficio húmedo propio', sub: 'Control total del proceso' },
       { label: 'Catuaí · Bourbon · Pacas', sub: 'Variedades cultivadas' },
     ],
-    img: '/img/marcas/MinaHonda/minahonda.jpg',
-    imgs: ['/img/marcas/MinaHonda/granos.jpeg', '/img/marcas/MinaHonda/Vivero mina honda, yorito.png'],
+    img: '/img/marcas/MinaHonda/minahonda.webp',
+    imgs: ['/img/marcas/MinaHonda/granos.webp', '/img/marcas/MinaHonda/Vivero mina honda, yorito.webp'],
     accentColor: '#8B6914',
     bgDark: '#1C1005',
     cta: 'Conocer la finca',
@@ -59,17 +55,17 @@ const marcas = [
   {
     id: 'fundacion',
     i18nPrefix: 'mar.fund',
-    nombre: 'Fundación Cohonducafe',
+    nombre: 'Fundación COHONDUCAFE',
     tipo: 'Responsabilidad Social',
-    desc: 'La Fundación Cohonducafe es el corazón social de nuestro grupo. Trabaja en mejorar la calidad de vida de las familias cafetaleras hondureñas a través de programas de educación, salud, equidad de género y desarrollo productivo.',
+    desc: 'La Fundación COHONDUCAFE es el corazón social de nuestro grupo. Trabaja en mejorar la calidad de vida de las familias cafetaleras hondureñas a través de programas de educación, salud, equidad de género y desarrollo productivo.',
     features: [
       { label: 'Becas educativas', sub: 'Para hijos de productores' },
       { label: 'Equidad de género', sub: 'Talleres y programas activos' },
       { label: 'Capacitación técnica', sub: 'A más de 20,000 productores' },
       { label: 'Seguridad alimentaria', sub: 'Proyectos en zonas rurales' },
     ],
-    img: '/img/marcas/Fundacion/fundacion1.jpg',
-    imgs: ['/img/marcas/Fundacion/fundacion2.JPG', '/img/marcas/Fundacion/fundacion3.JPG'],
+    img: '/img/marcas/Fundacion/fundacion1.webp',
+    imgs: ['/img/marcas/Fundacion/fundacion2.webp', '/img/marcas/Fundacion/fundacion3.webp'],
     accentColor: '#C49A3C',
     bgDark: '#100A02',
     cta: 'Conocer la fundación',
@@ -92,7 +88,7 @@ const marcas = [
   .vec-pulse     { animation: vec-pulse-scale  9s ease-in-out infinite; }
 </style>
 
-<Layout title="Marcas & Empresas" description="Las marcas y empresas de COHONDUCAFE: HOSCO, Mina Honda y Fundación Cohonducafe.">
+<Layout title="Marcas & Empresas" description="Las marcas y empresas de COHONDUCAFE: HOSCO, Mina Honda y Fundación COHONDUCAFE.">
 
   <!-- ─── PAGE HEADER ───────────────────────────────────────────── -->
   <section class="relative h-[70vh] min-h-96 flex items-end overflow-hidden">
@@ -117,7 +113,7 @@ const marcas = [
         <span data-i18n="mar.header.h1a">Marcas &</span><br/><span data-i18n="mar.header.h1b" class="text-gold italic">Empresas.</span>
       </h1>
       <p data-i18n="mar.header.sub" class="text-cream/50 mt-4 max-w-md text-base leading-relaxed">
-        Tres unidades especializadas que cubren toda la cadena del café — desde la semilla hasta la taza.
+        Tres marcas especializadas, respaldadas por COHONDUCAFE, que cubren toda la cadena del café — desde la semilla hasta la taza.
       </p>
       <!-- Pills de marcas en el header -->
       <div class="flex flex-wrap gap-3 mt-8">
@@ -128,6 +124,73 @@ const marcas = [
             {m.nombre}
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EL GRUPO: MARCA MADRE ─────────────────────────────────── -->
+  <section id="grupo" class="relative overflow-hidden bg-[#1C0E08] py-24">
+    <div class="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
+    <div class="absolute -right-24 -top-24 w-96 h-96 pointer-events-none select-none opacity-[0.05] vec-spin" aria-hidden="true">
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Texto -->
+        <div>
+          <p data-i18n="mar.hc.tipo" class="section-label mb-5 reveal">{grupo.tipo}</p>
+          <h2 class="font-display font-bold text-white leading-none mb-8 reveal" style="font-size:clamp(2.4rem,5vw,4rem);">COHONDUCAFE</h2>
+          <p data-i18n="mar.hc.desc" class="text-cream/65 leading-relaxed text-lg mb-10 reveal">{grupo.desc}</p>
+
+          <div class="grid grid-cols-2 gap-x-8 gap-y-6 reveal">
+            {grupo.features.map((f, fi) => (
+              <div class="border-l-2 border-gold/50 pl-4">
+                <p data-i18n={`mar.hc.f${fi}.lbl`} class="font-display font-bold text-white text-base leading-tight">{f.label}</p>
+                <p data-i18n={`mar.hc.f${fi}.sub`} class="text-cream/40 text-xs mt-1">{f.sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Imágenes -->
+        <div class="reveal">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img loading="lazy" decoding="async" src={grupo.img} alt="COHONDUCAFE" class="w-full h-full object-cover" />
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-2">
+            {grupo.imgs.map(src => (
+              <div class="aspect-video overflow-hidden">
+                <img loading="lazy" decoding="async" src={src} alt="COHONDUCAFE" class="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Las tres marcas del grupo -->
+      <div class="mt-20 reveal">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent to-gold/40"></div>
+          <p data-i18n="mar.hc.brands" class="text-gold text-[11px] font-bold tracking-[0.35em] uppercase text-center">Tres marcas, un mismo origen</p>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent to-gold/40"></div>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {marcas.map(m => (
+            <a href={`#${m.id}`}
+               class="marcas-jump group flex items-center justify-between gap-4 border border-white/10 bg-white/[0.03] px-6 py-5 hover:border-gold/50 hover:bg-white/[0.06] transition-colors duration-200"
+               data-tab={m.id}>
+              <div class="min-w-0">
+                <p class="font-display font-bold text-white text-xl leading-tight">{m.nombre}</p>
+                <p data-i18n={`${m.i18nPrefix}.tipo`} class="text-xs mt-1 text-gold/80">{m.tipo}</p>
+              </div>
+              <svg class="w-4 h-4 text-gold shrink-0 group-hover:translate-y-0.5 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -155,35 +218,35 @@ const marcas = [
       <!-- Deco vectorial por sección de marca (varía por índice) -->
       {i === 0 && <>
         <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.06] vec-spin" aria-hidden="true">
-          <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
+          <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
         </div>
         <div class="absolute left-[4%] bottom-12 w-20 h-20 pointer-events-none select-none opacity-[0.07] vec-drift" aria-hidden="true">
-          <img src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.6);" />
+          <img loading="lazy" decoding="async" src="/svg/benefit01.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.6);" />
         </div>
         <div class="absolute -left-16 top-1/3 w-48 h-64 pointer-events-none select-none opacity-[0.05] vec-float" aria-hidden="true">
-          <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
+          <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
         </div>
       </>}
       {i === 1 && <>
         <div class="absolute -left-16 -bottom-16 w-72 h-72 pointer-events-none select-none opacity-[0.06] vec-spin-rev" aria-hidden="true">
-          <img src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
+          <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.3);" />
         </div>
         <div class="absolute right-[6%] top-16 w-12 h-16 pointer-events-none select-none opacity-[0.09] vec-float-rev" aria-hidden="true">
-          <img src="/svg/marker.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+          <img loading="lazy" decoding="async" src="/svg/marker.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
         </div>
         <div class="absolute right-[15%] bottom-10 w-16 h-16 pointer-events-none select-none opacity-[0.07] vec-pulse" aria-hidden="true">
-          <img src="/svg/benefit02.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+          <img loading="lazy" decoding="async" src="/svg/benefit02.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
         </div>
       </>}
       {i === 2 && <>
         <div class="absolute -right-12 top-1/2 -translate-y-1/2 w-64 h-64 pointer-events-none select-none opacity-[0.07] vec-spin" aria-hidden="true">
-          <img src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.35);" />
+          <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.35);" />
         </div>
         <div class="absolute left-[8%] top-10 w-10 h-16 pointer-events-none select-none opacity-[0.08] vec-drift" aria-hidden="true">
-          <img src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
+          <img loading="lazy" decoding="async" src="/svg/pen.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.5);" />
         </div>
         <div class="absolute -left-10 bottom-8 w-40 h-52 pointer-events-none select-none opacity-[0.05] vec-float-rev" aria-hidden="true">
-          <img src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
+          <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full" style="filter:sepia(1) saturate(0.4);" />
         </div>
       </>}
 
@@ -203,7 +266,7 @@ const marcas = [
              style={`border-color:${m.accentColor}; color:${m.accentColor};`}
              onmouseover={`this.style.background='${m.accentColor}'; this.style.color='white';`}
              onmouseout={`this.style.background='transparent'; this.style.color='${m.accentColor}';`}>
-            {m.cta}
+            <span data-i18n={`${m.i18nPrefix}.cta`}>{m.cta}</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
             </svg>
@@ -217,13 +280,13 @@ const marcas = [
           <div class="reveal">
             <!-- Imagen principal -->
             <div class="aspect-[4/3] overflow-hidden">
-              <img src={m.img} alt={m.nombre} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <img loading="lazy" decoding="async" src={m.img} alt={m.nombre} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <!-- Imágenes secundarias -->
             <div class="grid grid-cols-2 gap-2 mt-2">
               {m.imgs.slice(0, 2).map(src => (
                 <div class="aspect-video overflow-hidden">
-                  <img src={src} alt={m.nombre} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                  <img loading="lazy" decoding="async" src={src} alt={m.nombre} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 </div>
               ))}
             </div>
@@ -251,29 +314,32 @@ const marcas = [
             <!-- Mini stats o certificaciones según marca -->
             {m.id === 'hosco' && (
               <>
-                <div class="flex flex-wrap items-center gap-5 reveal">
-                  {['usda-organic.png', 'eu-organic.png', '4c.png', 'rainforest-alliance.png', 'fairtrade.png'].map(c => (
-                    <img src={`/img/certificaciones/${c}`} alt="Certificación" class="h-10 w-auto object-contain opacity-80" />
+                <div class="flex flex-wrap items-center gap-2 reveal">
+                  {['USDA Organic', 'EU Organic', '4C', 'Rainforest Alliance', 'Fairtrade'].map(c => (
+                    <span class="text-[10px] font-bold tracking-widest uppercase border px-3 py-1.5"
+                          style={`border-color:${m.accentColor}55; color:${m.accentColor};`}>
+                      {c}
+                    </span>
                   ))}
                 </div>
               </>
             )}
             {m.id === 'minahonda' && (
               <div class="grid grid-cols-3 gap-4 reveal">
-                {[{n:'1954', l:'Año de fundación'}, {n:'1,600m', l:'Altitud promedio'}, {n:'100%', l:'Café hondureño'}].map(s => (
+                {[{n:'1954', l:'Año de fundación'}, {n:'1,600m', l:'Altitud promedio'}, {n:'100%', l:'Café hondureño'}].map((s, si) => (
                   <div class="text-center">
                     <p class="font-display font-bold text-coffee-dark text-2xl" style={`color:${m.accentColor};`}>{s.n}</p>
-                    <p class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
+                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
             )}
             {m.id === 'fundacion' && (
               <div class="grid grid-cols-3 gap-4 reveal">
-                {[{n:'+40K', l:'Familias apoyadas'}, {n:'2013', l:'Año de fundación'}, {n:'+200K', l:'Personas beneficiadas'}].map(s => (
+                {[{n:'+40K', l:'Familias apoyadas'}, {n:'2013', l:'Año de fundación'}, {n:'+200K', l:'Personas beneficiadas'}].map((s, si) => (
                   <div class="text-center">
                     <p class="font-display font-bold text-2xl" style={`color:${m.accentColor};`}>{s.n}</p>
-                    <p class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
+                    <p data-i18n={`${m.i18nPrefix}.s${si}.lbl`} class="text-coffee/45 text-[10px] tracking-widest uppercase mt-1">{s.l}</p>
                   </div>
                 ))}
               </div>
@@ -286,7 +352,7 @@ const marcas = [
         {m.id === 'hosco' && (
           <div class="mt-14 flex justify-center reveal">
             <div class="w-full max-w-2xl overflow-hidden shadow-xl" style="border:1px solid rgba(196,154,60,0.15);">
-              <video autoplay muted loop playsinline preload="metadata" controls class="w-full object-cover">
+              <video data-lazy-video muted loop playsinline preload="none" controls class="w-full object-cover">
                 <source src="/img/marcas/Hosco/video.mp4" type="video/mp4" />
               </video>
             </div>
@@ -299,11 +365,11 @@ const marcas = [
       <div class="py-10" style={`background:${m.bgDark};`}>
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p class="text-white/40 text-sm">
-            <span class="text-white/70 font-semibold">{m.nombre}</span> — {m.tipo}
+            <span class="text-white/70 font-semibold">{m.nombre}</span> — <span data-i18n={`${m.i18nPrefix}.tipo`}>{m.tipo}</span>
           </p>
           <a href="/contacto"
              class="text-xs font-bold tracking-widest uppercase px-6 py-3 transition-colors duration-200 text-white/50 hover:text-white flex items-center gap-2">
-            Contactar
+            <span data-i18n="mar.contact">Contactar</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
             </svg>
@@ -320,15 +386,15 @@ const marcas = [
           style="font-size:20vw; left:50%; top:50%; transform:translate(-50%,-50%);">CAFÉ</span>
     <!-- Deco: oval girando grande centro -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none select-none opacity-[0.04] vec-spin-rev" aria-hidden="true">
-      <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <!-- Deco: coffee flotando izquierda -->
     <div class="absolute -left-12 bottom-0 w-44 h-56 pointer-events-none select-none opacity-[0.06] vec-float-rev" aria-hidden="true">
-      <img src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <!-- Deco: benefit03 flotando derecha -->
     <div class="absolute right-[8%] top-8 w-14 h-14 pointer-events-none select-none opacity-[0.09] vec-drift" aria-hidden="true">
-      <img src="/svg/benefit03.svg" alt="" class="w-full h-full brightness-200" />
+      <img loading="lazy" decoding="async" src="/svg/benefit03.svg" alt="" class="w-full h-full brightness-200" />
     </div>
     <div class="relative z-10 max-w-2xl mx-auto px-6">
       <p data-i18n="mar.cta.label" class="section-label mb-4 reveal">¿Te interesa trabajar con nosotros?</p>

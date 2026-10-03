@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const enlaces = [
+  { href: '/nosotros',        key: 'nav.about',   label: 'Nosotros'        },
+  { href: '/marcas',          key: 'nav.brands',  label: 'Marcas'          },
+  { href: '/junta-directiva', key: 'nav.board',   label: 'Junta Directiva' },
+];
+---
+
+<Layout title="Página no encontrada" description="La página que buscas no existe o fue movida.">
+
+  <section data-i18n-title="e404.title" class="relative min-h-screen flex items-center bg-[#1C0E08] overflow-hidden">
+    <div class="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
+
+    <!-- Watermark 404 -->
+    <span class="absolute font-display font-bold select-none pointer-events-none leading-none"
+          aria-hidden="true"
+          style="font-size:38vw; left:50%; top:50%; transform:translate(-50%,-50%); color:rgba(196,154,60,0.05)">
+      404
+    </span>
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6 pt-32 pb-20 text-center">
+
+      <!-- Grano de café -->
+      <div class="inline-flex items-center gap-3 mb-8">
+        <div class="h-px w-10 bg-gold/40"></div>
+        <svg class="w-5 h-6 text-gold" viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <ellipse cx="7" cy="9" rx="5.5" ry="8"/>
+          <path d="M7 1.5 C4.5 6 9.5 12 7 16.5"/>
+        </svg>
+        <div class="h-px w-10 bg-gold/40"></div>
+      </div>
+
+      <p data-i18n="e404.label" class="section-label mb-4">Error 404</p>
+      <h1 class="font-display font-bold text-white leading-tight mb-6" style="font-size:clamp(2.4rem,5.5vw,4.2rem);">
+        <span data-i18n="e404.h1a">Este grano</span><br/>
+        <span data-i18n="e404.h1b" class="italic text-gold">se perdió en el camino.</span>
+      </h1>
+      <p data-i18n="e404.para" class="text-cream/55 text-base leading-relaxed max-w-md mx-auto mb-10">
+        La página que buscas no existe o fue movida. Te ayudamos a volver a la ruta.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-14">
+        <a href="/" class="btn-primary"><span data-i18n="e404.home">Volver al inicio</span></a>
+        <a href="/contacto" class="btn-outline"><span data-i18n="nav.contact">Contacto</span></a>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="flex flex-wrap justify-center items-center gap-6 text-xs font-semibold tracking-widest uppercase">
+        {enlaces.map((l, i) => (
+          <>
+            {i > 0 && <span class="w-1 h-1 rounded-full bg-gold/40" aria-hidden="true"></span>}
+            <a href={l.href} data-i18n={l.key} class="text-cream/45 hover:text-gold transition-colors duration-200">{l.label}</a>
+          </>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

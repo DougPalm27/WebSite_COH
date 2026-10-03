@@ -14,15 +14,15 @@ const year = new Date().getFullYear();
   <!-- Decoraciones vectoriales de fondo -->
   <div class="absolute -left-24 top-0 w-72 h-72 pointer-events-none select-none opacity-[0.05]"
        style="animation: vec-spin 70s linear infinite;" aria-hidden="true">
-    <img src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
+    <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
   </div>
   <div class="absolute -right-16 bottom-0 w-80 h-96 pointer-events-none select-none opacity-[0.04]"
        style="animation: vec-float-rev 16s ease-in-out infinite;" aria-hidden="true">
-    <img src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
+    <img loading="lazy" decoding="async" src="/svg/coffee.svg" alt="" class="w-full h-full brightness-200" />
   </div>
   <div class="absolute right-1/3 top-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none select-none opacity-[0.04]"
        style="animation: vec-spin-rev 50s linear infinite;" aria-hidden="true">
-    <img src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
+    <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
   </div>
 
   <!-- Gold rule top -->
@@ -33,7 +33,7 @@ const year = new Date().getFullYear();
     <!-- Brand -->
     <div class="lg:col-span-2">
       <a href="/" class="inline-flex items-center gap-3 mb-5 group">
-        <img
+        <img loading="lazy" decoding="async"
           src="/img/logos_varios/Logotipo_COHONDUCAFE_Blanco.png"
           alt="COHONDUCAFE"
           class="h-9 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
@@ -44,40 +44,11 @@ const year = new Date().getFullYear();
       </p>
 
       <!-- Certificaciones mini -->
-      <div class="flex flex-wrap gap-2 mb-7">
+      <div class="flex flex-wrap gap-2">
         {['USDA Organic', 'Rainforest', 'Fairtrade'].map(cert => (
           <span class="text-[8px] font-bold tracking-widest uppercase border border-white/15 text-white/40 px-2.5 py-1">
             {cert}
           </span>
-        ))}
-      </div>
-
-      <!-- Social -->
-      <div class="flex gap-3">
-        {[
-          { label: 'Facebook',  href: 'https://facebook.com',  path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', fill: true },
-          { label: 'Instagram', href: 'https://instagram.com', path: null, fill: false },
-          { label: 'LinkedIn',  href: 'https://linkedin.com',  path: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 4m-2 0a2 2 0 104 0 2 2 0 10-4 0', fill: true },
-        ].map(s => (
-          <a
-            href={s.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={s.label}
-            class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-gold hover:text-gold transition-colors duration-200"
-          >
-            {s.label === 'Instagram' ? (
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            ) : (
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d={s.path}/>
-              </svg>
-            )}
-          </a>
         ))}
       </div>
     </div>
@@ -89,8 +60,9 @@ const year = new Date().getFullYear();
         {[
           { href: '/',          key: 'nav.home',    label: 'Inicio'   },
           { href: '/nosotros',  key: 'nav.about',   label: 'Nosotros' },
-          { href: '/marcas',    key: 'nav.brands',  label: 'Marcas'   },
-          { href: '/contacto',  key: 'nav.contact', label: 'Contacto' },
+          { href: '/marcas',          key: 'nav.brands',  label: 'Marcas'          },
+          { href: '/junta-directiva', key: 'nav.board',   label: 'Junta Directiva' },
+          { href: '/contacto',        key: 'nav.contact', label: 'Contacto'        },
         ].map(link => (
           <li>
             <a href={link.href} data-i18n={link.key} class="hover:text-gold hover:translate-x-1 inline-block transition-all duration-200">
@@ -116,8 +88,8 @@ const year = new Date().getFullYear();
           <svg class="w-4 h-4 mt-0.5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
-          <a href="mailto:info@grupocoh.com" class="hover:text-gold transition-colors duration-200">
-            info@grupocoh.com
+          <a href="mailto:info@honducafeproyectos.com" class="min-w-0 hover:text-gold transition-colors duration-200">
+            info@<wbr />honducafeproyectos.com
           </a>
         </li>
       </ul>

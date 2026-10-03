@@ -39,6 +39,20 @@ const { title, description = 'COHONDUCAFE — Empresa cafetalera hondureña desd
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Videos pesados: se cargan y reproducen solo al acercarse a la pantalla
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) {
+          if (v.preload === 'none') { v.preload = 'auto'; v.load(); }
+          v.play().catch(() => {});
+        } else if (!v.paused) {
+          v.pause();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    document.querySelectorAll('video[data-lazy-video]').forEach(v => videoObserver.observe(v));
+
     // Timeline horizontal
     const htl = document.getElementById('htl');
     if (htl) {
@@ -127,14 +141,15 @@ const { title, description = 'COHONDUCAFE — Empresa cafetalera hondureña desd
                   am5map.MapPolygonSeries.new(hnRoot, { geoJSON: geojson })
                 );
                 hnSeries.mapPolygons.template.setAll({
-                  stroke: am5.color('#9E7A55'), strokeWidth: 0.8, strokeOpacity: 0.4,
+                  stroke: am5.color('#F5EFE0'), strokeWidth: 0.8, strokeOpacity: 0.35,
                   tooltipText: '{name}', interactive: true
                 });
                 hnSeries.mapPolygons.template.adapters.add('fill', function(fill, target) {
                   var id = target.dataItem ? target.dataItem.get('id') : null;
-                  return cafeIds.includes(id) ? am5.color('#6B3410') : am5.color('#D4C5A9');
+                  /* Mismos colores que la leyenda en nosotros.astro */
+                  return cafeIds.includes(id) ? am5.color('#C49A3C') : am5.color('#1A6B40');
                 });
-                hnSeries.mapPolygons.template.states.create('hover', { fill: am5.color('#C49A3C') });
+                hnSeries.mapPolygons.template.states.create('hover', { fill: am5.color('#E0BA64') });
                 hnChart.appear(1000, 100);
               })
               .catch(function() {
