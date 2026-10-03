@@ -3,6 +3,7 @@ node_modules/
 
 # Build de Astro
 dist/
+.deploy/
 .astro/
 
 # Artefactos pesados (no deberían estar en git)
