@@ -38,13 +38,13 @@ npm run deploy
 **2. Primera vez en el servidor** (clonar en la carpeta del sitio en IIS):
 
 ```bash
-git clone -b produccion --single-branch https://github.com/DougPalm27/WebSite_COH.git C:\inetpub\wwwroot\cohonducafe
+git clone -b produccion --single-branch https://github.com/DougPalm27/WebSite_COH.git C:\inetpub\modulos\produccion\webcoh
 ```
 
 **3. Cada actualización en el servidor:**
 
 ```bash
-git -C C:\inetpub\wwwroot\cohonducafe pull
+git -C C:\inetpub\modulos\produccion\webcoh pull
 ```
 
 El `web.config` (rutas limpias, página 404, caché) ya viene incluido en `dist/`.
