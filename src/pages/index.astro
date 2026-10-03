@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ViajeDelGrano from '../components/ViajeDelGrano.astro';
 
 const marcas = [
   {
@@ -432,6 +433,9 @@ const stats = [
   })();
   </script>
 
+  <!-- ─── EL VIAJE DEL GRANO ─────────────────────────────────────── -->
+  <ViajeDelGrano />
+
   <!-- ─── ALIANZAS ESTRATÉGICAS (reemplaza Socios y aliados) ────── -->
   <section class="alianzas-section tone-light relative overflow-hidden">
     <!-- Decoración: oval grande girando fondo -->
@@ -666,48 +670,6 @@ const stats = [
   </div>
 </section>
 
-
-<!-- ─── MAPA MUNDIAL ───────────────────────────────────────────── -->
-  <section class="py-24 bg-forest-dark overflow-hidden relative">
-    <!-- Decoración: oval superior derecha -->
-    <div class="absolute -right-20 -top-20 w-80 h-80 pointer-events-none select-none opacity-[0.07] vec-spin-rev" aria-hidden="true">
-      <img loading="lazy" decoding="async" src="/svg/oval.svg" alt="" class="w-full h-full brightness-200" />
-    </div>
-    <!-- Decoración: marker flotando izquierda -->
-    <div class="absolute left-8 top-16 w-10 h-14 pointer-events-none select-none opacity-[0.12] vec-float" aria-hidden="true">
-      <img loading="lazy" decoding="async" src="/svg/marker.svg" alt="" class="w-full h-full brightness-200" />
-    </div>
-    <!-- Decoración: oval-alt inferior izquierda -->
-    <div class="absolute -left-16 bottom-8 w-56 h-56 pointer-events-none select-none opacity-[0.06] vec-spin" aria-hidden="true">
-      <img loading="lazy" decoding="async" src="/svg/oval-alt.svg" alt="" class="w-full h-full brightness-200" />
-    </div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
-      <div class="text-center mb-10">
-        <p data-i18n="idx.map.label" class="section-label mb-4 reveal">Presencia global</p>
-        <h2 class="font-display text-4xl md:text-5xl font-bold text-white reveal">
-          <span data-i18n="idx.map.h2a">Del campo hondureño</span><br/><span data-i18n="idx.map.h2b" class="italic text-gold">al mundo</span>
-        </h2>
-        <!-- Indicación distinta para pantallas táctiles y para mouse -->
-        <p data-i18n="idx.map.hint" class="only-hover text-cream/70 mt-4 text-sm reveal">Pasa el cursor sobre un país para ver su nombre</p>
-        <p data-i18n="idx.map.hint.touch" class="only-touch text-cream/70 mt-4 text-sm reveal">Toca un país para ver su nombre · usa + y − para acercar</p>
-      </div>
-
-      <div id="world-map" class="w-full rounded-sm reveal h-[260px] sm:h-[380px] md:h-[480px]"></div>
-
-      <div class="flex flex-wrap justify-center gap-6 mt-8 reveal">
-        <div class="flex items-center gap-2">
-          <span class="w-4 h-4 rounded-sm inline-block" style="background:#4A7C59"></span>
-          <span data-i18n="idx.map.leg1" class="text-cream/70 text-xs font-semibold tracking-widest uppercase">Honduras — Origen</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-4 h-4 rounded-sm inline-block bg-gold"></span>
-          <span data-i18n="idx.map.leg2" class="text-cream/70 text-xs font-semibold tracking-widest uppercase">Destinos de exportación</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ─── VIDEO INSTITUCIONAL ─────────────────────────────────────
        Es un video narrado en inglés con subtítulos: se muestra completo, con

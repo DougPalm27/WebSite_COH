@@ -84,12 +84,11 @@ const fullTitle = `${title} | COHONDUCAFE`;
     }
   </script>
 
-  <!-- Mapas amCharts — activa si existe #world-map o #honduras-map -->
+  <!-- Mapa amCharts de Honduras (página Nosotros) — se activa si existe #honduras-map -->
   <script is:inline>
     (function () {
-      var hasWorldMap    = !!document.getElementById('world-map');
       var hasHondurasMap = !!document.getElementById('honduras-map');
-      if (!hasWorldMap && !hasHondurasMap) return;
+      if (!hasHondurasMap) return;
 
       function loadScript(src) {
         return new Promise(function (resolve) {
@@ -102,52 +101,8 @@ const fullTitle = `${title} | COHONDUCAFE`;
 
       loadScript('https://cdn.amcharts.com/lib/5/index.js')
         .then(function () { return loadScript('https://cdn.amcharts.com/lib/5/map.js'); })
-        .then(function () { return loadScript('https://cdn.amcharts.com/lib/5/geodata/worldLow.js'); })
         .then(function () { return loadScript('https://cdn.amcharts.com/lib/5/themes/Animated.js'); })
         .then(function () {
-
-          // ── Mapa mundial ──────────────────────────────────────
-          if (hasWorldMap) {
-            var root = am5.Root.new('world-map');
-            root.setThemes([am5themes_Animated.new(root)]);
-            var chart = root.container.children.push(
-              am5map.MapChart.new(root, {
-                projection: am5map.geoNaturalEarth1(),
-                panX: 'translateX', panY: 'translateY', wheelY: 'zoom'
-              })
-            );
-            chart.chartContainer.get('background').setAll({ fill: am5.color('#0F3D28'), fillOpacity: 1 });
-            var exportIds = ['US','CA','MX','DE','BE','IT','FR','SE','NL','GB','CH','ES','FI','NO','DK','JP','KR','CN','TW','AU','NZ','CO','EC','ZA'];
-            var polygonSeries = chart.series.push(
-              am5map.MapPolygonSeries.new(root, { geoJSON: am5geodata_worldLow, exclude: ['AQ'] })
-            );
-            polygonSeries.mapPolygons.template.setAll({
-              stroke: am5.color('#ffffff'), strokeWidth: 0.3, strokeOpacity: 0.15,
-              tooltipText: '{name}', interactive: true
-            });
-            polygonSeries.mapPolygons.template.adapters.add('fill', function (fill, target) {
-              var id = target.dataItem ? target.dataItem.get('id') : null;
-              if (id === 'HN') return am5.color('#4A7C59');
-              if (exportIds.includes(id)) return am5.color('#C49A3C');
-              return am5.color('#1A6B40');
-            });
-            polygonSeries.mapPolygons.template.states.create('hover', { fill: am5.color('#C49A3C'), fillOpacity: 0.85 });
-            var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
-            pointSeries.bullets.push(function () {
-              return am5.Bullet.new(root, {
-                sprite: am5.Circle.new(root, { radius: 6, fill: am5.color('#ffffff'), stroke: am5.color('#C49A3C'), strokeWidth: 2, tooltipText: 'Honduras — Origen' })
-              });
-            });
-            pointSeries.data.push({ geometry: { type: 'Point', coordinates: [-86.5, 15] } });
-            /* Botones +/− para acercar (útiles sobre todo en celular) */
-            var zoom = chart.set('zoomControl', am5map.ZoomControl.new(root, {}));
-            [zoom.plusButton, zoom.minusButton].forEach(function (b) {
-              b.get('background').setAll({ fill: am5.color('#C49A3C'), fillOpacity: 1, stroke: am5.color('#0F3D28') });
-              b.get('background').states.create('hover', { fill: am5.color('#E0BA64') });
-              b.get('icon').setAll({ stroke: am5.color('#3E2410') });
-            });
-            chart.appear(1000, 100);
-          }
 
           // ── Mapa Honduras (amCharts 4 geodata — compatible con am5) ──
           if (hasHondurasMap) {

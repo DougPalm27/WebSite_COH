@@ -1,0 +1,206 @@
+---
+// "El viaje del grano": historia que avanza con el scroll. Una pantalla fija (sticky)
+// cambia de escena según el avance; un grano dorado recorre el riel de progreso.
+import MapaRutasHonduras from './MapaRutasHonduras.astro';
+
+const escenas = [
+  { img: 'viaje-1-planta',    pos: '50% 45%', num: 12,      pre: '',  suf: '',
+    k: 'La planta',    t: 'Todo empieza en la montaña',
+    p: 'Café cultivado bajo sombra en las tierras altas de doce regiones cafetaleras de Honduras.',
+    s: 'regiones cafetaleras' },
+  { img: 'viaje-2-cosecha',   pos: '50% 50%', num: 40000,   pre: '+', suf: '',
+    k: 'La cosecha',   t: 'Cosechado a mano',
+    p: 'Cereza por cereza, junto a las familias productoras con las que trabajamos directamente.',
+    s: 'hogares productores' },
+  { img: 'viaje-3-seleccion', pos: '50% 50%', num: 20000,   pre: '+', suf: '',
+    k: 'La selección', t: 'La calidad empieza en la finca',
+    p: 'Solo las cerezas maduras. Acompañamos a los productores con asistencia técnica en agricultura regenerativa.',
+    s: 'productores asistidos' },
+  { img: 'viaje-4-secado',    pos: '60% 68%', num: 15000,   pre: '',  suf: '',
+    k: 'El secado',    t: 'Al sol y con precisión',
+    p: 'Secado y procesado en tres plantas con capacidad para quince mil sacos de café al día.',
+    s: 'sacos por día' },
+  { img: 'viaje-5-catacion',  pos: '62% 50%', num: 1000000, pre: '',  suf: '',
+    k: 'La catación',  t: 'Lote por lote',
+    p: 'Cada lote se cata y analiza en nuestro laboratorio antes de almacenarse, listo para exportar.',
+    s: 'sacos de capacidad de almacenamiento' },
+  { img: null, map: 'honduras', pos: '', num: 30,      pre: '',  suf: '%',
+    k: 'El puerto',    t: 'De COHONDUCAFE al mundo',
+    p: 'Desde el Caribe hondureño exportamos alrededor del 30% de la producción total de café del país.',
+    s: 'de la producción nacional' },
+  /* Final: el mapa se aleja de Honduras al mundo y salen las rutas a cada destino.
+     dur: el contador sube al ritmo de las rutas (24 × 110 ms + dibujo). */
+  { img: null, map: 'mundo',    pos: '', num: 24,      pre: '',  suf: '', dur: 3900,
+    k: 'El mundo',     t: 'En tazas de cinco continentes',
+    p: 'Importadores y tostadores de América, Europa, Asia, Oceanía y África reciben café hondureño de COHONDUCAFE.',
+    s: 'países de destino' },
+];
+const n = escenas.length;
+const fmt = (v: number) => v.toLocaleString('en-US');
+const set = (img: string) => [800, 1280, 1920].map(w => `/img/viaje/${img}-${w}.webp ${w}w`).join(', ');
+---
+
+<section id="viaje" class="viaje relative bg-[#1C0E08]" aria-labelledby="viaje-titulo">
+
+  <!-- Introducción -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-12 md:pt-32 md:pb-16 text-center">
+    <p data-i18n="viaje.label" class="section-label mb-4 reveal">El viaje del grano</p>
+    <h2 id="viaje-titulo" class="font-display font-bold text-white leading-tight reveal" style="font-size:clamp(2.4rem,5vw,4.2rem)">
+      <span data-i18n="viaje.h2a">De una cereza</span>
+      <span data-i18n="viaje.h2b" class="italic text-gold">a tu taza.</span>
+    </h2>
+    <p data-i18n="viaje.intro" class="text-cream/80 text-base md:text-lg max-w-xl mx-auto mt-5 reveal">
+      Así llega el café hondureño desde la finca hasta los mercados del mundo. Sigue bajando para recorrerlo.
+    </p>
+  </div>
+
+  <!-- Recorrido: la altura (n pantallas) marca la duración del scroll -->
+  <div class="viaje__scroll" style={`--n:${n}`}>
+    <div class="viaje__sticky">
+
+      <!-- Fondos (se cargan al acercarse; ver script) -->
+      {escenas.map((e, i) => e.img ? (
+        <img class={`viaje__bg ${i === 0 ? 'is-active' : ''}`} data-i={i}
+             data-srcset={set(e.img)} sizes="100vw" alt="" aria-hidden="true"
+             style={`object-position:${e.pos};`} />
+      ) : e.map === 'honduras' ? (
+        <div class="viaje__bg viaje__bg--map" data-i={i} aria-hidden="true">
+          <div class="viaje__map"><MapaRutasHonduras /></div>
+        </div>
+      ) : (
+        <!-- Mapa del mundo: SVG externo (50 KB) que se inserta al acercarse -->
+        <div class="viaje__bg viaje__bg--map viaje__bg--world" data-i={i} data-svg="/img/viaje/mundo.svg" aria-hidden="true">
+          <div class="viaje__world"></div>
+        </div>
+      ))}
+      <div class="viaje__shade" aria-hidden="true"></div>
+
+      <!-- Textos de cada escena -->
+      <div class="viaje__texts">
+        <div class="viaje__textbox">
+          {escenas.map((e, i) => (
+            <article class={`viaje__step ${i === 0 ? 'is-active' : ''}`} data-i={i}>
+              <p class="viaje__kicker">
+                <span class="viaje__num">{String(i + 1).padStart(2, '0')}</span>
+                <span data-i18n={`viaje.${i + 1}.k`}>{e.k}</span>
+              </p>
+              <h3 data-i18n={`viaje.${i + 1}.t`} class="viaje__title">{e.t}</h3>
+              <p data-i18n={`viaje.${i + 1}.p`} class="viaje__text">{e.p}</p>
+              <p class="viaje__stat">
+                <span class="viaje__stat-num" data-to={e.num} data-pre={e.pre} data-suf={e.suf} data-dur={e.dur}>{e.pre}{fmt(e.num)}{e.suf}</span>
+                <span data-i18n={`viaje.${i + 1}.s`} class="viaje__stat-label">{e.s}</span>
+              </p>
+              {i === n - 1 && (
+                <a href="/contacto?tema=importacion" class="viaje__cta">
+                  <span data-i18n="idx.cta.btn1">Hablemos de negocios</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Riel de progreso: un grano dorado baja por la línea -->
+      <div class="viaje__rail" aria-hidden="true">
+        <div class="viaje__rail-line"><div class="viaje__rail-fill"></div></div>
+        {escenas.map((e, i) => (
+          <div class={`viaje__rail-step ${i === 0 ? 'is-active' : ''}`} data-i={i} style={`--pos:${(i / (n - 1)) * 100}%`}>
+            <span data-i18n={`viaje.${i + 1}.k`} class="viaje__rail-label">{e.k}</span>
+          </div>
+        ))}
+        <svg class="viaje__bean" viewBox="0 0 20 26">
+          <ellipse cx="10" cy="13" rx="8.5" ry="12" />
+          <path d="M10 2.5c-3.2 4.2 3.2 16.8 0 21" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function () {
+  var root = document.querySelector('.viaje__scroll');
+  if (!root) return;
+  var bgs   = Array.prototype.slice.call(root.querySelectorAll('.viaje__bg'));
+  var steps = Array.prototype.slice.call(root.querySelectorAll('.viaje__step'));
+  var dots  = Array.prototype.slice.call(root.querySelectorAll('.viaje__rail-step'));
+  var fill  = root.querySelector('.viaje__rail-fill');
+  var bean  = root.querySelector('.viaje__bean');
+  var n = steps.length, current = 0, counted = {}, ticking = false;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Formato de miles según el idioma activo (40,000 / 40.000 / 40 000) */
+  var LOCALE = { es: 'en-US', en: 'en-US', de: 'de-DE', fr: 'fr-FR', ja: 'ja-JP' };
+  function fmt(v) { return Math.round(v).toLocaleString(LOCALE[window.__COHON_LANG || 'es'] || 'en-US'); }
+  function setNum(el, v) { el.textContent = (el.dataset.pre || '') + fmt(v) + (el.dataset.suf || ''); }
+
+  function load(i) {
+    var bg = bgs[i];
+    if (!bg) return;
+    if (bg.dataset.srcset) { bg.srcset = bg.dataset.srcset; bg.removeAttribute('data-srcset'); }
+    if (bg.dataset.svg) {                       /* mapa del mundo: se inserta en línea para animarlo con CSS */
+      var url = bg.dataset.svg; bg.removeAttribute('data-svg');
+      fetch(url).then(function (r) { return r.text(); })
+        .then(function (svg) { bg.querySelector('.viaje__world').innerHTML = svg; });
+    }
+  }
+
+  function countUp(i) {
+    var el = steps[i].querySelector('.viaje__stat-num');
+    var to = +el.dataset.to;
+    if (still || counted[i]) { setNum(el, to); return; }
+    counted[i] = true;
+    var t0 = performance.now(), dur = +el.dataset.dur || 1100;
+    (function frame(t) {
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      setNum(el, to * e);
+      if (k < 1) requestAnimationFrame(frame);
+    })(t0);
+  }
+
+  function activate(i) {
+    [bgs, steps, dots].forEach(function (list) {
+      list.forEach(function (el, j) { el.classList.toggle('is-active', j === i); el.classList.toggle('is-past', j < i); });
+    });
+    root.classList.toggle('is-final', i === n - 1);
+    load(i); load(i + 1);
+    countUp(i);
+    current = i;
+  }
+
+  function update() {
+    ticking = false;
+    var r = root.getBoundingClientRect();
+    var total = r.height - window.innerHeight;
+    var p = Math.min(1, Math.max(0, -r.top / total));
+    fill.style.transform = 'scaleY(' + p + ')';
+    bean.style.top = (p * 100) + '%';
+    var i = Math.min(n - 1, Math.floor(p * n));
+    if (i !== current) activate(i);
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+
+  /* Cargar las primeras imágenes cuando la sección se acerca */
+  new IntersectionObserver(function (e, obs) {
+    if (!e[0].isIntersecting) return;
+    load(0); load(1); obs.disconnect();
+  }, { rootMargin: '100% 0px' }).observe(root);
+
+  /* Contar el primer número cuando la escena aparece */
+  new IntersectionObserver(function (e, obs) {
+    if (!e[0].isIntersecting) return;
+    countUp(current); obs.disconnect();
+  }, { threshold: 0.6 }).observe(root.querySelector('.viaje__sticky'));
+
+  /* Al cambiar de idioma, reformatear los números ya contados */
+  window.addEventListener('cohonlangchange', function () {
+    steps.forEach(function (s, i) { if (counted[i] || i === current) { var el = s.querySelector('.viaje__stat-num'); setNum(el, +el.dataset.to); } });
+  });
+
+  update();
+})();
+</script>
