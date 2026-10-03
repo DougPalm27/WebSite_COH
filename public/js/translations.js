@@ -15,10 +15,8 @@ es: {
   'e404.home': 'Volver al inicio',
 
   /* Accesibilidad y título fijo del inicio */
-  'idx.hero.h1': 'COHONDUCAFE — Café hondureño de especialidad desde 1954',
   'a11y.lang': 'Cambiar idioma',
   'a11y.menu': 'Menú',
-  'a11y.slide': 'Imagen {n}',
   'a11y.scroll': 'Desplázate hacia abajo',
   'a11y.close': 'Cerrar',
   'a11y.prev': 'Anterior',
@@ -27,6 +25,14 @@ es: {
   'a11y.milestone': 'Ir al hito {n}',
   'jd.modal.bio': 'Biografía',
   'jd.modal.profile': 'Perfil',
+
+  /* Hero */
+  'idx.hero.label': 'COHONDUCAFE · Honduras · Desde 1954',
+  'idx.hero.h1a': 'Del corazón de Honduras',
+  'idx.hero.h1b': 'al mundo.',
+  'idx.hero.desc': 'Cuatro generaciones cultivando, procesando y exportando café hondureño de especialidad desde 1954.',
+  'a11y.video.pause': 'Pausar video',
+  'a11y.video.play': 'Reproducir video',
 
   'nav.home':    'Inicio',
   'nav.about':   'Nosotros',
@@ -44,26 +50,9 @@ es: {
   'footer.rights':     'Todos los derechos reservados.',
 
   /* ── INDEX ─────────────────────────────────── */
-  'idx.hero.s1':    'Establecido',
-  'idx.hero.s3':    'Café hondureño',
 
-  'idx.hero.slide0.chip': 'Honduras · Café de Especialidad',
-  'idx.hero.slide0.title': 'COHONDUCAFE',
-  'idx.hero.slide0.sub': 'Cuatro Generaciones.',
-  'idx.hero.slide0.desc': 'Una tradición familiar desde 1954, arraigada en Honduras y construida sobre confianza, colaboración y calidad exportada al mundo.',
-  'idx.hero.slide0.cta': 'Nuestra Historia',
 
-  'idx.hero.slide2.chip': 'Nuestro ecosistema',
-  'idx.hero.slide2.title': 'Un origen. Tres expresiones.',
-  'idx.hero.slide2.sub': 'Marcas & Empresas.',
-  'idx.hero.slide2.desc': 'HOSCO, Mina Honda y Fundación COHONDUCAFE — cada marca con una misión distinta, todos del mismo origen.',
-  'idx.hero.slide2.cta': 'Ver marcas',
 
-  'idx.hero.slide4.chip': 'Trabajemos juntos',
-  'idx.hero.slide4.title': '¿Eres importador o tostador?',
-  'idx.hero.slide4.sub': 'Hablemos de café.',
-  'idx.hero.slide4.desc': 'Si buscas café hondureño de especialidad, nos encantaría escucharte y explorar una colaboración.',
-  'idx.hero.slide4.cta': 'Escríbenos',
 
   'idx.stats.0.lbl': 'Años de experiencia',        'idx.stats.0.dsc': 'Cuatro generaciones',
   'idx.stats.1.lbl': 'Hogares productores','idx.stats.1.dsc': 'Trabajo directo',
@@ -101,7 +90,6 @@ es: {
   'idx.brands.h2':     'Marcas & Empresas',
   'idx.brands.sub':    'Cada unidad es parte del mismo origen',
   'idx.brands.cta':    'Ver todas las marcas',
-  'idx.ticker':  'DE LA FINCA A TU TAZA',
   'idx.scroll':  'Scroll',
   'idx.orbit.0': 'Municipalidades, Comunidades y Cajas Rurales',
   'idx.orbit.1': 'Tostadores Internacionales',
@@ -302,10 +290,8 @@ en: {
   'e404.home': 'Back to home',
 
   /* Accesibilidad y título fijo del inicio */
-  'idx.hero.h1': 'COHONDUCAFE — Honduran specialty coffee since 1954',
   'a11y.lang': 'Change language',
   'a11y.menu': 'Menu',
-  'a11y.slide': 'Image {n}',
   'a11y.scroll': 'Scroll down',
   'a11y.close': 'Close',
   'a11y.prev': 'Previous',
@@ -314,6 +300,14 @@ en: {
   'a11y.milestone': 'Go to milestone {n}',
   'jd.modal.bio': 'Biography',
   'jd.modal.profile': 'Profile',
+
+  /* Hero */
+  'idx.hero.label': 'COHONDUCAFE · Honduras · Since 1954',
+  'idx.hero.h1a': 'From the heart of Honduras',
+  'idx.hero.h1b': 'to the world.',
+  'idx.hero.desc': 'Four generations growing, processing and exporting Honduran specialty coffee since 1954.',
+  'a11y.video.pause': 'Pause video',
+  'a11y.video.play': 'Play video',
 
   'nav.home':    'Home',
   'nav.about':   'About Us',
@@ -329,26 +323,9 @@ en: {
   'footer.since':     'Honduras · Since 1954',
   'footer.rights':    'All rights reserved.',
 
-  'idx.hero.s1':    'Established',
-  'idx.hero.s3':    'Honduran coffee',
 
-  'idx.hero.slide0.chip': 'Honduras · Specialty Coffee',
-  'idx.hero.slide0.title': 'COHONDUCAFE',
-  'idx.hero.slide0.sub': 'Four Generations.',
-  'idx.hero.slide0.desc': 'A family tradition since 1954, rooted in Honduras and built on trust, collaboration, and quality exported to the world.',
-  'idx.hero.slide0.cta': 'Our Story',
 
-  'idx.hero.slide2.chip': 'Our ecosystem',
-  'idx.hero.slide2.title': 'One origin. Three expressions.',
-  'idx.hero.slide2.sub': 'Brands & Companies.',
-  'idx.hero.slide2.desc': 'HOSCO, Mina Honda, and Fundación COHONDUCAFE — each brand with a distinct mission, all from the same origin.',
-  'idx.hero.slide2.cta': 'See our brands',
 
-  'idx.hero.slide4.chip': "Let's work together",
-  'idx.hero.slide4.title': 'Are you an importer or roaster?',
-  'idx.hero.slide4.sub': "Let's talk coffee.",
-  'idx.hero.slide4.desc': "If you're looking for Honduran specialty coffee, we'd love to hear from you and explore a collaboration.",
-  'idx.hero.slide4.cta': 'Get in touch',
 
   'idx.stats.0.lbl': 'Years of experience',         'idx.stats.0.dsc': 'Four generations',
   'idx.stats.1.lbl': 'Producer households', 'idx.stats.1.dsc': 'Direct partnership',
@@ -386,7 +363,6 @@ en: {
   'idx.brands.h2':    'Brands & Companies',
   'idx.brands.sub':   'Three specialized units covering the entire coffee chain — from seed to cup.',
   'idx.brands.cta':   'View all brands',
-  'idx.ticker':  'FROM FARM TO CUP',
   'idx.scroll':  'Scroll',
   'idx.orbit.0': 'Municipalities, Communities and Rural Savings Groups',
   'idx.orbit.1': 'International Roasters',
@@ -583,10 +559,8 @@ de: {
   'e404.home': 'Zur Startseite',
 
   /* Accesibilidad y título fijo del inicio */
-  'idx.hero.h1': 'COHONDUCAFE — Honduranischer Spezialitätenkaffee seit 1954',
   'a11y.lang': 'Sprache ändern',
   'a11y.menu': 'Menü',
-  'a11y.slide': 'Bild {n}',
   'a11y.scroll': 'Nach unten scrollen',
   'a11y.close': 'Schließen',
   'a11y.prev': 'Zurück',
@@ -595,6 +569,14 @@ de: {
   'a11y.milestone': 'Zu Meilenstein {n}',
   'jd.modal.bio': 'Biografie',
   'jd.modal.profile': 'Profil',
+
+  /* Hero */
+  'idx.hero.label': 'COHONDUCAFE · Honduras · Seit 1954',
+  'idx.hero.h1a': 'Aus dem Herzen von Honduras',
+  'idx.hero.h1b': 'in die Welt.',
+  'idx.hero.desc': 'Vier Generationen, die seit 1954 honduranischen Spezialitätenkaffee anbauen, verarbeiten und exportieren.',
+  'a11y.video.pause': 'Video pausieren',
+  'a11y.video.play': 'Video abspielen',
 
   'nav.home':    'Startseite',
   'nav.about':   'Über uns',
@@ -610,26 +592,9 @@ de: {
   'footer.since':     'Honduras · Seit 1954',
   'footer.rights':    'Alle Rechte vorbehalten.',
 
-  'idx.hero.s1':    'Gegründet',
-  'idx.hero.s3':    'Honduranischer Kaffee',
 
-  'idx.hero.slide0.chip': 'Honduras · Spezialitätenkaffee',
-  'idx.hero.slide0.title': 'COHONDUCAFE',
-  'idx.hero.slide0.sub': 'Vier Generationen.',
-  'idx.hero.slide0.desc': 'Eine Familientradition seit 1954, verwurzelt in Honduras und aufgebaut auf Vertrauen, Zusammenarbeit und in die Welt exportierter Qualität.',
-  'idx.hero.slide0.cta': 'Unsere Geschichte',
 
-  'idx.hero.slide2.chip': 'Unser Ökosystem',
-  'idx.hero.slide2.title': 'Ein Ursprung. Drei Ausdrucksformen.',
-  'idx.hero.slide2.sub': 'Marken & Unternehmen.',
-  'idx.hero.slide2.desc': 'HOSCO, Mina Honda und Fundación COHONDUCAFE — jede Marke mit einer eigenen Mission, alle aus demselben Ursprung.',
-  'idx.hero.slide2.cta': 'Marken entdecken',
 
-  'idx.hero.slide4.chip': 'Arbeiten wir zusammen',
-  'idx.hero.slide4.title': 'Sind Sie Importeur oder Röster?',
-  'idx.hero.slide4.sub': 'Lassen Sie uns über Kaffee sprechen.',
-  'idx.hero.slide4.desc': 'Wenn Sie honduranischen Spezialitätenkaffee suchen, würden wir uns freuen, von Ihnen zu hören und eine Zusammenarbeit zu erkunden.',
-  'idx.hero.slide4.cta': 'Kontaktieren Sie uns',
 
   'idx.stats.0.lbl': 'Jahre Erfahrung',           'idx.stats.0.dsc': 'Vier Generationen',
   'idx.stats.1.lbl': 'Produzentenhaushalte',     'idx.stats.1.dsc': 'Direkte Zusammenarbeit',
@@ -667,7 +632,6 @@ de: {
   'idx.brands.h2':    'Marken & Unternehmen',
   'idx.brands.sub':   'Drei spezialisierte Einheiten, die die gesamte Kaffeekette abdecken — vom Samen bis zur Tasse.',
   'idx.brands.cta':   'Alle Marken ansehen',
-  'idx.ticker':  'VON DER FARM IN DIE TASSE',
   'idx.scroll':  'Scrollen',
   'idx.orbit.0': 'Gemeinden, Kommunen und ländliche Sparkassen',
   'idx.orbit.1': 'Internationale Röstereien',
@@ -864,10 +828,8 @@ fr: {
   'e404.home': 'Retour à l’accueil',
 
   /* Accesibilidad y título fijo del inicio */
-  'idx.hero.h1': 'COHONDUCAFE — Café de spécialité hondurien depuis 1954',
   'a11y.lang': 'Changer de langue',
   'a11y.menu': 'Menu',
-  'a11y.slide': 'Image {n}',
   'a11y.scroll': 'Faire défiler vers le bas',
   'a11y.close': 'Fermer',
   'a11y.prev': 'Précédent',
@@ -876,6 +838,14 @@ fr: {
   'a11y.milestone': 'Aller à l’étape {n}',
   'jd.modal.bio': 'Biographie',
   'jd.modal.profile': 'Profil',
+
+  /* Hero */
+  'idx.hero.label': 'COHONDUCAFE · Honduras · Depuis 1954',
+  'idx.hero.h1a': 'Du cœur du Honduras',
+  'idx.hero.h1b': 'au monde entier.',
+  'idx.hero.desc': 'Quatre générations qui cultivent, transforment et exportent du café de spécialité hondurien depuis 1954.',
+  'a11y.video.pause': 'Mettre la vidéo en pause',
+  'a11y.video.play': 'Lire la vidéo',
 
   'nav.home':    'Accueil',
   'nav.about':   'À propos',
@@ -891,26 +861,9 @@ fr: {
   'footer.since':     'Honduras · Depuis 1954',
   'footer.rights':    'Tous droits réservés.',
 
-  'idx.hero.s1':    'Fondée en',
-  'idx.hero.s3':    'Café hondurien',
 
-  'idx.hero.slide0.chip': 'Honduras · Café de Spécialité',
-  'idx.hero.slide0.title': 'COHONDUCAFE',
-  'idx.hero.slide0.sub': 'Quatre Générations.',
-  'idx.hero.slide0.desc': 'Une tradition familiale depuis 1954, enracinée au Honduras et fondée sur la confiance, la collaboration et la qualité exportée à travers le monde.',
-  'idx.hero.slide0.cta': 'Notre Histoire',
 
-  'idx.hero.slide2.chip': 'Notre écosystème',
-  'idx.hero.slide2.title': 'Une origine. Trois expressions.',
-  'idx.hero.slide2.sub': 'Marques & Entreprises.',
-  'idx.hero.slide2.desc': 'HOSCO, Mina Honda et Fundación COHONDUCAFE — chaque marque avec une mission distincte, toutes issues de la même origine.',
-  'idx.hero.slide2.cta': 'Voir nos marques',
 
-  'idx.hero.slide4.chip': 'Travaillons ensemble',
-  'idx.hero.slide4.title': 'Êtes-vous importateur ou torréfacteur ?',
-  'idx.hero.slide4.sub': 'Parlons café.',
-  'idx.hero.slide4.desc': "Si vous recherchez du café hondurien de spécialité, nous serions ravis de vous entendre et d'explorer une collaboration.",
-  'idx.hero.slide4.cta': 'Écrivez-nous',
 
   'idx.stats.0.lbl': 'Ans d’expérience',           'idx.stats.0.dsc': 'Quatre générations',
   'idx.stats.1.lbl': 'Foyers producteurs',   'idx.stats.1.dsc': 'Travail direct',
@@ -948,7 +901,6 @@ fr: {
   'idx.brands.h2':    'Marques & Entreprises',
   'idx.brands.sub':   'Trois unités spécialisées couvrant toute la chaîne du café — de la graine à la tasse.',
   'idx.brands.cta':   'Voir toutes les marques',
-  'idx.ticker':  'DE LA FERME À VOTRE TASSE',
   'idx.scroll':  'Défiler',
   'idx.orbit.0': 'Municipalités, communautés et caisses rurales',
   'idx.orbit.1': 'Torréfacteurs internationaux',
@@ -1145,10 +1097,8 @@ ja: {
   'e404.home': 'ホームに戻る',
 
   /* Accesibilidad y título fijo del inicio */
-  'idx.hero.h1': 'COHONDUCAFE — 1954年創業のホンジュラス産スペシャルティコーヒー',
   'a11y.lang': '言語を変更',
   'a11y.menu': 'メニュー',
-  'a11y.slide': '画像 {n}',
   'a11y.scroll': '下へスクロール',
   'a11y.close': '閉じる',
   'a11y.prev': '前へ',
@@ -1157,6 +1107,14 @@ ja: {
   'a11y.milestone': 'マイルストーン {n} へ移動',
   'jd.modal.bio': '経歴',
   'jd.modal.profile': 'プロフィール',
+
+  /* Hero */
+  'idx.hero.label': 'COHONDUCAFE · ホンジュラス · 1954年創業',
+  'idx.hero.h1a': 'ホンジュラスの中心から',
+  'idx.hero.h1b': '世界へ。',
+  'idx.hero.desc': '1954年から4世代にわたり、ホンジュラス産スペシャルティコーヒーを栽培・加工・輸出しています。',
+  'a11y.video.pause': '動画を一時停止',
+  'a11y.video.play': '動画を再生',
 
   'nav.home':    'ホーム',
   'nav.about':   '私たちについて',
@@ -1172,26 +1130,9 @@ ja: {
   'footer.since':     'ホンジュラス · 1954年創業',
   'footer.rights':    '無断複製・転載を禁じます。',
 
-  'idx.hero.s1':    '創業',
-  'idx.hero.s3':    'ホンジュラス産コーヒー',
 
-  'idx.hero.slide0.chip': 'ホンジュラス · スペシャルティコーヒー',
-  'idx.hero.slide0.title': 'COHONDUCAFE',
-  'idx.hero.slide0.sub': '4世代の歴史。',
-  'idx.hero.slide0.desc': '1954年から続く家族の伝統。ホンジュラスに根ざし、信頼・協力・品質を世界へ届けています。',
-  'idx.hero.slide0.cta': '私たちの歴史',
 
-  'idx.hero.slide2.chip': '私たちのエコシステム',
-  'idx.hero.slide2.title': '一つの起源。三つの表現。',
-  'idx.hero.slide2.sub': 'ブランド & 企業。',
-  'idx.hero.slide2.desc': 'HOSCO、Mina Honda、Fundación COHONDUCAFE — それぞれ異なる使命を持つブランドが、同じ起源から生まれています。',
-  'idx.hero.slide2.cta': 'ブランドを見る',
 
-  'idx.hero.slide4.chip': '一緒に働きましょう',
-  'idx.hero.slide4.title': '輸入業者やロースターの方ですか？',
-  'idx.hero.slide4.sub': 'コーヒーについて話しましょう。',
-  'idx.hero.slide4.desc': 'ホンジュラス産スペシャルティコーヒーをお探しなら、ぜひお声がけください。協業の可能性を一緒に探りましょう。',
-  'idx.hero.slide4.cta': 'お問い合わせ',
 
   'idx.stats.0.lbl': '年の経験',                   'idx.stats.0.dsc': '4世代',
   'idx.stats.1.lbl': '生産農家世帯',               'idx.stats.1.dsc': '直接連携',
@@ -1229,7 +1170,6 @@ ja: {
   'idx.brands.h2':    'ブランド & 企業',
   'idx.brands.sub':   '種から一杯のコーヒーまで、コーヒーチェーン全体をカバーする3つの専門ユニット。',
   'idx.brands.cta':   'すべてのブランドを見る',
-  'idx.ticker':  '農園からあなたのカップへ',
   'idx.scroll':  'スクロール',
   'idx.orbit.0': '自治体・地域社会・農村信用組合',
   'idx.orbit.1': '海外のロースター',

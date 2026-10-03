@@ -1127,6 +1127,18 @@
   .brand-card img {
     transition: none;
   }
+  /* Hero: el texto aparece directamente, sin entrada animada */
+  .hero-v3__chip, .hero-v3__h1a, .hero-v3__h1b,
+  .hero-v3__para, .hero-v3__ctas, .hero-v3__rule {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .hero-v3__rule { width: 100% !important; }
+  /* Decoraciones que giran o flotan */
+  .vec-float, .vec-float-rev, .vec-spin, .vec-spin-rev, .vec-drift, .vec-pulse {
+    animation: none !important;
+  }
 }
 
 /* ── Alianzas Estratégicas ──────────────────────────────────── */
