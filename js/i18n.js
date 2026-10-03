@@ -1,12 +1,13 @@
 (function () {
   'use strict';
 
+  /* Códigos de texto en lugar de banderas: Windows no muestra las banderas emoji */
   var LANGS = [
-    { code: 'es', label: 'Español',  flag: '🇭🇳', native: 'Español' },
-    { code: 'en', label: 'English',  flag: '🇺🇸', native: 'English' },
-    { code: 'de', label: 'Deutsch',  flag: '🇩🇪', native: 'Deutsch' },
-    { code: 'fr', label: 'Français', flag: '🇫🇷', native: 'Français' },
-    { code: 'ja', label: '日本語',   flag: '🇯🇵', native: '日本語' },
+    { code: 'es', short: 'ES', native: 'Español'  },
+    { code: 'en', short: 'EN', native: 'English'  },
+    { code: 'de', short: 'DE', native: 'Deutsch'  },
+    { code: 'fr', short: 'FR', native: 'Français' },
+    { code: 'ja', short: 'JA', native: '日本語'    },
   ];
   var KEY = 'cohon_lang';
 
@@ -60,13 +61,13 @@
     if (titleKey) {
       document.title = t(titleKey) + ' | COHONDUCAFE';
     }
-    /* update lang switcher active state + pill flags (desktop y móvil) */
+    /* update lang switcher active state + pill label (desktop y móvil) */
     document.querySelectorAll('.lang-opt-btn').forEach(function (btn) {
       var isActive = btn.dataset.lang === (window.__COHON_LANG || 'es');
       btn.classList.toggle('lang-opt-btn--active', isActive);
     });
     document.querySelectorAll('.lang-pill-label').forEach(function (el) {
-      el.textContent = flagFor(window.__COHON_LANG || 'es');
+      el.textContent = shortFor(window.__COHON_LANG || 'es');
     });
     /* html lang attribute */
     document.documentElement.lang = window.__COHON_LANG || 'es';
@@ -80,8 +81,8 @@
   }
 
   /* ── lang switcher pill (nav) ──────────────────── */
-  function flagFor(code) {
-    return LANGS.find(function(l){ return l.code===code; }).flag;
+  function shortFor(code) {
+    return LANGS.find(function(l){ return l.code===code; }).short;
   }
 
   /* Construye un selector en cada contenedor .lang-switcher (desktop y móvil) */
@@ -93,13 +94,13 @@
     var cur = window.__COHON_LANG || 'es';
     var html = '<button class="lang-pill" data-i18n-aria="a11y.lang" aria-label="' + t('a11y.lang') + '" aria-expanded="false">' +
       '<svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>' +
-      '<span class="lang-pill-label">' + flagFor(cur) + '</span>' +
+      '<span class="lang-pill-label">' + shortFor(cur) + '</span>' +
       '<svg class="lang-caret" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>' +
     '</button>' +
     '<div class="lang-dropdown" aria-hidden="true">';
     LANGS.forEach(function(l) {
       html += '<button class="lang-opt-btn' + (l.code === cur ? ' lang-opt-btn--active' : '') + '" data-lang="' + l.code + '">' +
-        '<span class="lang-opt-flag">' + l.flag + '</span>' +
+        '<span class="lang-opt-code">' + l.short + '</span>' +
         '<span class="lang-opt-native">' + l.native + '</span>' +
       '</button>';
     });
